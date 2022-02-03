@@ -35,6 +35,7 @@ public class ConversionToIntegers {
              return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
       }
 
+
             // Append current digit to the result.
             result = 10 * result + digit;
             i++;
@@ -63,6 +64,31 @@ public class ConversionToIntegers {
         }
         return sign*res;
     }
+    public static int calculate(String s) {
+        if (s == null || s.isEmpty()) return 0;
+        int n = s.length();
+        int currentNumber = 0, lastNumber = 0, result = 0;
+        char operation = '+';
+        for (int i = 0; i < n; i++) {
 
+            if (Character.isDigit(s.charAt(i))) {
+                currentNumber = (currentNumber * 10) + (s.charAt(i) - '0');
+            }
+            if (!Character.isDigit(s.charAt(i)) && !Character.isWhitespace(s.charAt(i)) || i == n - 1) {
+                if (operation == '+' || operation == '-') {
+                    result += lastNumber;
+                    lastNumber = (operation == '+') ? currentNumber : -currentNumber;
+                } else if (operation == '*') {
+                    lastNumber = lastNumber * currentNumber;
+                } else if (operation == '/') {
+                    lastNumber = lastNumber / currentNumber;
+                }
+                operation = s.charAt(i);
+                currentNumber = 0;
+            }
+        }
+        result += lastNumber;
+        return result;
+    }
 
 }
