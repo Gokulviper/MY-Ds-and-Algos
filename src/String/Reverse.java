@@ -1,10 +1,11 @@
 package String;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Reverse {
     public static void main(String[] args) {
-        System.out.println(reverseWords("the sky is blue"));
+        System.out.println(validPalindrome("    baa"));
 
     }
     public static String reverseWords(String s) {
@@ -33,5 +34,44 @@ public class Reverse {
            if(stack.size()==1) ans = ans + stack.pop();
        }
        return ans;
+    }
+    public static String reverseString(String s){
+        char[] ch=s.toCharArray();
+        String ans="";
+        int start=0,end=ch.length-1;
+        while (start<=end){
+            char temp=ch[start];
+            ch[start]=ch[end];
+            ch[end]=temp;
+            start+=1;
+            end-=1;
+        }
+        String s1=ch.toString();
+        return s1;
+    }
+
+    public static boolean validPalindrome(String s) {
+       int start=0,end=s.length()-1;
+       while (start<end){
+           if(s.charAt(start)==s.charAt(end)){
+               start+=1;
+               end-=1;
+           }else{
+               return isPallindromeDeletingOneElement(s,start+1,end)|| isPallindromeDeletingOneElement(s,start,end-1);
+           }
+       }
+       return true;
+    }
+
+    private static boolean isPallindromeDeletingOneElement(String s, int start, int end) {
+        while (start<end) {
+            if (s.charAt(start) == s.charAt(end)) {
+                start++;
+                end--;
+            }else{
+                return false;
+            }
+        }
+        return true;
     }
 }
