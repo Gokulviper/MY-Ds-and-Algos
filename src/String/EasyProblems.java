@@ -1,10 +1,35 @@
 package String;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EasyProblems {
     public static void main(String[] args) {
 
-        System.out.println(reverseWords( "Let's take LeetCode contest"));
+        System.out.println(isIsomorphic("bee","foo"));;
     }
+
+    public static boolean isIsomorphic(String s, String t) {
+
+
+
+        Map<Character,Character> hm=new HashMap();
+
+        for(int i=0;i<s.length();i+=1){
+            char ss=s.charAt(i);
+            char tt=t.charAt(i);
+            if(hm.containsKey(ss)){
+                if(hm.get(ss) != tt){
+                    return false;
+                }}else if(hm.containsValue(tt)){
+                return false;
+            }
+            hm.put(ss,tt);
+
+        }
+        return true;
+    }
+
     public static String addStrings(String num1, String num2) {
         StringBuilder sb = new StringBuilder();
         int i = num1.length() - 1, j = num2.length() - 1, carry = 0;
