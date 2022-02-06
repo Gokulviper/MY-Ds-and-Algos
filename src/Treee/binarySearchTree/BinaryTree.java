@@ -70,8 +70,22 @@ public class BinaryTree {
             }
         }
 
-    }
 
+    }
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if(nums.length==1)return new TreeNode (nums[0]);
+        return bst(nums,0,nums.length-1);
+    }
+    TreeNode bst(int[] nums,int start,int end){
+        if(start<=end){
+            int mid=start+(end-start)/2;
+            TreeNode root=new TreeNode(nums[mid]);
+            root.left=bst(nums,start,mid-1);
+            root.right=bst(nums,mid+1,end);
+            return root;
+        }
+        return null;
+    }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root==null || root==p || root==q) return root;
