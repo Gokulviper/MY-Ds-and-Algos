@@ -3,6 +3,20 @@ package String;
 import java.util.Stack;
 
 public class ReverseOperations {
+    public static void main(String[] args) {
+
+        System.out.println(buddyStrings("aaaaaaabc","aaaaaaacb"));
+
+
+    }
+    public static boolean buddyStrings(String s, String goal) {
+        String ans="";
+        for(int i=s.length()-1;i>=0;i--){
+            ans+=s.charAt(i);
+        }
+        return ans.equals(goal);
+
+    }
     public static String reverseWords(String s) {
         Stack<String> stack=new Stack();
         String temp="",ans="";
@@ -68,5 +82,21 @@ public class ReverseOperations {
             }
         }
         return true;
+    }
+    public static String reverseOnlyLetters(String S) {
+        //tc,sc=O(n)
+        StringBuilder ans = new StringBuilder();
+        int j = S.length() - 1;
+        for (int i = 0; i < S.length(); ++i) {
+            if (Character.isLetter(S.charAt(i))) {
+                while (!Character.isLetter(S.charAt(j)))
+                    j--;
+                ans.append(S.charAt(j--));
+            } else {
+                ans.append(S.charAt(i));
+            }
+        }
+
+        return ans.toString();
     }
 }

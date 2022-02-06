@@ -1,5 +1,8 @@
 package Treee.binarySearchTree;
 
+import java.time.temporal.Temporal;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -57,7 +60,7 @@ public class BinaryTree {
         stack.push(root);
         while (!stack.isEmpty()){
          TreeNode temp=stack.pop();
-            System.out.print(temp+" ");
+            System.out.print(temp.val+" ");
 
             if(temp.right!=null){
                 stack.push(temp.right);
@@ -68,6 +71,8 @@ public class BinaryTree {
         }
 
     }
+
+
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root==null || root==p || root==q) return root;
        TreeNode left = lowestCommonAncestor(root.left, p, q);
@@ -83,10 +88,29 @@ public class BinaryTree {
 
 
     }
+    public void levelOrder(){
+        if(root==null){
+            return;
+        }
+        Queue<TreeNode> queue=new LinkedList<>();
+                queue.offer(root);
+        while (!queue.isEmpty()){
+            TreeNode temp=queue.poll();
+            System.out.println(temp.val+" ");
+            if(temp.left!=null){
+                queue.offer(temp.left);
+            }
+            if(temp.right!=null){
+                queue.offer(temp.right);
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         Treee.BinaryTree b=new Treee.BinaryTree();
         b.createBinaryTree();
+        b.preOrder();
 
     }
 }
