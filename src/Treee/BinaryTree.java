@@ -1,6 +1,6 @@
 package Treee;
 
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
 
@@ -39,6 +39,38 @@ public class BinaryTree {
 
 
 
+    }
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) return res;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        int currentLevel = 1;
+
+        while (!q.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            int size = q.size();
+
+            // create a List<Integer> for which level and add all nodes to it in normal order
+            while (size-- > 0) {
+                TreeNode temp = q.poll();
+                level.add(temp.val);
+
+                if (temp.left != null) q.add(temp.left);
+                if (temp.right != null) q.add(temp.right);
+            }
+
+            // Now, just check if you are at a even level, and if so, reverse it
+            if (currentLevel % 2 == 0) {
+                Collections.reverse(level);
+            }
+
+            // Now just add the nodes from that level to result. And increment the level as you are going down
+            res.add(level);
+            currentLevel++;
+        }
+        return res;
     }
 
     void preOrder(TreeNode root){
