@@ -115,6 +115,23 @@ public class BinaryTree {
 
 
     }
+    public boolean isBalanced(TreeNode root) {
+        return dfs(root)!=-1;
+    }
+    private int dfs(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+
+        int  lh =dfs(root.left);
+        int rh=dfs(root.right);
+
+        if(lh==-1||rh==-1)return -1;
+
+        if(Math.abs(rh-lh)>1) return -1;
+
+        return Math.max(lh,rh)+1;
+    }
 
     public static void main(String[] args) {
         BinaryTree b=new BinaryTree();
