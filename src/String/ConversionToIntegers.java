@@ -1,33 +1,53 @@
 package String;
 
 
+import java.util.ArrayList;
+
 public class ConversionToIntegers {
     public static void main(String[] args) {
-        System.out.println(multiply("6","2"));
+        System.out.println(multiply("123","456"));
 
     }
-    public static String multiply(String s1,String s2){
-        if(s1=="0"||s2=="0")return "0";
-        int num1=getInte(s1);
-        int num2=getInte(s2);
-        int ans=num1*num2;
-      String answer="";
-      while (ans>0){
-          answer=ans%10+answer;
-          ans/=10;
-      }
-        return answer;
-    }
-
-    private static int getInte(String s) {
-        int num=0;
-        int j=s.length()-1;
-      //  num=s.charAt(j--)-'0';
-        while (j>=0){
-            num=num*10+s.charAt(j)-'0';
-            j--;
+    public static String multiply(String num1, String num2) {
+        if(num1.equals("0") || num2.equals("0"))
+            return "0";
+        StringBuilder ans = new StringBuilder("0");
+        StringBuilder add = new StringBuilder();
+        for(int i = num1.length() - 1; i >= 0; i--){
+            int num = num1.charAt(i) - '0';
+            StringBuilder mul = multiply(num, num2);//multiplying last number to all the number in the other string
+            mul.append(add);
+            add.append('0'); //beacuse the adding last digit is nothing add to previous so the zero
+            ans = sum(ans, mul);
         }
-        return num;
+        return ans + "";
+    }
+    public static StringBuilder multiply(int num, String str) {
+        StringBuilder sb = new StringBuilder();
+        int carry = 0;
+        for(int i = str.length() - 1; i >= 0; i--) {
+            int val = str.charAt(i) - '0';
+            int pro = num * val + carry;
+            sb.insert(0, pro % 10);
+            carry = pro / 10;
+        }
+        if(carry > 0)
+            sb.insert(0, carry);
+        return sb;
+    }
+    public static StringBuilder sum(StringBuilder num1, StringBuilder num2) {
+        StringBuilder ans = new StringBuilder();
+        int carry = 0;
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
+        while(i >= 0 || j >= 0 || carry > 0) {
+            int val1 = (i >= 0) ? num1.charAt(i--) - '0' : 0;
+            int val2 = (j >= 0) ? num2.charAt(j--) - '0' : 0;
+            int add = val1 + val2 + carry;
+            ans.insert(0, add % 10);
+            carry = add / 10;
+        }
+        return ans;
     }
 
     public static int myAtoi(String s) {
