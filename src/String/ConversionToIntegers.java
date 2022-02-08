@@ -1,9 +1,35 @@
 package String;
 
+
 public class ConversionToIntegers {
     public static void main(String[] args) {
+        System.out.println(multiply("6","2"));
 
     }
+    public static String multiply(String s1,String s2){
+        if(s1=="0"||s2=="0")return "0";
+        int num1=getInte(s1);
+        int num2=getInte(s2);
+        int ans=num1*num2;
+      String answer="";
+      while (ans>0){
+          answer=ans%10+answer;
+          ans/=10;
+      }
+        return answer;
+    }
+
+    private static int getInte(String s) {
+        int num=0;
+        int j=s.length()-1;
+      //  num=s.charAt(j--)-'0';
+        while (j>=0){
+            num=num*10+s.charAt(j)-'0';
+            j--;
+        }
+        return num;
+    }
+
     public static int myAtoi(String s) {
         int sign = 1;
         int result = 0;
