@@ -8,6 +8,9 @@ public class ConversionToIntegers {
         System.out.println(multiply("123","456"));
 
     }
+
+
+
     public static String multiply(String num1, String num2) {
         if(num1.equals("0") || num2.equals("0"))
             return "0";
@@ -16,11 +19,11 @@ public class ConversionToIntegers {
         for(int i = num1.length() - 1; i >= 0; i--){
             int num = num1.charAt(i) - '0';
             StringBuilder mul = multiply(num, num2);//multiplying last number to all the number in the other string
-            mul.append(add);
-            add.append('0'); //beacuse the adding last digit is nothing add to previous so the zero
+            mul.append(add);//beacuse the adding last digit is nothing add to previous so the zero
+            add.append('0'); //every time we add 0
             ans = sum(ans, mul);
         }
-        return ans + "";
+        return ans.toString();
     }
     public static StringBuilder multiply(int num, String str) {
         StringBuilder sb = new StringBuilder();
