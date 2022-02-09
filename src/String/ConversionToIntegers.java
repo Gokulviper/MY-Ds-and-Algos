@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class ConversionToIntegers {
     public static void main(String[] args) {
         System.out.println(multiply("123","456"));
-
     }
 
 
