@@ -2,10 +2,11 @@ package String;
 
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ConversionToIntegers {
     public static void main(String[] args) {
-        System.out.println(multiply("123","456"));
+        System.out.println(BasicCalculator("3+2*2"));
     }
 
     public static String addBinary(String num1, String num2) {
@@ -127,7 +128,8 @@ public class ConversionToIntegers {
         }
         return sign*res;
     }
-    public static int calculate(String s) {
+    public static int BasicCalculate2(String s) {
+        //best approach
         if (s == null || s.isEmpty()) return 0;
         int n = s.length();
         int currentNumber = 0, lastNumber = 0, result = 0;
@@ -153,5 +155,37 @@ public class ConversionToIntegers {
         result += lastNumber;
         return result;
     }
+    public static int BasicCalculator(String s) {
+        //using stack not a best approach
+        Stack<Integer> st=new Stack<>();
+        char sign='+';
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+
+            if(Character.isDigit(s.charAt(i))){
+                int val=0;
+                while(i<s.length() && Character.isDigit(s.charAt(i))){
+                    val=val*10+s.charAt(i)-'0';
+                    i++;
+                }
+                i--;
+                if(sign=='+'){
+                    st.push(val);
+                }else if(sign=='-'){
+                    st.push(-val);
+                }else if(sign=='*'){
+                    st.push(st.pop()*val);
+                }else if(sign=='/'){
+                    st.push(st.pop()/val);
+                }
+            }else if(ch!=' '){
+                sign=ch;
+            }
+        }
+        int sum=0;
+        while(st.size()!=0) sum+=st.pop();
+        return sum;
+    }
+
 
 }
