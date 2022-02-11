@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class ConversionToIntegers {
     public static void main(String[] args) {
-        System.out.println(BasicCalculator("3+2*2"));
+        System.out.println(BasicCalculte2("3+2*2"));
     }
 
     public static String addBinary(String num1, String num2) {
@@ -19,8 +19,8 @@ public class ConversionToIntegers {
             int val1 = (i >= 0) ? num1.charAt(i--) - '0' : 0;
             int val2 = (j >= 0) ? num2.charAt(j--) - '0' : 0;
             int add = val1 + val2 + carry;
-            ans.insert(0, add % 10);
-            carry = add / 10;
+            ans.insert(0, add % 2);
+            carry = add / 2;
         }
         return ans.toString();
 
@@ -127,6 +127,33 @@ public class ConversionToIntegers {
             i++;
         }
         return sign*res;
+    }
+    public static int BasicCalculte2(String s) {
+      if(s==null||s.isEmpty())return 0;
+      int currentNumber=0,lastNumber=0,result=0;
+      char sign='+';
+      for(int i=0;i<s.length();i++){
+
+          if(Character.isDigit(s.charAt(i))){
+              currentNumber=(currentNumber*10)+s.charAt(i)-'0';
+          }
+          if((!Character.isDigit(s.charAt(i))&&!Character.isWhitespace(s.charAt(i)))||i==s.length()-1){
+              if(sign=='+'||sign=='-'){
+                  result+=lastNumber;
+                  lastNumber=(sign=='+')?currentNumber:-currentNumber;
+              }else if(sign=='*'){
+                  lastNumber=lastNumber*currentNumber;
+              }else if(sign=='/'){
+                  lastNumber=lastNumber/currentNumber;
+              }
+              sign=s.charAt(i);
+              currentNumber=0;
+          }
+
+
+      }
+        result+=lastNumber;
+      return result;
     }
     public static int BasicCalculate2(String s) {
         //best approach

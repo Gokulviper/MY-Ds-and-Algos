@@ -115,6 +115,59 @@ public class BinaryTree {
 
 
     }
+    public TreeNode buildTree1(int[] preorder, int[] inorder) {
+        Map<Integer,Integer> map=new HashMap<>();
+         for(int i=0;i<inorder.length;i+=1){
+             map.put(inorder[i],i);
+         }
+         TreeNode root=findTree(preorder,0,preorder.length-1,inorder,0,inorder.length-1,map);
+return root;
+    }
+
+    private TreeNode findTree(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> map) {
+   if(preStart>preEnd ||inStart>inEnd)return null;
+
+   TreeNode root=new TreeNode(preorder[preStart]);
+   int inPos=map.get(preorder[preStart]);
+   int numsCount=inPos-inStart;
+   root.left=findTree(preorder,preStart+1,preStart+numsCount,inorder,inStart,inPos-1,map);
+   root.right=findTree(preorder,preStart+numsCount+1,preEnd,inorder,inPos+1,inEnd,map);
+   return root;
+    }
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        //105. Construct Binary Tree from Preorder and Inorder Traversal
+        //algorithm
+        //put the inorder value in the map
+        //if the preorder first value is the root
+        //check the index root in inorder traversal
+        //the left side of root is tree left side values
+        //the right side of root is tree right side values
+        //do it recursively
+        Map<Integer, Integer> inMap = new HashMap<Integer, Integer>();
+
+        for(int i = 0; i < inorder.length; i++) {
+            inMap.put(inorder[i], i);
+        }
+
+        TreeNode root = buildTree(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, inMap);
+        return root;
+    }
+
+    public TreeNode buildTree(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> inMap) {
+        if(preStart > preEnd || inStart > inEnd) return null;
+
+        TreeNode root = new TreeNode(preorder[preStart]);//take the root as preorder first value
+        int inRoot = inMap.get(root.val);//get the index of the inorder root
+        int numsLeft = inRoot - inStart;//get the how many values in the left ot right
+
+        root.left = buildTree(preorder, preStart + 1, preStart + numsLeft, inorder, inStart, inRoot - 1, inMap);
+        root.right = buildTree(preorder, preStart + numsLeft + 1, preEnd, inorder, inRoot + 1, inEnd, inMap);
+
+        return root;
+    }
+
+
     public boolean isBalanced(TreeNode root) {
         return dfs(root)!=-1;
     }
