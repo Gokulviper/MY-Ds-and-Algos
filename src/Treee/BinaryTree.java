@@ -166,6 +166,27 @@ return root;
 
         return root;
     }
+    public TreeNode buildTree2(int[] inorder, int[] postorder) {
+        if (inorder == null || postorder == null || inorder.length != postorder.length)
+            return null;
+        HashMap<Integer, Integer> hm = new HashMap<Integer,Integer>();
+        for (int i=0;i<inorder.length;++i)
+            hm.put(inorder[i], i);
+        return buildTreePostIn(inorder, 0, inorder.length-1, postorder, 0,
+                postorder.length-1,hm);
+    }
+
+    private TreeNode buildTreePostIn(int[] inorder, int is, int ie, int[] postorder, int ps, int pe,
+                                     HashMap<Integer,Integer> hm){
+        if (ps>pe || is>ie) return null;
+        TreeNode root = new TreeNode(postorder[pe]);
+        int inRoot = hm.get(postorder[pe]);
+        TreeNode leftchild = buildTreePostIn(inorder, is, inRoot-1, postorder, ps, ps+inRoot-is-1, hm);
+        TreeNode rightchild = buildTreePostIn(inorder,inRoot+1, ie, postorder, ps+inRoot-is, pe-1, hm);
+        root.left = leftchild;
+        root.right = rightchild;
+        return root;
+    }
 
 
     public boolean isBalanced(TreeNode root) {

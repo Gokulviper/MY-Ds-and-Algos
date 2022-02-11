@@ -4,13 +4,11 @@ import java.util.*;
 
 public class Hashing {
     public static void main(String[] args) {
+       String[] words = {"abcw","baz","foo","bar","xtfn","abcdef"};
 
-        String ans[] = uncommonFromSentences("this apple is sweet", "this apple is sour");
-        System.out.println(Arrays.toString(ans));
-        String s = "hi this like the maths";
-        String[] r = s.split(" ");
-        System.out.println(Arrays.toString(r));
+
     }
+
 
     public static String[] uncommonFromSentences(String s1, String s2) {
 
