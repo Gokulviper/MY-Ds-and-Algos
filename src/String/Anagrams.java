@@ -5,7 +5,8 @@ import java.util.*;
 public class Anagrams {
     public static void main(String[] args) {
      String   s = "rat", t = "car";
-        System.out.println(isAnagram(s,t));
+     //   System.out.println(isAnagram(s,t));
+        System.out.println('b'-97);
     }
  /*   public static List<List<String>> groupAnagrams(String[] str) {
         //tc- O(nklogk)
