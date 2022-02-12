@@ -3,11 +3,12 @@ package String;
 import java.util.*;
 
 public class Hashing {
+    static int ans=0;
     public static void main(String[] args) {
-       String[] words = {"abcw","baz","foo","bar","xtfn","abcdef"};
 
 
     }
+
 
 
     public static String[] uncommonFromSentences(String s1, String s2) {

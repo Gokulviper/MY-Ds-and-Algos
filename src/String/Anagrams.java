@@ -24,6 +24,7 @@ public class Anagrams {
         }
         return new ArrayList<>(map.values());
     }*/
+
  public static boolean isAnagram(String s, String t) {
      if (s.length() != t.length()) return false;
      char ch1[] = s.toCharArray();
