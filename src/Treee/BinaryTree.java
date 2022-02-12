@@ -72,6 +72,59 @@ public class BinaryTree {
         }
         return res;
     }
+    public TreeNode deleteNode(TreeNode root, int key) {
+        //450. Delete Node in a BST
+        //algorithm
+        //first find the key
+        //take the right side of the root
+        //and find root.left --> last right value
+        //because all the right value should greater then the last right value
+        //and the connect the  value
+        if (root == null) {
+            return null;
+        }
+        if (root.val == key) {
+            return helper(root);
+        }
+        TreeNode dummy = root;
+        while (root != null) {                                  //first check the element is exist or not
+            if (root.val > key) {
+                if (root.left != null && root.left.val == key) {
+                    root.left = helper(root.left);
+                    break;
+                } else {
+                    root = root.left;
+                }
+            } else {
+                if (root.right != null && root.right.val == key) {
+                    root.right = helper(root.right);
+                    break;
+                } else {
+                    root = root.right;
+                }
+            }
+        }
+        return dummy;
+    }
+    public TreeNode helper(TreeNode root) {
+        if (root.left == null) {
+            return root.right;
+        } else if (root.right == null){
+            return root.left;
+        } else {
+            TreeNode rightChild = root.right;  //take the right part
+            TreeNode lastRight = findLastRight(root.left);//find the left last right value
+            lastRight.right = rightChild;               //connect to right part
+
+            return root.left;
+        }
+    }
+    public TreeNode findLastRight(TreeNode root) {
+        if (root.right == null) {
+            return root;
+        }
+        return findLastRight(root.right);
+    }
 
     void preOrder(TreeNode root){
         if(root==null){
@@ -181,13 +234,33 @@ return root;
         if (ps>pe || is>ie) return null;
         TreeNode root = new TreeNode(postorder[pe]);
         int inRoot = hm.get(postorder[pe]);
-        TreeNode leftchild = buildTreePostIn(inorder, is, inRoot-1, postorder, ps, ps+inRoot-is-1, hm);
-        TreeNode rightchild = buildTreePostIn(inorder,inRoot+1, ie, postorder, ps+inRoot-is, pe-1, hm);
-        root.left = leftchild;
-        root.right = rightchild;
+        int numsLeftLength=inRoot-is;
+        root.left   = buildTreePostIn(inorder, is, inRoot-1, postorder, ps, ps+numsLeftLength-1, hm);
+        root.right   = buildTreePostIn(inorder,inRoot+1, ie, postorder, ps+numsLeftLength, pe-1, hm);
+
         return root;
     }
+    public TreeNode buildTree22(int[] inorder, int[] postorder) {
+        if (inorder == null || postorder == null || inorder.length != postorder.length)
+            return null;
+        HashMap<Integer,Integer> map=new HashMap();
+        int n=inorder.length;
+        for(int i=0;i<n;i++){
+            map.put(inorder[i],i);
+        }
+        return find(postorder,0,n-1,inorder,0,n-1,map);
+    }
 
+    private TreeNode find(int[] postorder, int ps, int pe, int[] inorder, int is, int ie, HashMap<Integer, Integer> map) {
+        if (ps>pe||is>ie)return null;
+
+        TreeNode root=new TreeNode(postorder[pe]);
+        int inRoot=map.get(root.val);
+        int numsLeftLength=inRoot-is;
+        root.left=find(postorder,ps,ps+numsLeftLength-1,inorder,is,inRoot-1,map);
+        root.right=find(postorder,ps+numsLeftLength,pe-1,inorder,inRoot+1,ie,map);
+        return root;
+    }
 
     public boolean isBalanced(TreeNode root) {
         return dfs(root)!=-1;
