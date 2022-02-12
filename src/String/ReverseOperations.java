@@ -9,6 +9,23 @@ public class ReverseOperations {
 
 
     }
+    public int longestPalindrome(String s) {
+        int count[]=new int[128];//we can handle both lowercase and uppercase
+        for(char ch:s.toCharArray()){//hashing
+            count[ch]++;
+        }
+
+        int sum=0;
+        for(int v:count){
+            sum+=v/2*2;//3/2==1 so that not a correct count so we put
+            //1*2==the correct input
+            if(sum%2==0&&v%2==1){//check the all number a even length and we need one
+                //odd count number
+                sum++;
+            }
+        }
+        return sum;
+    }
     public static boolean buddyStrings(String s, String goal) {
         String ans="";
         for(int i=s.length()-1;i>=0;i--){
