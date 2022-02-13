@@ -40,6 +40,78 @@ public class BinaryTree {
 
 
     }
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        //algorithm
+        //do level order traversal
+        //if add a string in and aa space
+        //this space can be  used split the deserialize
+        //null be noted at n and also space
+        if (root == null) return "";
+        Queue<TreeNode> q = new LinkedList<>();
+        StringBuilder res = new StringBuilder();
+        q.add(root);
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
+            if (node == null) {
+                res.append("n ");
+
+            }else
+            res.append(node.val + " ");
+            q.add(node.left);
+            q.add(node.right);
+        }
+        return res.toString();
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        //algoithm
+        //using regax to convert the string to array
+        //using level order traversal
+        //create treeNode the point the next values
+        //ignore the string is "n"
+        if (data == "") return null;
+        Queue<TreeNode> q = new LinkedList<>();
+        String[] values = data.split(" ");
+        TreeNode root = new TreeNode(Integer.parseInt(values[0]));
+        q.add(root);
+        for (int i=1; i<values.length; i++) {
+            TreeNode node = q.poll();
+            if (!values[i].equals("n")) {
+                TreeNode left = new TreeNode(Integer.parseInt(values[i]));
+                node.left = left;
+                q.add(left);
+            }
+            i++;
+            if (!values[i].equals("n")) {
+                TreeNode right = new TreeNode(Integer.parseInt(values[i]));
+                node.right = right;
+                q.add(right);
+            }
+        }
+        return root;
+    }
+
+    public int findBottomLeftValue(TreeNode root) {
+       // 513. Find Bottom Left Tree Value
+        //algorithm
+        //we can add the value opposite of level order
+        //so the last root value is the longest value
+
+        Queue<TreeNode> q=new LinkedList();
+        q.add(root);
+        while(!q.isEmpty()){
+            root=q.poll();
+            if(root.right!=null){
+                q.add(root.right);
+            }
+            if(root.left!=null){
+                q.add(root.left);
+            }
+        }
+        return root.val;
+    }
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) return res;
