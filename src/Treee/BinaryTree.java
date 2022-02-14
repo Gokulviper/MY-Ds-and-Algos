@@ -92,6 +92,25 @@ public class BinaryTree {
         }
         return root;
     }
+    public int diameterOfBinaryTree(TreeNode root) {
+        //we cannot pass  the variable because primitive data types stores
+        //stack memory so i use array
+        //tc:O(n)
+        //sc:O(n)
+        int[] nums=new int[1];
+        findMax(root,nums);
+        return nums[0];
+    }
+    private int findMax(TreeNode root,int[] nums){
+        if(root==null){
+            return 0;
+        }
+        int lh=findMax(root.left,nums);
+        int rh=findMax(root.right,nums);
+        nums[0]=Math.max(nums[0],lh+rh);
+
+        return Math.max(lh,rh)+1;
+    }
 
     public int findBottomLeftValue(TreeNode root) {
        // 513. Find Bottom Left Tree Value
