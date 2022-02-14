@@ -5,8 +5,35 @@ import java.util.Stack;
 public class ReverseOperations {
     public static void main(String[] args) {
 
-        System.out.println(buddyStrings("aaaaaaabc","aaaaaaacb"));
+        System.out.println(reverseStr("abcdefg",2));
 
+
+    }
+    public static String reverseStr(String s, int k) {
+        if(k==0)return s;
+        String send="";
+        String newer="";
+        for(int i=0;i<s.length();i++){
+            if(i<k) {
+                send += s.charAt(i);
+            }else{
+                newer+=s.charAt(i);
+            }
+        }
+      String getFirst= reverse(send.toCharArray());
+        return getFirst+newer;
+
+    }
+    private static String reverse(char[] ch){
+        int i=0,j=ch.length-1;
+        while(i<j){
+            char t=ch[i];
+            ch[i]=ch[j];
+            ch[j]=t;
+            i+=1;
+            j--;
+        }
+        return new String(ch);
 
     }
     public int longestPalindrome(String s) {
