@@ -8,8 +8,10 @@ import java.util.Map;
 public class EasyProblems {
     public static void main(String[] args) {
 
-        System.out.println(fizzBuzz(15));
+
+
     }
+
     public static List<String> fizzBuzz(int n) {
         String fizz="Fizz",buzz="Buzz";
         List<String> list=new ArrayList();
