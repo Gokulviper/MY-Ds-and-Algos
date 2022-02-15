@@ -1,14 +1,33 @@
 package String;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class EasyProblems {
     public static void main(String[] args) {
 
-        System.out.println(isIsomorphic("bee","foo"));;
+        System.out.println(fizzBuzz(15));
     }
+    public static List<String> fizzBuzz(int n) {
+        String fizz="Fizz",buzz="Buzz";
+        List<String> list=new ArrayList();
+        for(int i=1;i<=n;i+=1){
+            if(i%3==0&&i%5==0){
+                list.add(fizz+buzz);
+            }else if(i%3==0){
+                list.add(fizz);
+            }else if(i%5==0){
+                list.add(buzz);
+            }else{
 
+                list.add(String.valueOf(i));
+            }
+        }
+        return list;
+
+    }
     public static boolean isIsomorphic(String s, String t) {
 
 
