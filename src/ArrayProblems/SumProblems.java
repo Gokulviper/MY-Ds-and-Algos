@@ -9,6 +9,11 @@ public class SumProblems {
 
         System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
     }
+    public int[] twoSum2(int[] nums, int k) {
+        //167. Two Sum II - Input Array Is Sorted
+        return new int[]{-1};
+
+    }
 
     public static int[] twoSum(int[] nums, int k) {
         Arrays.sort(nums);
@@ -26,7 +31,7 @@ public class SumProblems {
         return new int[]{i, j};
     }
 
-    public static int[] twoSum2(int[] nums, int k) {
+    public static int[] twoSum1(int[] nums, int k) {
         //using hashing
         int[] ans = new int[2];
         Map<Integer, Integer> map = new HashMap<>();
