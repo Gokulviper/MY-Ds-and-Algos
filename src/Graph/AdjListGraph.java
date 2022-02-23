@@ -36,6 +36,7 @@ public class AdjListGraph {
         return sb.toString();
     }
 
+
     public void bfs(int s) {
         boolean[] visited = new boolean[V];
 
@@ -56,6 +57,8 @@ public class AdjListGraph {
         }
     }
 
+    public void dfs1(int s) {
+    }
     public void dfs(int s) {
         boolean[] visited = new boolean[V];
         Stack<Integer> stack = new Stack<>();
@@ -69,6 +72,7 @@ public class AdjListGraph {
 
                 for(int v : adj[u]) {
                     if(!visited[v]) {
+
                         stack.push(v);
                     }
                 }
@@ -102,8 +106,9 @@ public class AdjListGraph {
         g.addEdge(2, 3);
         g.addEdge(3, 0);
         // 4
-        System.out.println(g);
-        g.toString();
-        g.dfs();
+     //   System.out.println(g);
+      //  g.toString();
+    g.dfs1(0);
+
     }
 }
