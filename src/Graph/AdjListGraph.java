@@ -57,8 +57,7 @@ public class AdjListGraph {
         }
     }
 
-    public void dfs1(int s) {
-    }
+
     public void dfs(int s) {
         boolean[] visited = new boolean[V];
         Stack<Integer> stack = new Stack<>();
@@ -101,14 +100,16 @@ public class AdjListGraph {
 
     public static void main(String[] args) {
         AdjListGraph g = new AdjListGraph(5);
+        DetectCycle d=new DetectCycle();
         g.addEdge(0, 1);
         g.addEdge(1, 2);
         g.addEdge(2, 3);
         g.addEdge(3, 0);
+
         // 4
      //   System.out.println(g);
       //  g.toString();
-    g.dfs1(0);
+
 
     }
 }
