@@ -4,7 +4,7 @@ import java.util.*;
 
 public class AdjListGraph {
 
-    private LinkedList<Integer>[ ] adj;
+    private LinkedList<Integer>[] adj;
     private int V; // number of vertices
     private int E; // number of edges
 
@@ -12,7 +12,7 @@ public class AdjListGraph {
         this.V = nodes;
         this.E = 0;   //initialy edges is 0 wd can add every edges in manual adding edges
         this.adj = new LinkedList[nodes]; //craeted inner linked list arrays
-        for(int v = 0; v < V; v++) {
+        for (int v = 0; v < V; v++) {
             adj[v] = new LinkedList<>();
         }
     }
@@ -26,15 +26,16 @@ public class AdjListGraph {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(V + " vertices, " + E + " edges " + "\n");
-        for(int v = 0; v < V; v++) {
+        for (int v = 0; v < V; v++) {
             sb.append(v + ": ");
-            for(int w : adj[v]) {
+            for (int w : adj[v]) {
                 sb.append(w + " ");
             }
             sb.append("\n");
         }
         return sb.toString();
     }
+
 
 
     public void bfs(int s) {

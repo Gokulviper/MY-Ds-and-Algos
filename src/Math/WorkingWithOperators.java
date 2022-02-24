@@ -2,8 +2,11 @@ package Math;
 
 public class WorkingWithOperators {
     public static void main(String[] args) {
-        System.out.println();
+        System.out.println(removeLastDigit(121));
+    }
 
+    private static int removeLastDigit(int num) {
+        return num/10;
     }
 
 
