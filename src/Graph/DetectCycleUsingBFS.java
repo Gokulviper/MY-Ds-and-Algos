@@ -10,7 +10,7 @@ class Node {
         this.second = second;
     }
 }
-public class DetectCycle {
+public class DetectCycleUsingBFS {
 
     static boolean checkForCycle(LinkedList<Integer>[] adj, int s, boolean vis[])
     {
@@ -50,7 +50,6 @@ public class DetectCycle {
         }
         return false;
     }
-
 
 
 }

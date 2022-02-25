@@ -4,65 +4,59 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Adj {
-    private int V;
-    private int E;
-    private LinkedList<Integer> []adj;
+    int V;
+    int E;
+    LinkedList<Integer>[]adj;
 
-    Adj(int Vertices){
-        this.V=Vertices;
+    Adj(int nodes){
+        this.V=nodes;
         this.E=0;
-      this.  adj=new LinkedList[Vertices];
-      for (int v=0;v<V;v++){
-          adj[v]=new LinkedList<>();
-      }
-
+        this.adj=new LinkedList[nodes];
+        for(int i=0;i<V;i++){
+            adj[i]=new LinkedList<>();
+        }
     }
     public void addEdge(int u,int v){
-        adj[v].add(u);
         adj[u].add(v);
-        E++;
+        adj[v].add(u);
     }
     public String toString(){
         StringBuilder sb=new StringBuilder();
-        System.out.println(V+" vertcies "+E+" edges");
-        for(int v=0;v<V;v++){
-            sb.append(v+" ");
-            for (int w:adj[v]){
-                sb.append(w+" ");
+        for(int i=0;i<V;i++){
+            sb.append(i+" ");
+            for (int u : adj[i]){
+                sb.append(u+" ");
             }
             sb.append("\n");
         }
-        return sb.toString();
+      return   sb.toString();
     }
     public void bfs(int s){
-        boolean[] visited=new boolean[V];
         Queue<Integer>q=new LinkedList<>();
+        boolean[] visited=new boolean[V];
         q.add(s);
         visited[s]=true;
         while (!q.isEmpty()){
-            int node=q.poll();
-            System.out.println(node+" ");
+            int u=q.poll();
+            System.out.print(u+" ");
 
-            for (int v:adj[node]){
+            for(int v:adj[u]){
                 if(!visited[v]){
-                    q.add(v);
                     visited[v]=true;
+                    q.add(v);
                 }
             }
         }
     }
-    public void dfs(int s){
-
-    }
-
     public static void main(String[] args) {
-        Adj a=new Adj(5);
+        Adj a=new Adj(6);
         a.addEdge(0,1);
-        a.addEdge(0,3);
-        a.addEdge(0,4);
-        a.addEdge(1,4);
+        a.addEdge(0,2);
+        a.addEdge(1,3);
         a.addEdge(2,3);
-       a.bfs(0);
-
+        a.addEdge(3,4);
+        a.addEdge(4,5);
+      a.bfs(0);
     }
-}
+    }
+

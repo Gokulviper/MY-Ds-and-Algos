@@ -35,9 +35,6 @@ public class AdjListGraph {
         }
         return sb.toString();
     }
-
-
-
     public void bfs(int s) {
         boolean[] visited = new boolean[V];
 
@@ -57,7 +54,6 @@ public class AdjListGraph {
             }
         }
     }
-
 
     public void dfs(int s) {
         boolean[] visited = new boolean[V];
@@ -101,11 +97,14 @@ public class AdjListGraph {
 
     public static void main(String[] args) {
         AdjListGraph g = new AdjListGraph(5);
-        DetectCycle d=new DetectCycle();
+        DetectCycleUsingBFS d=new DetectCycleUsingBFS();
+        DetectCycleUsingDFS dd=new DetectCycleUsingDFS();
         g.addEdge(0, 1);
         g.addEdge(1, 2);
         g.addEdge(2, 3);
-        g.addEdge(3, 0);
+        g.addEdge(3, 4);
+       g.dfs(0);
+        System.out.println(dd.isCycle(g.V, g.adj));
 
         // 4
      //   System.out.println(g);
