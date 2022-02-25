@@ -1,4 +1,4 @@
-package Graph.DFS;
+package Graph.DFSandBFS;
 
 public class FloodFill {
     public static void main(String[] args) {
