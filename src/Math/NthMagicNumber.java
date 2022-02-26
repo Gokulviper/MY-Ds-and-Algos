@@ -21,10 +21,6 @@ public class NthMagicNumber {
         }
         return count;
     }
-
-
-
-
     private static int NthMagicNumber(int num) {
         int ans=0;
         int base=5;

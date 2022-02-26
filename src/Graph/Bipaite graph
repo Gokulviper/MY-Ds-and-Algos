@@ -1,0 +1,13 @@
+A Bipartite Graph
+Is it possible to find your soulmate through a mathematical process? Maybe! Let's explore!
+
+Suppose that two groups of people sign up for a dating service. After they've signed up, they are shown images of and given descriptions of the people in the other group. They're asked to select people that they would be happy to be matched with.
+
+All of the information is entered into a computer, and the computer organizes it in the form of a graph. The graph's vertices are the people, and there is an edge between them if they both said they would be happy to be matched with the other person. The resulting graph is shown in the image:
+
+
+bipartite1
+
+Notice that the graph consists of two groups of vertices (group 1 and group 2), such that the vertices that are in the same group have no edges between them. In mathematics, this is called a bipartite graph, which is a graph in which the vertices can be put into two separate groups so that the only edges are between those two groups, and there are no edges between vertices within the same group.
+
+Another interesting concept in graph theory is a matching of a graph. This concept is especially useful in various applications of bipartite graphs. Let's discuss what a matching of a graph is and also how we can use it in our quest to find soulmates mathematically.
