@@ -121,7 +121,7 @@ public class AdjListGraph {
         g.addEdge(4, 5);
         g.addEdge(4, 6);
         g.addEdge(1, 6);
-        System.out.println(b.check(g.adj,7));
+       // System.out.println(b.check(g.adj,7));
         System.out.println(b.checkBipartite(g.adj, 7));
 
 
