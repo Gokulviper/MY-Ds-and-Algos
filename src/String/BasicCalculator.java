@@ -25,8 +25,6 @@ class BasicCalculator {
               sign=current;
               currentNumber=0;
           }
-
-
       }
       ans+=lastNumber;
 return ans;
