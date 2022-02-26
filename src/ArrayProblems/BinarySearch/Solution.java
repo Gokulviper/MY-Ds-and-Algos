@@ -7,7 +7,7 @@ class Solution {
     }
 
     private static int singleNonDuplicate(int[] nums) {
-
+return 0;
     }
     private static int singleNonDuplicate2(int[] nums) {
         int unique=0;
