@@ -50,38 +50,7 @@ public class DetectCycleUsingBFS {
         }
         return false;
     }
-    public boolean cycle(int v,LinkedList<Integer>[] adj){
-        boolean[] visited=new boolean[v];
 
-        for(int i=0;i<v;i++){
-            if(!visited[i]){
-                if(find(adj,i,visited)){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private boolean find(LinkedList<Integer>[] adj, int s, boolean[] visited) {
-        Queue<Node> q=new LinkedList<>();
-        q.add(new Node(s,-1));
-        visited[s]=true;
-        while (!q.isEmpty()){
-            int u=q.peek().first;
-            int previous=q.peek().second;
-            q.remove();
-
-            for (int v:adj[u]){
-                if(!visited[v]){
-                    visited[v]=true;
-                    q.add(new Node(v,u));
-                }else if(previous!=v)return true;
-            }
-        }
-        return false;
-
-    }
 
 
 }

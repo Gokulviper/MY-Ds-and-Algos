@@ -113,7 +113,7 @@ public class AdjListGraph {
         AdjListGraph g = new AdjListGraph(7);
         DetectCycleUsingBFS d=new DetectCycleUsingBFS();
         DetectCycleUsingDFS dd=new DetectCycleUsingDFS();
-        BipartiteGraph b=new BipartiteGraph();
+        BipartiteGraphBFS b=new BipartiteGraphBFS();
         g.addEdge(0, 1);
         g.addEdge(1, 2);
         g.addEdge(2, 3);
@@ -121,8 +121,7 @@ public class AdjListGraph {
         g.addEdge(4, 5);
         g.addEdge(4, 6);
         g.addEdge(1, 6);
-       // System.out.println(b.check(g.adj,7));
-        System.out.println(b.checkBipartite(g.adj, 7));
+        System.out.println(d.cycle(g.V, g.adj));
 
 
 
