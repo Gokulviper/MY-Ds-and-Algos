@@ -53,24 +53,7 @@ public class AdjListGraph {
                 }
             }}
     }
-    public void dfs1(int s) {
-        Stack<Integer>stack=new Stack<>();
-        stack.push(s);
-        boolean[]visited=new boolean[V];
-        visited[s]=true;
-        while (!stack.isEmpty()){
-            int u=stack.pop();
-            if(!visited[u]){
-                visited[u]=true;
-                System.out.print(u+" ");
-            }
-            for (int v:adj[u]){
-                if (!visited[v]){
-                    stack.push(v);
-                }
-            }
-        }
-    }
+
     public void dfs(int s) {
         boolean[] visited = new boolean[V];
         Stack<Integer> stack = new Stack<>();
@@ -88,6 +71,22 @@ public class AdjListGraph {
                     }
                 }
             } }
+    }
+    public void dfs1(){
+        boolean[]visited=new boolean[V];
+        for (int i=0;i<V;i++){
+            if(!visited[i]){
+                dfs1(i,visited);
+            }
+        }
+    }
+
+    private void dfs1(int v, boolean[] visited) {
+        visited[v]=true;
+        System.out.println(v+" ");
+        for (int s:adj[v]){
+            dfs1(s,visited);
+        }
     }
 
     public void dfs(){
