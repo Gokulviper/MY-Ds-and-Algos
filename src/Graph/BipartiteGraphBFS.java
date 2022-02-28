@@ -37,28 +37,29 @@ public class BipartiteGraphBFS {
     }
     boolean checkBipartite1(LinkedList<Integer>[] adj , int n)
     {
-        int[]colors=new int[n];
-        Arrays.fill(colors,-1);
-        for (int i=0;i<n;i++){
-            if(colors[i]==-1){
-                if(!bfs(colors,i,adj)){
-                    return false;
-                }
-            }
-        }
-        return true;
+     int color[]=new int[n];
+     Arrays.fill(color,-1);
+
+     for (int i=0;i<n;i++){
+         if(color[i]==-1){
+             if(dfs(adj,i,color)){
+                 return true;
+             }
+         }
+     }
+     return false;
     }
 
-    private boolean bfs(int[] colors, int s, LinkedList<Integer>[] adj) {
+    private boolean dfs(LinkedList<Integer>[] adj, int s, int[] color) {
         Queue<Integer>q=new LinkedList<>();
         q.add(s);
-        colors[s]=1;
+        color[s]=1;
         while (!q.isEmpty()){
             int u=q.poll();
             for (int v:adj[u]){
-                if (colors[v]==-1){
-                    colors[v]=1-colors[u];
-                }else if(colors[v]==colors[u]){
+                if(color[v]==-1){
+                    color[v]=1-color[u];
+                }else if(color[v]==color[u]){
                     return false;
                 }
             }
