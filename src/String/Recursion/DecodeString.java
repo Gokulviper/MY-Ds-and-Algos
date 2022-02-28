@@ -32,7 +32,20 @@ public String decodeString(String s) {
 
     return result.toString();
 }
-
+//algorithm
+    /*
+    *handle it four diifernt types
+      1.]
+      2.[
+      3.chars
+      4.digits
+      4)
+      *if you see ya digits make that is number and push the number in the number counts stack
+      1)if you see ya  ] so get the last value sof result stack beacuse you want to append it
+       and get the last count from stack run a loop for inner decode make ans is  Stringbuilder
+       2)if you the [ you get into new decode so push the current string
+       3 ) if you visit character so simply add the current string
+     */
     public static String decodeString1(String s) {
     Stack<Integer>counts=new Stack<>();
     Stack<String> result=new Stack<>();
