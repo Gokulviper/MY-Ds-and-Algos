@@ -72,22 +72,6 @@ public class AdjListGraph {
                 }
             } }
     }
-    public void dfs1(){
-        boolean[]visited=new boolean[V];
-        for (int i=0;i<V;i++){
-            if(!visited[i]){
-                dfs1(i,visited);
-            }
-        }
-    }
-
-    private void dfs1(int v, boolean[] visited) {
-        visited[v]=true;
-        System.out.println(v+" ");
-        for (int s:adj[v]){
-            dfs1(s,visited);
-        }
-    }
 
     public void dfs(){
         boolean[] visited = new boolean[V];

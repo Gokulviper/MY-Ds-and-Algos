@@ -1,6 +1,7 @@
 package Graph;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class BipartiteGraphDFS {
@@ -23,9 +24,7 @@ public class BipartiteGraphDFS {
     boolean checkBipartite(LinkedList<Integer>[]adj, int n)
     {
         int color[] = new int[n];
-        for(int i = 0;i<n;i++) {
-            color[i] = -1;
-        }
+        Arrays.fill(color,-1);
         for(int i = 0;i<n;i++) {
             if(color[i] == -1) {
                 if(!dfsCheck(adj, i, color)) {
