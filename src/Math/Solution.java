@@ -10,6 +10,7 @@ class SingleNumberOthersAreAppearThreeTimes {
         int[]nums={0,1,0,1,0,1,99};
         System.out.println(singleNumber(nums));
     }
+
     public static int singleNumber(int[] nums) {
         //this is optimize apporch
         //algorithm
@@ -23,7 +24,6 @@ class SingleNumberOthersAreAppearThreeTimes {
             twos=(twos^num)&(~ones);
         }
         return ones;
-
     }
 
     private static int singleNumber1(int[] nums) {
