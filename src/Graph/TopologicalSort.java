@@ -5,8 +5,8 @@ import java.util.*;
 public class TopologicalSort {
     static void findTopoSort(int u, boolean vis[], LinkedList<Integer>[] adj, Stack<Integer> stack) {
         vis[u] = true;
-        for(Integer v: adj[u]) {
-            if(!vis[v] ) {
+        for (Integer v : adj[u]) {
+            if (!vis[v]) {
                 findTopoSort(v, vis, adj, stack);
             }
         }
