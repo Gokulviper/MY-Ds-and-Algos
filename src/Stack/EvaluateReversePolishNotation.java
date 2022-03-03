@@ -47,39 +47,29 @@ public class EvaluateReversePolishNotation {
     }
 
     public static int evalRPN(String[] tokens) {
-        int res = 0;
-        Stack<String> stack = new Stack<>();
-        for (int i = 0; i < tokens.length; i++) {
-            if (!isOperand(tokens[i])) {
-                stack.push(tokens[i]);
+        Stack<Integer> stack = new Stack<>();
+        for(String s : tokens){
+            if(isOperator(s)){
+                int a = stack.pop();
+                int b = stack.pop();
+                int ans  = calculate(a,b,s);
+                stack.push(ans);
             } else {
-                int first = Integer.parseInt(stack.pop());
-                int second = Integer.parseInt(stack.pop());
-                int result = operate(second, first, tokens[i]);
-                stack.push("" + result);
-            } }
+                stack.push(Integer.valueOf(s));
+            }
+        }
+        return stack.pop();
+    }
+    private static boolean isOperator(String token){
+        return token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/");
 
-        return stack.isEmpty()?res:Integer.parseInt(stack.pop());
+
     }
-    private static int operate(int num1, int num2, String operator) {
-        if (operator.equals("/")) {
-            return num1 / num2;
-        }
-        if (operator.equals("*")) {
-            return num1 * num2;
-        }
-        if (operator.equals("+")) {
-            return num1 + num2;
-        }
-        if (operator.equals("-")) {
-            return num1 - num2;
-        }
-        return 0;
-    }
-    private static boolean isOperand(String ch) {
-        return ch.charAt(0) == '/' ||
-                ch.charAt(0) == '*' ||
-                ch.charAt(0) == '+' ||
-                ch.charAt(0) == '-' && ch.length() == 1;
+    private static int calculate(int n1,int n2,String token){
+        if(token.equals("+")) return n2+n1;
+        if(token.equals("-")) return n2-n1;
+        if(token.equals("*")) return n2*n1;
+        if(token.equals("/")) return n2/n1;
+        return -1;
     }
 }
