@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class DetectCycleUsingDFS {
-    public boolean checkForCycle(int u, int parent, boolean vis[], LinkedList<Integer>[] adj) {
+    public boolean checkForCycle(int u, int previous, boolean vis[], LinkedList<Integer>[] adj) {
         vis[u] = true;
         for(Integer v: adj[u]) {
             if(!vis[v]) {
                 if(checkForCycle(v, u, vis, adj))
                     return true;
             }
-            else if(v!=parent)
+            else if(v!=previous)
                 return true;
         }
 
