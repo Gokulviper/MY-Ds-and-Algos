@@ -1,4 +1,4 @@
-package Stack;
+package Stack.Design;
 
 import java.util.EmptyStackException;
 
@@ -52,6 +52,16 @@ public class Stack {
     private int size() {
        return size;
     }
+    public int getMin(){
+       Node current=top;
+       int min=Integer.MAX_VALUE;
+       while (current!=null){
+           min=Math.min(current.data,min);
+           current=current.next;
+       }
+       return min;
+
+    }
 
     public static void main(String[] args) {
         Stack stack=new Stack();
@@ -62,7 +72,6 @@ public class Stack {
         stack.push(9);
         stack.push(9);
         stack.push(9);
-        System.out.println(stack.size());;
 
 
 
