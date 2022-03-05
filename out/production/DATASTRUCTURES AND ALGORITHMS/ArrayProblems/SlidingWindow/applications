@@ -1,0 +1,15 @@
+SLIDING WINDOW
+
+we optimize a solution linear data structures solve o(n)time
+
+2 types
+*  fixed length
+*dynamically sized(grow and shrink)
+
+
+how to recognize
+  * things we iterate over  sequentially
+     -continoues sequence of elements
+     -strings ,arrays,linkedlist
+   ques types
+   -min,max,longer,shorter,continued
