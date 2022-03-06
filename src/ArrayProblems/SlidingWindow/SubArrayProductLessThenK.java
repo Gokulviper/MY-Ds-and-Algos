@@ -12,3 +12,13 @@ class SubArrayProductLessThenK {
         return ans;  
     }
 }
+
+
+/*
+For those who are confused, let's use the example nums = [10,5,2,6]:
+
+If we start at the 0th index, [10,5,2,6], the number of intervals is obviously 1.
+If we move to the 1st index, the window is now [10,5,2,6]. The new intervals created are [5] and [10,5], so we add 2.
+Now, expand the window to the 2nd index: [10,5,2,6]. The new intervals are [2], [5,2], and [10,5,2], so we add 3.
+The pattern should be obvious by now; we add right - left + 1 to the output variable every loop!
+ */
