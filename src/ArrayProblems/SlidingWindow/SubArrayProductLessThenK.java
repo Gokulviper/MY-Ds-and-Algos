@@ -1,6 +1,9 @@
 package ArrayProblems.SlidingWindow;
 
 class SubArrayProductLessThenK {
+    public static void main(String[] args) {
+
+    }
     public int numSubarrayProductLessThanK(int[] nums, int k) {
        if (k <= 1) return 0;
         int prod = 1, ans = 0, left = 0;
