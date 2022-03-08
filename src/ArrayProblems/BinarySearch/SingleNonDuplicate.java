@@ -1,6 +1,6 @@
 package ArrayProblems.BinarySearch;
 
-class Solution {
+class SingleNonDuplicate {
     public static void main(String[] args) {
         int []nums={3,3,7,7,10,11,11};
         System.out.println(singleNonDuplicate2(nums));
