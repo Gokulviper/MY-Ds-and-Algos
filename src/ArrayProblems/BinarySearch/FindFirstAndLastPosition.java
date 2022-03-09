@@ -14,6 +14,7 @@ class FindFirstAndLastPosition {
        ans[1]=end;
        return ans;
 
+
     }
     int search(int[]nums,int target,boolean findStartIndex){
         int ans=-1;
