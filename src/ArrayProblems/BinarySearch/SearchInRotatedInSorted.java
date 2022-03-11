@@ -4,7 +4,6 @@ class SearchInRotatedInSorted {
     public static void main(String[] args) {
 
     }
-
     public int search(int[] nums, int target) {
         int pivot=pivot(nums);
         if (pivot==-1){
