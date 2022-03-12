@@ -21,6 +21,7 @@ class SingleElementInSoretdArray {
         else if( nums[end] != nums[end-1]) //if the unique element is at the last index
             return nums[end];
 
+
         //apply binary search
         /*
         The idea is: unless the unique element appears in the array,
