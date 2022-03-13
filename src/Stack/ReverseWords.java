@@ -38,33 +38,34 @@ break;
      return  sb.toString();
     }
     public static String reverseWords1(String s) {
-        StringBuilder sb=new StringBuilder();
-        int i=0;
-        while(Character.isWhitespace(s.charAt(i))){i++;}
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (Character.isWhitespace(s.charAt(i))) {
+            i++;
+        }
 
 
-        Stack<String> stack=new Stack();
-        String temp="";
-        for(;i<s.length();i++){
-            if(Character.isWhitespace(s.charAt(i))){
-                if(!temp.isEmpty()) {
+        Stack<String> stack = new Stack();
+        String temp = "";
+        for (; i < s.length(); i++) {
+            if (Character.isWhitespace(s.charAt(i))) {
+                if (!temp.isEmpty()) {
                     stack.push(temp);
                     stack.push(" ");
 
                     temp = "";
                 }
                 i++;
-            }else
-            temp+=s.charAt(i);
+            } else
+                temp += s.charAt(i);
 
         }
         stack.push(temp);
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             sb.append(stack.pop());
         }
         return sb.toString();
 
     }
-
 
 }
