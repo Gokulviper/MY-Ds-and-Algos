@@ -11,6 +11,7 @@ class KthSmallestInSortedMatrix {
         int[][]nums={{1,5,9},{10,11,13},{12,13,15}};
         System.out.println(kthSmallest(nums,8));
     }
+
     public static int kthSmallest(int[][] matrix, int k) {
         int n = matrix.length;
         int left = matrix[0][0];
