@@ -1,4 +1,4 @@
-package ArrayProblems.BinarySearch;
+package ArrayProblems.BinarySearch.Matrix;
 
 class NegativeNumbersCount {
     public static void main(String[] args) {
