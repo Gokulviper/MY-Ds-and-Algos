@@ -9,38 +9,42 @@ class KthSmallestInSortedMatrix {
     public static void main(String[] args) {
 // [[],[],[]], k = 8
         int[][]nums={{1,5,9},{10,11,13},{12,13,15}};
-        System.out.println(kthSmallest1(nums,8));
+        System.out.println(kthSmallest(nums,8));
     }
-
-    public int kthSmallest(int[][] matrix, int k) {
-     int n = matrix.length - 1;
-// choose the smallest and biggest number
-int min = matrix[0][0], max = matrix[n][n];
-//do binary search
-while(min < max) {
-int mid = min + (max-min)/2;
-//count number of items small or equal to the mid
-int count = countSmallOrEqual(matrix, mid);
-if (count < k) min = mid + 1;
-else max = mid;
-}
-return min;
-}
-
-// count from left-bottom
-public int countSmallOrEqual(int[][] matrix, int target) {
-    int i = matrix.length-1, j = 0;
-    int count = 0;
-    while(i>=0 && j<matrix.length) {
-        int val = matrix[i][j];
-        if (val <= target) {
-            count += (i+1);
-            j++;
-        } else {
-            i--;
+    public static int kthSmallest(int[][] matrix, int k) {
+        int n = matrix.length;
+        int left = matrix[0][0];
+        int right = matrix[n-1][n-1];
+        while(left < right){
+            int mid = left + (right - left)/2;
+            int count = seachMatrix(matrix,mid);
+            //find how many numbers are smaller than mid element
+            if(count < k){
+                left = mid+1;
+            }
+            else{
+                right = mid;
+            }
         }
+        return right;
     }
-    return count;   
+
+    public static int seachMatrix(int[][] matrix, int target) {
+        //start from last column of first row.
+        int count = 0;
+        int row = 0;
+        int col_max = matrix[0].length-1;
+
+        //move down or left to find the element
+        while(row < matrix.length && col_max >= 0){
+            if(matrix[row][col_max] > target) col_max--;
+            else {
+                count = count + col_max + 1;
+                row++;
+            }
+        }
+
+        return count;
     }
     public static int kthSmallest1(int[][] nums, int k) {
         List<Integer> ans=new ArrayList<>();
