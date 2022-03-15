@@ -16,6 +16,7 @@ public class BinarySearchInSortedMatrix {
             }
             if(matrix[row][mid]<target){
                 cStart=mid+1;
+
             }else{
                 cEnd=mid-1;
             }
