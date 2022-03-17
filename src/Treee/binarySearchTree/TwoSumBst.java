@@ -50,7 +50,7 @@ algorithm:
         }
     }
 }
-class Solution {
+class ContigousArray {
     public boolean findTarget(TreeNode root, int k) {
         if(root == null) return false;
         BSTIterator l = new BSTIterator(root, false);

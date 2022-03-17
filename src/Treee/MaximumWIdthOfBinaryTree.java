@@ -30,7 +30,7 @@ public class MaximumWIdthOfBinaryTree {
         node = _node;
     }
 }
-class Solution {
+class ContigousArray {
     public int widthOfBinaryTree(TreeNode root) {
         if(root == null) return 0;
         int ans = 0;
