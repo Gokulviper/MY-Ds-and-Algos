@@ -45,6 +45,7 @@ int col=matrix[0].length;
         }
     }
         }
+
     static void setMatrixZerosBruteForce(int[][]nums){
         //tc=0(m*n)
         //sc=0(m+n)
