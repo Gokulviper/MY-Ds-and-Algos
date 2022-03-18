@@ -9,7 +9,6 @@ public class ContigousArray {
         System.out.println(  findMaxLength(nums));
 
     }
-
     public static int findMaxLength(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, -1);
