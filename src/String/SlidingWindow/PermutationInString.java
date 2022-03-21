@@ -67,42 +67,7 @@ public class PermutationInString {
         return true;
     }
     public static  boolean checkInclusion1(String s1, String s2) {
-        //tc=Time complexity: O\big(l_1log(l_1)+(l_2-l_1)l_1log(l_1)\big)O(l
-        //1
-        //​
-        // log(l
-        //1
-        //​
-        // )+(l
-        //2
-        //​
-        // −l
-        //1
-        //​
-        // )l
-        //1
-        //​
-        // log(l
-        //1
-        //​
-        // )). Where l_1l
-        //1
-        //​
-        //  is the length of string s_1s
-        //1
-        //​
-        //  and l_2l
-        //2
-        //​
-        //  is the length of string s_2s
-        //2
-        //​
-        // .
-        //
-        //Space complexity: O(l_1)O(l
-        //1
-        //​
-        // ). tt array is used.
+
         s1 = sort(s1);
         for (int i = 0; i <= s2.length() - s1.length(); i++) {
             if (s1.equals(sort(s2.substring(i, i + s1.length()))))
