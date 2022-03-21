@@ -22,7 +22,6 @@ class ValidPallindrome {
             }
         }
         return true;
-
     }
 
     public static boolean isPalindrome1(String s) {
