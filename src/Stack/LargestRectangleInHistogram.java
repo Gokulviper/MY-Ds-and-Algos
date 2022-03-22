@@ -7,6 +7,22 @@ class LargestRectangleInHistogram {
         int[]heights = {2,4};
         System.out.println(largestRectangleAreaBrute(heights));
     }
+    public static int largestRectangleArea(int[] heights) {
+        int i = 0;
+        int max = 0;
+        Stack<Integer> s = new Stack<>();
+
+        while(i<heights.length){
+            if(s.isEmpty() || heights[s.peek()] <= heights[i]) s.push(i++);
+            else max = Math.max(max, heights[s.pop()] * (s.isEmpty() ? i : i - s.peek() - 1));
+        }
+
+        while(!s.isEmpty()){
+            max = Math.max(max, heights[s.pop()] * (s.isEmpty() ? i : i - s.peek() - 1));
+        }
+
+        return max;
+    }
     public static int largestRectangleAreaBrute(int[] nums) {
         int max=Integer.MIN_VALUE;
         for (int i=0;i<nums.length;i++){
