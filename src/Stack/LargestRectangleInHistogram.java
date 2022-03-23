@@ -58,7 +58,9 @@ class LargestRectangleInHistogram {
         while(!st.isEmpty()) st.pop();
         for(int i = n-1;i>=0;i--) {
             while(!st.isEmpty() && heights[st.peek()] >= heights[i]) {
-                st.pop(); 
+                st.pop();
+
+
             }
             rightSmall[i]=st.isEmpty()?n-1:st.peek()-1;
             st.push(i); 
