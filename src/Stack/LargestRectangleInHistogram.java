@@ -71,4 +71,5 @@ class LargestRectangleInHistogram {
         }
         return max;
     }
+
 }
