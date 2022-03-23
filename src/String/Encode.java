@@ -20,7 +20,7 @@ public class Encode {
             }
         }
         sb.append(s.charAt(i-1));
-        sb.append(count)      ;
+        sb.append(count) ;
     return sb.toString();
     }
 }
