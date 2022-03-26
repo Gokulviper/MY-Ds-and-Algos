@@ -38,7 +38,6 @@ class ProductArrayExceptItSelf {
            }
         }
         return nums;
-
     }
     public int[] productExceptSelf1(int[] nums) {
         //bruute force
