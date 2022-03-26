@@ -6,11 +6,23 @@ class ProductArrayExceptItSelf {
     public static void main(String[] args) {
         ///[]
         int[]nums={-1,1,0,-3,3};
-        System.out.println(Arrays.toString(productExceptSelf(nums)));
+        System.out.println(Arrays.toString(productExceptSelf11(nums)));
 
     }
+    public static int[] productExceptSelf11(int[] nums) {
+        int[]ans=new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            int prod=1;
+            for(int j=0;j<nums.length;j++){
+                if (j!=i)
+                prod*=nums[j];
+            }
+            ans[i]=prod;
+        }
+        return ans;
+    }
     public static int[] productExceptSelf(int[] nums) {
-      //  int[]ans=new int[nums.length];
+
         int product=1;
         for (int num:nums){
             if (num!=0)
