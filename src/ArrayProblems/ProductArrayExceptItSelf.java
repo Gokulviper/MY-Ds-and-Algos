@@ -6,10 +6,27 @@ class ProductArrayExceptItSelf {
     public static void main(String[] args) {
         ///[]
         int[]nums={-1,1,0,-3,3};
-        System.out.println(Arrays.toString(productExceptSelf11(nums)));
+        System.out.println(Arrays.toString(productExceptSelf1(nums)));
 
     }
-    public static int[] productExceptSelf11(int[] nums) {
+    public static int[] productExceptSelf1(int[] nums) {
+        int n=nums.length;
+        int result[]=new int[n];
+        int product=nums[0];
+        //first pass cumulative multiply
+        for(int i=1 ; i<n ; i++){
+            result[i]=product;
+            product*=nums[i];
+        }
+        product=nums[n-1];
+        for(int i=n-2 ; i>0 ; i--){
+            result[i]*=product;
+            product*=nums[i];
+        }
+        result[0]=product;
+        return result;
+    }
+    public static int[] productExceptSelfUsingDivision(int[] nums) {
         int[]ans=new int[nums.length];
         for(int i=0;i<nums.length;i++){
             int prod=1;
@@ -39,24 +56,5 @@ class ProductArrayExceptItSelf {
         }
         return nums;
     }
-    public int[] productExceptSelf1(int[] nums) {
-        //bruute force
-        //time limit exceeded
-        int[]ans=new int[nums.length];
-        int product=1;
-        for(int i=0;i<nums.length;i++){
-            for(int j=0;j<nums.length;j++){
-                if(i!=j){
-                    
-                    product*=nums[j];
-                    if(nums[j]==0){
-                        break;
-                    }
-                }
-            }
-            ans[i]=product;
-            product=1;
-        }
-        return ans;
-    }
+
 }
