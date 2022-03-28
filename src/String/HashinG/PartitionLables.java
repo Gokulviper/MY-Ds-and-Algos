@@ -7,6 +7,7 @@ class PartitionLables {
         String  s = "ababcbacadefegdehijhklij";
         System.out.println(partitionLabels(s));
     }
+
     public static List<Integer> partitionLabels(String s) {
         int[]last_index=new int[26];
         for (int i=0;i<s.length();i++){
