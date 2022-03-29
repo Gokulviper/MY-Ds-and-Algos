@@ -1,26 +1,29 @@
 package ArrayProblems.CyclicSort;
 
-public class MissingNumber {
+import java.util.Arrays;
+
+class FirstMissingPossitive {
     public static void main(String[] args) {
-    int[]nums={2,1};
-        System.out.println(missingNumber(nums));
+        int[]nums={2,1};
+        System.out.println(firstMissingPositive(nums));
+
     }
-    public static int missingNumber(int[] nums) {
+    public static int firstMissingPositive(int[] nums) {
         cyclicSort(nums);
-        //main noted point is this problem index and first number is zero
-        if(nums[0]!=0)return 0;
+
+
         for (int i=0;i<nums.length;i++){
-            if (nums[i]!=i){
-                return i;
+            if (nums[i]!=i+1){
+                return i+1;
             }
         }
-        return nums.length;
+        return nums.length+1;
     }
     public static void cyclicSort(int[]nums){
         int i=0;
         while(i< nums.length){
-     int correct =nums[i];
-            if(nums[i]<nums.length&&nums[i]!=nums[correct]){
+            int correct =nums[i]-1;
+            if(nums[i]>0&&nums[i]<=nums.length&&nums[i]!=nums[correct]){
                 swap(nums,i,correct);
             }else i++;
         }

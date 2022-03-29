@@ -35,7 +35,17 @@ class FindAllDuplicatesInArray {
         }
     public static List<Integer> findDuplicates1(int[] nums) {
             Map<Integer,Integer> map=new HashMap();
-            for(int num:nums){
+            for(int num:nums){class Solution {
+                public int[] findErrorNums(int[] nums) {
+                    Arrays.sort(nums);
+                    for(int i=1;i<nums.length;i++){
+                        if(nums[i]==nums[i-1]){
+                            return new int[]{nums[i],nums[i]+1};
+                        }
+                    }
+                    return new int[]{-1,-1};
+                }
+            }
                 map.put(num,map.getOrDefault(num,0)+1);
             }
             List<Integer> ans=new ArrayList();
