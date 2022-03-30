@@ -10,8 +10,6 @@ class FirstMissingPossitive {
     }
     public static int firstMissingPositive(int[] nums) {
         cyclicSort(nums);
-
-
         for (int i=0;i<nums.length;i++){
             if (nums[i]!=i+1){
                 return i+1;
