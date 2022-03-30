@@ -32,4 +32,3 @@ class FirstMissingPossitive {
         nums[b]=t;
     }
 }
-
