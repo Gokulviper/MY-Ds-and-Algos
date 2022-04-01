@@ -9,15 +9,36 @@ public class NextPermutation {
 
     }
     public void nextPermutation(int[] nums) {
-        if(nums==null||nums.length<=1)return;
-        int i=nums.length-2;
-        while (i>=0&&nums[i]>=nums[i+1])i--;
-        if (i>=0){
-            int j=nums.length-1;
-            while (nums[j]<=nums[i])j--;
-            swap(nums,i,j);
+        int n = nums.length;
+
+        int pivot = -1;
+        //start from back and find increasing sequence
+        //find first number which breaks descending order.
+        for(int i=n-1;i>0;i--){
+            if(nums[i-1]<nums[i]){
+                pivot = i-1;
+                break;
+            }
         }
-        reverse(nums,i+1,nums.length-1);
+
+        //if not found then reverse whole array to make it lowest(given condition)
+        if(pivot==-1){
+            reverse(nums,0,n-1);
+            return;
+        }
+
+        //Again traverse from backward and find element > pivot
+        //swap their position
+        //Then Reverse array after pivot element
+        //And you are done......
+        for(int i=n-1;i>pivot;i--){
+            if(nums[i]>nums[pivot]){
+                swap(nums,pivot,i);
+                reverse(nums,pivot+1,n-1);
+                return;
+            }
+        }
+
     }
 
 
