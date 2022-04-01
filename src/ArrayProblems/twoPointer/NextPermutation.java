@@ -19,6 +19,7 @@ public class NextPermutation {
         }
         reverse(nums,i+1,nums.length-1);
     }
+
     private void reverse(int[] nums, int start, int end ){
         while (start<end){
             swap(nums,start++,end--);
