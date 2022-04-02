@@ -40,14 +40,11 @@ public class NextPermutation {
         }
 
     }
-
-
     private void reverse(int[] nums, int start, int end ){
         while (start<end){
             swap(nums,start++,end--);
         }
     }
-
     private void swap(int[] nums, int i, int j) {
         int t=nums[i];
         nums[i]=nums[j];
