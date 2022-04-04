@@ -22,7 +22,9 @@ public class MergeIntervals {
             int next_end=interval[1];
             if (current_end>=next_begin){
                 current_Interval[1]=Math.max(current_end,next_end);
-            }else{
+            }
+            else
+            {
                 current_Interval=interval;
                 ans.add(current_Interval);
             }
