@@ -37,7 +37,6 @@ public class NextPermutation {
                 return;
             }
         }
-
     }
     private void reverse(int[] nums, int start, int end ){
         while (start<end){
