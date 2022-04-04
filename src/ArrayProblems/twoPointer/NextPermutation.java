@@ -1,8 +1,8 @@
 package ArrayProblems.twoPointer;
 //swap the pair having lowest weightage to get next greater sequence
 //special cases:
-//case1 :they give the decending array:sort the array
-//case2:the array is sorted:swap the last 2 elements
+//caset1 :they give the decending array:sort the array
+//caset2:the array is sorted:swap the last 2 elements
 //other cases :mixed array:swap only using the last asc subArray because any element before it will higher weightage
 public class NextPermutation {
     public static void main(String[] args) {
