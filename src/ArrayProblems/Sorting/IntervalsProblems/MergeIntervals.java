@@ -25,7 +25,8 @@ public class MergeIntervals {
             }else{
                 current_Interval=interval;
                 ans.add(current_Interval);
-            } }
+            }
+        }
         return ans.toArray(new int[ans.size()][]);
     }
 }
