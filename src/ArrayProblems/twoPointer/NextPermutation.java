@@ -17,8 +17,7 @@ public class NextPermutation {
         for(int i=n-1;i>0;i--){
             if(nums[i-1]<nums[i]){
                 pivot = i-1;
-                break;
-            }
+                break; }
         }
 
         //if not found then reverse whole array to make it lowest(given condition)
