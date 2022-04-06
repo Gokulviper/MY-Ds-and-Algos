@@ -7,7 +7,7 @@ public class IntervalIntersection {
     public static void main(String[] args) {
 
     }
-    public int[][] intervalIntersection(int[][] A, int[][] B) {
+    public static int[][] intervalIntersection(int[][] A, int[][] B) {
         List<int[]>ans=new ArrayList<>();
         int i=0,j=0;
         while (i<A.length&&j< B.length){
