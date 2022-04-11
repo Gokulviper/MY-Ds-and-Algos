@@ -13,7 +13,7 @@ public class BasicPrograms {
         System.out.println(n);
     }
     private static int fibo(int n){
-        if (n<0)return 0;
+        if (n<2)return n;
         int left=fibo(n-1);
         int right=fibo(n-2);
         return left+right;
