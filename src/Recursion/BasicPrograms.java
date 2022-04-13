@@ -14,9 +14,9 @@ public class BasicPrograms {
     }
     private static int fibo(int n){
         if (n<2)return n;
-        int left=fibo(n-1);
-        int right=fibo(n-2);
-        return left+right;
+
+
+       return  fibo(n-1)+  fibo(n-2);
     }
 }
 
