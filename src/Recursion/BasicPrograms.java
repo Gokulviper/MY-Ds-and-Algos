@@ -2,8 +2,23 @@ package Recursion;
 
 public class BasicPrograms {
     public static void main(String[] args) {
-       int[]nums={4,5,8,99,245,576,999};
-        System.out.println(binarysearch(nums,9,0,nums.length-1));
+        System.out.println(sumofdigits(222,0));
+    }
+
+    private static int sumofdigits(int n,int ans) {
+        if (n<=0){
+            return ans;
+        }
+        ans+=n%10;
+        return sumofdigits(n/10,ans);
+    }
+
+    private static int fact(int n,int ans) {
+        if (n==0){
+            return ans;
+        }
+        ans+=n;
+        return fact(n-1,ans);
     }
 
     private static int binarysearch(int[] nums, int target, int start, int end) {
