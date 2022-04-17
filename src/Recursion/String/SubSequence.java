@@ -9,6 +9,7 @@ public class SubSequence {
             list.add(ans);
             return list;
         }
+
         subseq(s.substring(1),ans+s.charAt(0),list);
         subseq(s.substring(1),ans,list);
              return list;
