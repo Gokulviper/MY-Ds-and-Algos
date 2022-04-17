@@ -2,7 +2,7 @@ package Recursion.String;
 import java.util.ArrayList;
 public class SubSequence {
     public static void main(String[] args) {
-        subseq("abc", "", new ArrayList<>());
+        System.out.println(subseq("abc", "", new ArrayList<>()));
     }
     private static ArrayList subseq(String s, String ans, ArrayList list) {
         if (s.isEmpty()){
