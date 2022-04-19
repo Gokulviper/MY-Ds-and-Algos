@@ -16,7 +16,7 @@ public class PhoneLetterCombination {
         return combination("", digits);
     }
     static ArrayList<String> combination(String p, String unp) {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList();
         if (unp.isEmpty()) {
             list.add(p);
             return list;
