@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PhoneLetterCombination {
     public static void main(String[] args) {
-        System.out.println(letterCombinations("12"));
+        System.out.println(letterCombinations("23"));
     }
 
     static String[] arr = new String[]{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
