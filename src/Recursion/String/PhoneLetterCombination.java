@@ -13,17 +13,18 @@ public class PhoneLetterCombination {
     static List<String> letterCombinations(String digits) {
         if (digits.isEmpty())
             return new ArrayList<String>();
-        return combination("", digits);
+        return combination("", digits,new ArrayList<>());
     }
-    static ArrayList<String> combination(String p, String unp) {
-        ArrayList<String> list = new ArrayList();
+    static ArrayList<String> combination(String p, String unp,ArrayList ans) {
+
         if (unp.isEmpty()) {
-            list.add(p);
-            return list;
+            ans.add(p);
+            return ans;
         }
         int digit = unp.charAt(0) - '0';
-        for (char c : arr[digit].toCharArray())
-            list.addAll(combination(p + c, unp.substring(1)));
-        return  list;
+        for (char c : arr[digit].toCharArray()){
+        combination(p + c, unp.substring(1),ans);
+        }
+        return  ans;
     }
 }
