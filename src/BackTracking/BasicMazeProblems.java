@@ -1,9 +1,13 @@
 package BackTracking;
 
+import java.util.ArrayList;
+
 public class BasicMazeProblems {
     public static void main(String[] args) {
-      PrintPath(3,3,0,0,"");
+        System.out.println( printPath(3,3,"",new ArrayList<>()));;
     }
+
+
     static int pathWays(int row,int col,int r,int c){
         if (r==3||c==3){
 
@@ -14,16 +18,16 @@ public class BasicMazeProblems {
        return left+right;
 
     }
-    static void PrintPath(int row,int col,int r,int c,String p){
-        if (r==3||c==3){
-            System.out.println(p);
-            return ;
-        }
-
-         PrintPath(row,col,r+1,c,p+'D');
-       PrintPath(row,col,r,c+1,p+'R');
-       PrintPath(row, col, r+1, c+1, p+'D');
-
-
-    }
+   static ArrayList<String> printPath(int r,int c, String p,ArrayList<String>ans){
+                 if (r==1&&c==1){
+                    ans.add(p);
+                     return ans;
+                 }
+                 if (r>1){
+                     printPath(r-1,c,p+'D',ans);
+                 }
+                 if (c>1){
+                     printPath(r,c-1,p+"R",ans);
+                 }return ans;
+   }
 }
