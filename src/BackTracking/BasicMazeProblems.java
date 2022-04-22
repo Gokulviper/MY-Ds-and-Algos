@@ -23,14 +23,15 @@ public class BasicMazeProblems {
                     ans.add(p);
                      return ans;
                  }
-                 if (r>1){
-                     printPath(r-1,c,p+'D',ans);
-                 }
                  if (r>1&&c>1){
-                     printPath(r-1,c-1,p+'C',ans);
+           printPath(r-1,c-1,p+'D',ans);
+       }
+                 if (r>1){
+                     printPath(r-1,c,p+'V',ans);
                  }
+
                  if (c>1){
-                     printPath(r,c-1,p+"R",ans);
+                     printPath(r,c-1,p+"H",ans);
                  }return ans;
    }
 }
