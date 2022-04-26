@@ -4,7 +4,7 @@ class EquilibriumPoint {
 
     public static void main(String[] args) {
         long[] a = {1, 3, 5, 2, 2};
-        System.out.println(equilibriumPoint(a, a.length));
+        System.out.println(equilibriumPointOptimize(a, a.length));
     }
 
     // a: input array
