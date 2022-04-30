@@ -1,21 +1,30 @@
 package ArrayProblems.SlidingWindow;
 
+import java.util.HashMap;
+
 class LargestSubarrayWithZeroSum
 {
     public static void main(String[] args) {
-        int A[] = {15,-2,2,-8,1,7,10,23};
+        int A[] = {-1,1,2,-2,7,-7,4,5,0,-2,2};
         System.out.println(maxLen(A, A.length));
     }
   static   int maxLen(int nums[], int n)
     {
-   int left=0,right=0,max=0,sum=0;
-   for (;right< nums.length;right++){
-       sum+=right;
-       if (sum==0){
-           max=Math.max(right-left+1,max);
-       }
-
-   }
-   return max;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int sum=0;
+        int max=0;
+        for (int i = 0; i <n ; i++) {
+            sum+=nums[i];
+            if (sum==0){
+                max=i+1;
+            }else{
+                if(map.containsKey(sum)){
+                        max=Math.max(max,i-map.get(sum));
+                }else {
+                    map.put(sum,i);
+                }
+            }
+        }
+        return max;
     }
 }
