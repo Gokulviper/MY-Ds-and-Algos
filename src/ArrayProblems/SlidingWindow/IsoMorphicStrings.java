@@ -1,6 +1,6 @@
 package ArrayProblems.SlidingWindow;
 
-public class Solution {
+public class IsoMorphicStrings {
     public boolean checkInclusion(String s1, String s2) {
         if(s1.length()>s2.length())return false;
        int hash1[]=new int[26];
