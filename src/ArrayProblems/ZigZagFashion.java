@@ -9,6 +9,8 @@ class ZigZagFashion {
         System.out.println(Arrays.toString(nums));
 
     }
+    //idea is very simple index is odd check the previous element is smaller
+    //is this even index check the previous index is greater
   static   void zigZag(int arr[], int n) {
       for(int i=1;i<n;i++){
           if(i%2!=0){
@@ -16,11 +18,10 @@ class ZigZagFashion {
                   swap(arr,i-1,i);
               }
           }
-          else{
-              if(arr[i-1]<arr[i]){
+          else if(arr[i-1]<arr[i]){
                   swap(arr,i-1,i);
               }
-          }
+
       }
   }
     static void swap(int[]nums,int a,int b){

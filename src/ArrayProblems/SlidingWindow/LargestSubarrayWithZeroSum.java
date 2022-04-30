@@ -16,6 +16,7 @@ class LargestSubarrayWithZeroSum
         for (int i = 0; i <n ; i++) {
             sum+=nums[i];
             if (sum==0){
+                //if this directly reach the zero so the sequence numbers give the sum of zero
                 max=i+1;
             }else{
                 if(map.containsKey(sum)){
