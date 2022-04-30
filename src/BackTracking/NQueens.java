@@ -47,7 +47,6 @@ class NQueens {
             }
         }
     }
-
     private static boolean isSafe(char[][] board, int n, int row, int col) {
 
 
@@ -68,7 +67,6 @@ class NQueens {
 
         return true;
     }
-
     private static List<String> formatResult(char[][] board) {
         List<String> result = new ArrayList<>();
         for(char[] row : board) {
