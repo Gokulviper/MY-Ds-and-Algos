@@ -29,7 +29,7 @@ class LargestNumberFormedFromArray {
     }
     String printLargest1(String[] arr) {
         Arrays.sort(arr, (s1, s2)->
-        {return (s2+s1).compareTo(s1+s2);});
+        {return (s2+s1).compareTo(s1+s2);   });
         String s="";
         for(String x:arr) s+=x;
         return s;
