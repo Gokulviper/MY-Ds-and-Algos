@@ -40,7 +40,6 @@ public class NKnights {
         }
         solve(n,board,row,col+1,ans);
     }
-
     private static boolean isSafe(char[][] board, int n, int row, int col) {
       if (isValid(board,row-2 ,col-1)){
           if (board[row-2][col-1]=='K'){
