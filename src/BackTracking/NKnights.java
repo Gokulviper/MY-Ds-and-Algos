@@ -23,6 +23,10 @@ public class NKnights {
     private static void solve(int n, char[][] board, int row, int col, List<List<String>> ans) {
         if (n==0){
             ans.add(foramtedList(board));
+            return;
+        }
+        if (row==board.length){
+            return;
         }
         if (col==board.length){
             solve(n,board,row+1,col,ans);
@@ -38,23 +42,23 @@ public class NKnights {
     }
 
     private static boolean isSafe(char[][] board, int n, int row, int col) {
-      if (isValid(board,row,col)){
-          if (board[row][col]=='K'){
+      if (isValid(board,row-2 ,col-1)){
+          if (board[row-2][col-1]=='K'){
               return false;
           }
       }
-        if (isValid(board,row,col)){
-            if (board[row][col]=='K'){
+        if (isValid(board,row-1,col-2)){
+            if (board[row-1][col-2]=='K'){
                 return false;
             }
         }
-        if (isValid(board,row,col)){
-            if (board[row][col]=='K'){
+        if (isValid(board,row-2,col+1)){
+            if (board[row-2][col+1]=='K'){
                 return false;
             }
         }
-        if (isValid(board,row,col)){
-            if (board[row][col]=='K'){
+        if (isValid(board,row-1,col+2)){
+            if (board[row-1][col+2]=='K'){
                 return false;
             }
         }
