@@ -22,6 +22,7 @@ public class MaximumSubArray {
 
     }
 
+
     public static int checkSubarray(int[] arr, int low, int high) {
 
         if (low > high) {
