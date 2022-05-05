@@ -23,17 +23,17 @@ public class MaximumSumOfNonAdjacentElements {
     }
 
     private static int bottomUp(int[] nums) {
-        int[]dp=new int[nums.length];
-        dp[0]=0;
-        for (int j = 1; j < nums.length ; j++) {
-            int pick=nums[j];
-            if (j>1){
-                pick+=dp[j-2];
+        int[] dp = new int[nums.length];
+        dp[0] = 0;
+        for (int j = 1; j < nums.length; j++) {
+            int pick = nums[j];
+            if (j > 1) {
+                pick += dp[j - 2];
             }
-            int notPick=dp[j-1];
-            dp[j]=Math.max(pick,notPick);
+            int notPick = dp[j - 1];
+            dp[j] = Math.max(pick, notPick);
         }
-        return dp[nums.length-1];
+        return dp[nums.length - 1];
 
     }
 
