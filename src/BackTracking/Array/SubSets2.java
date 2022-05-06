@@ -8,14 +8,14 @@ class SubSets2 {
         subsetsWithDup(nums);
     }
     public static List<List<Integer>> subsetsWithDup(int[] nums) {
-      List<List<Integer>>  ans=new ArrayList();
+      List<List<Integer>>  ans=new ArrayList<>();
         Arrays.sort(nums);
-        r(0,nums,ans,new ArrayList());
+        r(0,nums,ans,new ArrayList<>());
         return ans;
     }
     private static void  r(int start,int[]nums,List<List<Integer>> ans,List<Integer> list){
         if(list.size()<=nums.length){
-            ans.add(new ArrayList(list));
+            ans.add(new ArrayList<>(list));
           
         }
         for(int i=start;i<nums.length;i++){
