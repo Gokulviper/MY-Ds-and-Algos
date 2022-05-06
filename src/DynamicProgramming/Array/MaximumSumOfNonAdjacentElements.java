@@ -42,9 +42,9 @@ public class MaximumSumOfNonAdjacentElements {
             if (i==0){
                 return nums[i];
             } int pick=Integer.MIN_VALUE;
-            if (i>1) {
+
                pick = nums[i] + maximumTopDown(nums, i - 2, dp);
-            }
+
             int notPick= maximumTopDown(nums, i - 1, dp);
             dp[i]=Math.max(pick,notPick);
         }
