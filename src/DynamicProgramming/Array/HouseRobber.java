@@ -17,25 +17,29 @@ class HouseRobber {
     }
     
     private int dpTabulation(int[] nums, int[] dp2) { //TC --> O(N) || SC--> O(N)
-        if(nums.length == 1) return nums[0];
-        if(nums.length == 2) return Math.max(nums[0], nums[1]);
-        dp2[0] = 0;
-        dp2[1] = nums[0];
-        for(int i=1; i<nums.length; i++) {
-            dp2[i+1] = Math.max(dp2[i], dp2[i-1]+nums[i]);
+        if(nums.length == 1){
+            return nums[0];
         }
-        return dp2[nums.length];
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        for(int i = 2; i < nums.length; i++){
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+        }
+        return dp[nums.length - 1];
     }
     
     private int dpTabulationSpaceOptimized(int[] nums) { //TC --> O(N) || SC--> O(1)
-        if(nums.length == 1) return nums[0];
-        int a = 0, b = nums[0], c = 0;
-        for(int i=1; i<nums.length; i++) {
-            c = Math.max(a + nums[i], b);
-            a = b;
-            b = c;
+        if(nums.length == 1){
+            return nums[0];
         }
-        return c;
+        int s_prev=0,prev=nums[0],currentSum=0;
+        for(int i=1;i<nums.length;i++){
+            currentSum=Math.max(s_prev+nums[i],prev);
+            s_prev=prev;
+            prev=currentSum;
+        }
+        return currentSum;
     }
     
     public int rob(int[] nums) {
