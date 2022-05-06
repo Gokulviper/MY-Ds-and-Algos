@@ -16,7 +16,6 @@ class SubSets2 {
     private static void  r(int start,int[]nums,List<List<Integer>> ans,List<Integer> list){
         if(list.size()<=nums.length){
             ans.add(new ArrayList<>(list));
-          
         }
         for(int i=start;i<nums.length;i++){
             if(i>start&&nums[i]==nums[i-1]){
