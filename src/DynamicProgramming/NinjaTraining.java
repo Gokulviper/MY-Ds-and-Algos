@@ -12,7 +12,11 @@ public class NinjaTraining {
         {
             Arrays.fill(num,-1);
         }
-        System.out.println(memoriazation(ninjaWork,2,ninjaWork.length-1,dp));
+        System.out.println(tabulation(ninjaWork));
+    }
+
+    private static boolean tabulation(int[][] ninjaWork) {
+        return false;
     }
 
     private static int memoriazation(int[][] points, int last, int day,int[][]dp) {
