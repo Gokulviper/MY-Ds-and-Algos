@@ -25,14 +25,15 @@ public class NinjaTraining {
             }
             return max;
         }
+        if (dp[day][last]!=-1)return dp[day][last];
         int max=0;
         for (int i = 0; i <points[0].length ; i++) {
             if (i!=last){
-                int point=points[day][i]+maxPoints(points,i,day-1);
+                int point=points[day][i]+memoriazation(points,i,day-1,dp);
                 max=Math.max(max,point);
             }
         }
-        return max;
+        return dp[day][last]=max;
     }
 
     private static int maxPoints(int[][] points, int last, int day) {
