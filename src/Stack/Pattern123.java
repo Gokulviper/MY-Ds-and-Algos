@@ -4,7 +4,7 @@ import java.util.Stack;
 
 class Pattern123 {
     public static void main(String[] args) {
-        int[]nums={3,1,4,2};
+        int[]nums={1,2,3,4};
         System.out.println(find132pattern(nums));
     }
     public static boolean find132pattern(int[] nums) {
