@@ -1,7 +1,7 @@
 package DynamicProgramming.Grid;
 
 import java.util.Arrays;
-
+//if the alorithm we use the previuos row and previous col we can optimze the space
 public class AllUniquePaths {
     public static void main(String[] args) {
         int[][]dp=new int[4][4];
@@ -10,6 +10,7 @@ public class AllUniquePaths {
         }
    System.out.println(memorization(3,3,dp));
         System.out.println(tabulation(4,4));
+        System.out.println(allPaths(2,6));
     }
 
     private static int tabulation(int row, int col) {
