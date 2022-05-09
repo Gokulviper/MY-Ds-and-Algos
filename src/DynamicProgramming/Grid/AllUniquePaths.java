@@ -9,7 +9,29 @@ public class AllUniquePaths {
             Arrays.fill(row,-1);
         }
    System.out.println(memorization(3,3,dp));
-        System.out.println(allPaths(3,3));
+        System.out.println(tabulation(4,4));
+    }
+
+    private static int tabulation(int row, int col) {
+        int[][]dp=new int[row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                int count=0;
+                if (i==0&&j==0){
+                    dp[i][j]=1;
+                    continue;
+                }
+                if (i>0){
+                    count+=dp[i-1][j];
+                }
+                if (j>0){
+                    count+=dp[i][j-1];
+                }
+                dp[i][j]=count;
+            }
+        }
+        return dp[row-1][col-1];
+
     }
 
     private static int memorization(int row, int col, int[][] dp) {
