@@ -2,7 +2,7 @@ package Stack;
 
 import java.util.Stack;
 
-class Pattern123 {
+class Pattern132 {
     public static void main(String[] args) {
         int[]nums={1,2,3,4};
         System.out.println(find132pattern(nums));
