@@ -9,7 +9,7 @@ class Pattern123 {
     }
     public static boolean find132pattern(int[] nums) {
     int s3=Integer.MIN_VALUE;
-        Stack<Integer> stack=new Stack();
+        Stack<Integer> stack=new Stack<>();
         for(int i=nums.length-1;i>=0;i--){
             if(nums[i]<s3){
                 return true;
