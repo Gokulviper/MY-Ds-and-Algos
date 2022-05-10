@@ -14,10 +14,8 @@ class MinimumPathSum {
 
     private static int Tabulation(int[][] nums) {
         int[][]dp=new int[nums.length][nums[0].length];
-        for (int[]row:dp) {
-            Arrays.fill(row,-1);
-        }
-        int row=nums.length-1,col=nums[0].length-1;
+
+
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j <nums[0].length ; j++) {
                 if (i==0&&j==0){
