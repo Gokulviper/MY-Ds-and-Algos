@@ -35,6 +35,7 @@ class MinimumPathSum {
         return dp[nums.length-1][nums[0].length-1];
     }
 
+
     private static int memoriazation(int[][] nums, int row, int col, int[][] dp) {
         if(row==0&&col==0)return nums[row][col];
         if(row<0||col<0)return Integer.MAX_VALUE;
