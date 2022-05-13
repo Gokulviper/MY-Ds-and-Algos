@@ -13,10 +13,7 @@ public class SubsetSumEqulasK {
         System.out.println(Tabulation(nums.length,k,nums));
     }
     static boolean SpaceOptimization(int n, int k,int[] arr){
-
-
         boolean prev[]= new boolean[k+1];
-
         prev[0] = true;
 
         if(arr[0]<=k)
