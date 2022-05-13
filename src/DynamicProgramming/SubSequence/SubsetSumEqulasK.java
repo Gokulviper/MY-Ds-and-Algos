@@ -12,13 +12,41 @@ public class SubsetSumEqulasK {
         }
         System.out.println(Tabulation(nums.length,k,nums));
     }
+    static boolean SpaceOptimization(int n, int k,int[] arr){
+
+
+        boolean prev[]= new boolean[k+1];
+
+        prev[0] = true;
+
+        if(arr[0]<=k)
+            prev[arr[0]] = true;
+
+        for(int ind = 1; ind<n; ind++){
+            boolean cur[]=new boolean[k+1];
+            cur[0] = true;
+            for(int target= 1; target<=k; target++){
+                boolean notTaken = prev[target];
+
+                boolean taken = false;
+                if(arr[ind]<=target)
+                    taken = prev[target-arr[ind]];
+
+                cur[target]= notTaken||taken;
+            }
+            prev=cur;
+
+        }
+
+        return prev[k];
+    }
     static boolean Tabulation(int n, int k,int[] arr){
 //declare 2d for every row that contain single elemnet make form differnt  cases
         //make all first row first index=0
         //and make the first the arr[0] is less then target mark as true
         //run a nested loop i=1 --> n j=1-->k
         //j is our target check for every index int 2d array
-        //
+
 
         boolean dp[][]= new boolean[n][k+1];
         for(int i=0; i<n; i++){
