@@ -17,6 +17,7 @@ public class SubsetSumEqulasK {
         //make all first row first index=0
         //and make the first the arr[0] is less then target mark as true
         //run a nested loop i=1 --> n j=1-->k
+        //j is our target check for every index int 2d array
         //
 
         boolean dp[][]= new boolean[n][k+1];
