@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class SubsetSumEqulasK {
     public static void main(String[] args) {
         int[]nums={3,5,6,7};
-        int k=34;
+        int k=8;
         int[][]dp=new int[nums.length][k+1];
         for (int[]row:dp){
             Arrays.fill(row,-1);
@@ -13,7 +13,11 @@ public class SubsetSumEqulasK {
         System.out.println(Tabulation(nums.length,k,nums));
     }
     static boolean Tabulation(int n, int k,int[] arr){
-
+//declare 2d for every row that contain single elemnet make form differnt  cases
+        //make all first row first index=0
+        //and make the first the arr[0] is less then target mark as true
+        //run a nested loop i=1 --> n j=1-->k
+        //
 
         boolean dp[][]= new boolean[n][k+1];
         for(int i=0; i<n; i++){
