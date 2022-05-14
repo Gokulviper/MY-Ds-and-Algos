@@ -10,7 +10,8 @@ public class SubsetSumEqulasK {
         for (int[]row:dp){
             Arrays.fill(row,-1);
         }
-        System.out.println(memoriazation(nums.length,k,nums,dp));
+     //   System.out.println(memoriazation(nums.length-1,k,nums,dp));
+        Tabulation(nums.length,k,nums);
     }
     static boolean SpaceOptimization(int n, int k,int[] arr){
         boolean prev[]= new boolean[k+1];
@@ -37,6 +38,7 @@ public class SubsetSumEqulasK {
 
         return prev[k];
     }
+
     static boolean Tabulation(int n, int k,int[] arr){
 //declare 2d for every row that contain single elemnet make form differnt  cases
         //make all first row first index=0
