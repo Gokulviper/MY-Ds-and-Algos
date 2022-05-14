@@ -74,6 +74,7 @@ class partitionEqualSubsetSum {
         if (target==0){
             return true;
         }
+
         if (index==0){
             return nums[index]==target;
         }
