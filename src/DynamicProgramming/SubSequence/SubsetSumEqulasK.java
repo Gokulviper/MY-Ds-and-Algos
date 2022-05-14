@@ -10,7 +10,7 @@ public class SubsetSumEqulasK {
         for (int[]row:dp){
             Arrays.fill(row,-1);
         }
-        System.out.println(Tabulation(nums.length,k,nums));
+        System.out.println(memoriazation(nums.length,k,nums,dp));
     }
     static boolean SpaceOptimization(int n, int k,int[] arr){
         boolean prev[]= new boolean[k+1];
