@@ -69,8 +69,6 @@ public class SubsetSumEqulasK {
         return dp[n-1][k];
     }
 
-
-
     private static boolean memoriazation(int ind, int target,int[] arr, int[][] dp) {
         if(target==0)
             return true;
