@@ -12,8 +12,10 @@ class LongestSubSequnce {
     public static int longestConsecutive(int[] nums) {
         /*
          the logic: if(!num_set.contains(num-1)).
-That means, for example, 6,5,4,3,2,1 input, only the value 1 is valid for the loop(all other values have its value - 1 in the set), that is O(n).
-Another corner example, 2, 5, 6, 7, 9, 11. All of these numbers are the "entrance" for the logic but the while loop doesn't run much. That is O(n) as well.
+That means, for example, 6,5,4,3,2,1 input, only the value 1 is valid for the loop(all other values
+have its value - 1 in the set), that is O(n).
+Another corner example, 2, 5, 6, 7, 9, 11. All of these numbers are the "entrance" for
+the logic but the while loop doesn't run much. That is O(n) as well.
          */
         if (nums.length==0)return 0;;
         int max=0;
