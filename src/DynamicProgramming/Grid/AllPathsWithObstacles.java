@@ -2,8 +2,20 @@ package DynamicProgramming.Grid;
 
 public class AllPathsWithObstacles {
     public static void main(String[] args) {
-
+   int[][]nums={{1,2,3},
+           {6,7,3},
+           {6,9,3}};
+        System.out.println( findMax(nums,0,0));
     }
+
+    private static int findMax(int[][] nums, int row, int col) {
+        if (row>=nums.length||col>=nums[0].length)return 0;
+        if (row==nums.length-1)return nums[row][col];
+
+     //   return nums[row][col]+Math.max(Math.max(findMax(nums, row+1, col+1),findMax(nums,row+1,col)),findMax(nums, row, col+1));
+    return nums[row][col]+Math.max(findMax(nums, row+1, col),findMax(nums, row, col+1));
+    }
+
     public int uniquePathsWithObstacles(int[][] nums,int row,int col) {
      if (row>=0&&col>=0&&nums[row][col]==1)return 0;
      if (row==0&&col==0)return 1;
