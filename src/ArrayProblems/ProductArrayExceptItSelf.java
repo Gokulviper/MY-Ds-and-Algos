@@ -5,6 +5,7 @@ import java.util.Arrays;
 class ProductArrayExceptItSelf {
     public static void main(String[] args) {
         ///[]
+
         int[]nums={1,2,3,4};
         System.out.println(Arrays.toString(productExceptSelf1(nums)));
 
@@ -17,13 +18,13 @@ class ProductArrayExceptItSelf {
         for(int i=1 ; i<n ; i++){
             result[i]=product;
             product*=nums[i];
-        }
+        } result[0]=product;
         product=nums[n-1];
         for(int i=n-2 ; i>0 ; i--){
             result[i]*=product;
             product*=nums[i];
         }
-        result[0]=product;
+
         return result;
     }
     public static int[] productExceptSelfUsingDivision(int[] nums) {
