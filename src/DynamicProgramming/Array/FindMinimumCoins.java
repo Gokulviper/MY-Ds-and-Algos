@@ -25,11 +25,8 @@ for (int[]row:dp){
             int take = Integer.MAX_VALUE;
             if (nums[i] <= target) {
                 take = 1 + memo(nums, target - nums[i], i, dp);
-
-                dp[i][target] = Math.min(take, not_take);
             }
-
-
+            dp[i][target] = Math.min(take, not_take);
         }        return dp[i][target];
     }
 
