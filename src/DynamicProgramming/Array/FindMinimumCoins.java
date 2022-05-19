@@ -10,7 +10,29 @@ int[][]dp=new int[nums.length][tar+1];
 for (int[]row:dp){
     Arrays.fill(row,-1);
 }
-        System.out.println(memo(nums,tar,nums.length-1,dp));
+        System.out.println(tab(nums,tar));
+    }
+
+    private static int tab(int[] nums, int target) {
+        int[][]dp=new int[nums.length][target+1];
+        for (int i = 0; i <=target ; i++) {
+            if (target%nums[0]==0){
+                dp[0][i]=target/nums[0];
+            }else {
+                dp[0][i]=Integer.MAX_VALUE;
+            }
+        }
+        for (int i = 1; i <nums.length ; i++) {
+            for (int j = 0; j <=target ; j++) {
+                int not_take=dp[i-1][j];
+                int take=Integer.MAX_VALUE;
+                if (nums[i]<=j){
+                    take=dp[i][j-nums[i]];
+                }
+                dp[i][j]=Math.min(take,not_take);
+            }
+        }
+        return dp[nums.length-1][target]>=1e9?-1:dp[nums.length-1][target];
     }
 
     private static int memo(int[] nums, int target, int i, int[][] dp) {
