@@ -10,16 +10,41 @@ int[][]dp=new int[nums.length][tar+1];
 for (int[]row:dp){
     Arrays.fill(row,-1);
 }
-        System.out.println(tab(nums,tar));
+        System.out.println(spaceOptimized(nums,tar));
+
     }
+    private static int spaceOptimized(int[] nums, int target) {
+        int[][]dp=new int[nums.length][target+1];
+        int[]prev=new int[target+1],cur=new int[target+1];
+        for (int i = 0; i <=target ; i++) {
+            if (i%nums[0]==0){
+               prev[i]=i/nums[0];
+            }else {
+               prev[i]=(int)1e9;
+            }
+        }
+        for (int i = 1; i <nums.length ; i++) {
+            for (int j = 0; j <=target ; j++) {
+                int not_take=prev[j];
+                int take=Integer.MAX_VALUE;
+                if (nums[i]<=j){
+                    take=1+cur[j-nums[i]];
+                }
+               cur[j]=Math.min(take,not_take);
+            }
+            prev=cur;
+        }
+        return prev[target]>=1e9?-1:prev[target];
+    }
+
 
     private static int tab(int[] nums, int target) {
         int[][]dp=new int[nums.length][target+1];
         for (int i = 0; i <=target ; i++) {
-            if (target%nums[0]==0){
-                dp[0][i]=target/nums[0];
+            if (i%nums[0]==0){
+                dp[0][i]=i/nums[0];
             }else {
-                dp[0][i]=Integer.MAX_VALUE;
+                dp[0][i]=(int)1e9;
             }
         }
         for (int i = 1; i <nums.length ; i++) {
@@ -27,7 +52,7 @@ for (int[]row:dp){
                 int not_take=dp[i-1][j];
                 int take=Integer.MAX_VALUE;
                 if (nums[i]<=j){
-                    take=dp[i][j-nums[i]];
+                    take=1+dp[i][j-nums[i]];
                 }
                 dp[i][j]=Math.min(take,not_take);
             }
