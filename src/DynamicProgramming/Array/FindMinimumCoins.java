@@ -14,19 +14,23 @@ for (int[]row:dp){
     }
 
     private static int memo(int[] nums, int target, int i, int[][] dp) {
-        if (i==0){
-            if (target%nums[0]==0)return target/nums[0];
-            else return (int)1e9;
+        if (i == 0) {
+            if (target % nums[0] == 0) return target / nums[0];
+            else return (int) 1e9;
         }
-        if (dp[i][target]==-1){
-            int not_take=memo(nums,target,i-1,dp);
-            int take=Integer.MAX_VALUE;
-            if (nums[i]<=target){
-                take=memo(nums, target-nums[i], i, dp);
+        if (dp[i][target] == -1) {
+
+
+            int not_take = memo(nums, target, i - 1, dp);
+            int take = Integer.MAX_VALUE;
+            if (nums[i] <= target) {
+                take = 1 + memo(nums, target - nums[i], i, dp);
+
+                dp[i][target] = Math.min(take, not_take);
             }
-            dp[i][target]=Math.min(take,not_take);
-        }
-        return dp[i][target];
+
+
+        }        return dp[i][target];
     }
 
     private static int find(int[]nums,int target,int i){
