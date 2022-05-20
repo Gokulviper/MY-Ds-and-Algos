@@ -12,7 +12,6 @@ class CoinChang2 {
     }
     public int spaceOptimize(int target, int[] nums) {
         int[]prev=new int[target+1],cur=new int[target+1];
-        int[][]dp=new int[nums.length][target+1];
         for (int i = 0; i <=target ; i++) {
             prev[i]=i%nums[0]==0?1:0;
         }
