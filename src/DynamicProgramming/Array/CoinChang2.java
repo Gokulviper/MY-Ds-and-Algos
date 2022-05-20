@@ -57,4 +57,18 @@ class CoinChang2 {
         }
         return dp[i][target];
     }
+    private int recursion(int[]nums,int target,int i){
+
+
+        if(i==0){
+            return target%nums[i]==0?1:0;
+        }
+
+            int ntake=recursion(nums,target,i-1);
+            int take=0;
+            if(nums[i]<=target)take=recursion(nums,target-nums[i],i);
+
+
+        return ntake+take;
+    }
 }
