@@ -2,13 +2,7 @@ package DynamicProgramming.Array;
 
 class CoinChange1 {
     public static void main(String[] args) {
-   int n=123;
-   int sum=0;
-        for (int i = n; i >0 ; i/=10) {
-            int mod=i%10;
-            sum+=mod;
-        }
-        System.out.println(sum);
+
     }
     public int tabulation(int[] nums, int T) {
         int n= nums.length;
