@@ -6,12 +6,14 @@ public class LongestCommonSubsequence {
     public static void main(String[] args) {
         List<String>ans=new ArrayList<>();
         printAllSubsequence("","abc",ans,2);
-        System.out.println(ans);
-        System.out.println(space("abcde","ace"));
+        int n=6;
+        int i=7;
+        System.out.println(i%n);
+     //   System.out.println(ans);
+      //  System.out.println(space("abcde","ace"));
     }
     private static int space(String s1, String s2) {
         int n=s1.length(),m=s2.length();
-        int[][]dp=new int[n+1][m+1];
 int []prev=new int[m+1],cur=new int[m+1];
         for(int i=1;i<=n;i++){
             for(int j=1;j<=m;j++){
@@ -21,9 +23,7 @@ int []prev=new int[m+1],cur=new int[m+1];
             prev=cur.clone();
         }
         return prev[m];
-
     }
-
     private static int tabulation(String s1, String s2) {
         int n=s1.length(),m=s2.length();
         int[][]dp=new int[n+1][m+1];
@@ -35,9 +35,7 @@ int []prev=new int[m+1],cur=new int[m+1];
             }
         }
         return dp[n][m];
-
     }
-
     public static int longestCommonSubsequence(String text1, String text2) {
         int[][]dp=new int[text1.length()][text2.length()];
         for (int[]row:dp){
@@ -77,6 +75,4 @@ int []prev=new int[m+1],cur=new int[m+1];
       printAllSubsequence(p,s.substring(1),ans,n);
       printAllSubsequence(p+s.charAt(0),s.substring(1),ans,n);
     }
-
-
 }
