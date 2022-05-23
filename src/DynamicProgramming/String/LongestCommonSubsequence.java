@@ -9,6 +9,7 @@ public class LongestCommonSubsequence {
         int n=6;
         int i=7;
         System.out.println(i%n);
+        System.out.println(tabulationPrintTheString("abcde","bdgek"));
      //   System.out.println(ans);
       //  System.out.println(space("abcde","ace"));
     }
@@ -24,6 +25,48 @@ int []prev=new int[m+1],cur=new int[m+1];
         }
         return prev[m];
     }
+    private static int tabulationPrintTheString(String s1, String s2) {
+        int n=s1.length(),m=s2.length();
+        int[][]dp=new int[n+1][m+1];
+
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1))dp[i][j]=1+dp[i-1][j-1];
+                else dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
+            }
+        }
+        int i=n;
+        int j=m;
+        StringBuilder sb=new StringBuilder();
+        while (i>0&&j>0){
+            if (s1.charAt(i-1)==s2.charAt(j-1)){
+                sb.insert(0,s1.charAt(i-1));
+                i--;j--;
+            }else if(s1.charAt(i-1)>s2.charAt(j-1)){
+                i--;
+            }else j--;
+        }
+        System.out.println(sb.toString());
+      //  for(int k=1; k<=len;k++){
+        //    str +="$"; // dummy string
+      //  }
+    /*    StringBuilder ss= new StringBuilder(s1);
+        StringBuilder str2=new StringBuilder(str);
+        while(i>0 && j>0){
+            if(ss.charAt(i-1) == s2.charAt(j-1)){
+                str2.setCharAt(index,ss.charAt(i-1) );
+                index--;
+                i--;
+                j--;
+            }
+            else if(ss.charAt(i-1)>s2.charAt(j-1)){
+                i--;
+            }
+            else j--;
+        }
+        System.out.println(str2);*/
+        return dp[n][m];
+    }
     private static int tabulation(String s1, String s2) {
         int n=s1.length(),m=s2.length();
         int[][]dp=new int[n+1][m+1];
@@ -34,6 +77,8 @@ int []prev=new int[m+1],cur=new int[m+1];
                 else dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
             }
         }
+
+
         return dp[n][m];
     }
     public static int longestCommonSubsequence(String text1, String text2) {
