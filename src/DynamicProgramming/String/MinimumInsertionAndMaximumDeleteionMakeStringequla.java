@@ -1,7 +1,14 @@
 package DynamicProgramming.String;
 
 import java.util.Arrays;
+/*
+you have two strings abdcf and anu
+first find the what is both common part using lcs
+so get the lcs - string 2 =insertions
+lcs - string=deletion
+return insertion and deletions
 
+ */
 class MinimumInsertionAndMaximumDeleteionMakeStringequla {
 static int lcs(String s1, String s2) {
     
