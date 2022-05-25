@@ -1,6 +1,8 @@
 package DynamicProgramming.String;
 
 class LongestPallindramicSubSeq {
+    //you know how to get the longest subseq
+    //pallindrome is same to reverse the string send same method os lcs
     public int longestPalindromeSubseq(String s) {
         StringBuilder sb=new StringBuilder(s);
         String rev=sb.reverse().toString();
@@ -13,10 +15,8 @@ class LongestPallindramicSubSeq {
             for(int j=1;j<=n;j++){
                 if(s1.charAt(i-1)==s2.charAt(j-1)){
                  dp[i][j]=1+dp[i-1][j-1];   
-                }else{
+                }else
                     dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
-                }
-                
             }
         }
         return dp[n][n];
