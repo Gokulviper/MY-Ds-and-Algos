@@ -23,7 +23,7 @@ static int lcs(String s1, String s2) {
             if(s1.charAt(ind1-1)==s2.charAt(ind2-1))
                 dp[ind1][ind2] = 1 + dp[ind1-1][ind2-1];
             else
-                dp[ind1][ind2] = 0 + Math.max(dp[ind1-1][ind2],dp[ind1][ind2-1]);
+                dp[ind1][ind2] = Math.max(dp[ind1-1][ind2],dp[ind1][ind2-1]);
         }
     }
     
