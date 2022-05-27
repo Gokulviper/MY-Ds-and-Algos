@@ -108,7 +108,6 @@ public class ShortestUnSortedContinuouesSubArray {
                 }
                 if (k == nums.length) {
                     res = Math.min(res, j - i);
-
                 }
             }
         }
