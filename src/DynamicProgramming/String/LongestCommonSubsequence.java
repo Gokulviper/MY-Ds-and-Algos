@@ -100,12 +100,12 @@ int []prev=new int[m+1],cur=new int[m+1];
         return dp[i][j];
     }
 
-    private static int findall(String s1, String s2, int i1, int i2) {
-        if (i1<0||i2<0)return 0;
-        if(s1.charAt(i1)==s2.charAt(i2)){
-            return 1+findall(s1, s2, i1-1, i2-1);
+    private static int findall(String s1, String s2, int i, int j) {
+        if (i<0||j<0)return 0;
+        if(s1.charAt(i)==s2.charAt(j)){
+            return 1+findall(s1, s2, i-1, j-1);
         }
-        return Math.max(findall(s1, s2, i1-1, i2),findall(s1, s2, i1, i2-1));
+        return Math.max(findall(s1, s2, i-1, j),findall(s1, s2, i, j-1));
     }
 
     private static void printAllSubsequence(String p, String s, List<String> ans,int n) {

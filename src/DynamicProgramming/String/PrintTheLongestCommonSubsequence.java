@@ -2,22 +2,44 @@ package DynamicProgramming.String;
 
 public class PrintTheLongestCommonSubsequence {
     public static void main(String[] args) {
-        System.out.println(theSquece("abcede","bdeda"));
+        System.out.println(theSquece("badad","dadab"));
     }
 
-    private static String theSquece(String s1, String s2) {
-        int i=s1.length();
-        int j=s2.length();
-        StringBuilder sb=new StringBuilder();
-        while (i>0&&j>0){
-            if (s1.charAt(i-1)==s2.charAt(j-1)){
-                sb.insert(0,s1.charAt(i-1));
-                i--;j--;
-            }else if(s1.charAt(i-1)>s2.charAt(j-1)){
-                i--;
-            }else j--;
+    private static String theSquece(String str1, String str2) {
+        int n=str1.length();
+        int m=str2.length();
+        int[][]dp=new int[n+1][m+1];
+        int ans=0;
+        for (int i = 1; i <=n ; i++) {
+            for (int j = 1; j <=m ; j++) {
+                if (str1.charAt(i-1)==str2.charAt(j-1)){
+                    int val=1+dp[i-1][j-1];
+                    dp[i][j]=val;
+                    ans=Math.max(ans,val);
+                }else{
+                    dp[i][j]=0;
+                }
+            }
         }
-        return sb.toString();
+
+        StringBuilder sb=new StringBuilder();
+        int i=n,j=m;
+        while (i>0&&j>0) {
+            if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+                sb.append(str1.charAt(i - 1));
+                i--;
+                j--;
+            } else if (dp[i - 1][j] > dp[i][j - 1]) {
+                sb.append(str1.charAt(i - 1));
+                i--;
+            } else {
+                sb.append(str2.charAt(j-1));
+                j--;
+            }
+        }
+        while (i-->0)    sb.append(str1.charAt(i - 1));
+        while (j-->0)    sb.append(str2.charAt(j - 1));
+        return sb.reverse().toString();
 
     }
 }
