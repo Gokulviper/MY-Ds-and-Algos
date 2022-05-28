@@ -7,7 +7,7 @@ class BuyAndSellStocks2 {
 
     }
     public int spaceOptimized(int[] nums) {
-        // int[][]dp=new int[nums.length+1][2];
+
         int[]prev=new int[2],cur= new int[2];
         //instead of using 2 size 2 arrays you can use 4 varibles
         //but incalculation of time complextiy it should be same
