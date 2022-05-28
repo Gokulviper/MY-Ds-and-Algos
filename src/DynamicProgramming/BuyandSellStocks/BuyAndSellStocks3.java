@@ -13,6 +13,38 @@ class BuyAndSellStocks3 {
         }
         memo(nums,2,0,1,dp);
     }
+    int spaceOptimzation(int[]nums){
+        int[][]prev=new int[2][3],cur=new int[2][3];
+        int[][][]dp=new int[nums.length][2][3];
+        for (int i = nums.length-1; i >=0 ; i--) {
+            for (int buy = 0; buy < 2; buy++) {
+                for (int cap = 1; cap <3 ; cap++) {
+                    if (buy==1){
+                        cur[buy][cap]=Math.max(-nums[i]+prev[0][cap],prev[1][cap]);
+                    }else{
+                        cur[buy][cap]=Math.max(nums[i]+prev[1][cap-1],prev[0][cap]);
+                    }
+                }
+            }
+            prev=cur;
+        }
+        return prev[1][2];
+    }
+    int tabulation(int[]nums){
+        int[][][]dp=new int[nums.length][2][3];
+        for (int i = nums.length-1; i >=0 ; i--) {
+            for (int buy = 0; buy < 2; buy++) {
+                for (int cap = 1; cap <3 ; cap++) {
+                    if (buy==1){
+                        dp[i][buy][cap]=Math.max(-nums[i]+dp[i+1][0][cap],dp[i+1][1][cap]);
+                    }else{
+                        dp[i][buy][cap]=Math.max(nums[i]+dp[i+1][1][cap-1],dp[i+1][0][cap]);
+                    }
+                }
+            }
+        }
+        return dp[0][1][2];
+    }
   public  static int memo(int[]nums,int cap,int i,int buy,int[][][]dp) {
       if (i == nums.length || cap == 0) return 0;
       if (dp[i][buy][cap] == -1) {
