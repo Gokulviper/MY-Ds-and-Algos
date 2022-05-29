@@ -24,7 +24,6 @@ class WordBreak {
             }
         }
         return dp[i]==1;
-
     }
 
     private boolean f(String s, int i, Set<String> set) {
