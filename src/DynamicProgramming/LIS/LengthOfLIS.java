@@ -1,5 +1,5 @@
 package DynamicProgramming.LIS;
-
+//go binary search package for optimized approach
 import java.util.Arrays;
 
 class LengthOfLIS {
