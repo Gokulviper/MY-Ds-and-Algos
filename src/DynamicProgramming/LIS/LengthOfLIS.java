@@ -7,7 +7,6 @@ class LengthOfLIS {
 
     }
     public int singleArraySpace(int[] nums) {
-
        int[]dp=new int[nums.length];
         Arrays.fill(dp,1);//beacuse the lowest increasing subseqence length is 1
 int max=0;
