@@ -13,12 +13,10 @@ class LongestStringChain {
         
         int[] dp = new int[n];
         Arrays.fill(dp, 1);
-        
         int max = 1;
-        
         for(int i = 1; i < n; i++) {
             for(int j = 0; j < i; j++) {
-                if(compare(words[i], words[j]) == true && dp[i] <= dp[j]) {
+                if(compare(words[i], words[j]) && dp[i] <= dp[j]) {
                     dp[i] = 1 + dp[j];
                 }
             }
