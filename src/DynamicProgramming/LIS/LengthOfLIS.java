@@ -7,6 +7,7 @@ class LengthOfLIS {
 
     }
     public int singleArraySpace(int[] nums) {
+
        int[]dp=new int[nums.length];
         Arrays.fill(dp,1);//beacuse the lowest increasing subseqence length is 1
 int max=0;
@@ -40,14 +41,14 @@ int max=0;
     }
     public int tabulation(int[] nums) {
         int[][]dp=new int[nums.length+1][nums.length+1];
-
+Arrays.sort(nums);
         for(int i=nums.length-1;i>=0;i--){
             //prev index is previous of curent so you take  is 1 based indexing
             //you avoid is condition is -1 so you put +1 it could be zero
             for(int prev=i-1;prev>=-1;prev--){
                 int not_take=dp[ i+1][ prev+1];
                 int take=0;
-                if(prev==-1||nums[i]>nums[prev]){
+                if(prev==-1||nums[i]%nums[prev]==0){
                     take=1+dp[ i+1][ i+1];
                 }
                 dp[i][prev+1]= Math.max(take,not_take);
