@@ -4,6 +4,7 @@ import java.util.*;
 
 class LargestDivisibleSubset {
 	public static void main(String[] args) {
+		System.out.println(8%4);
 		int[]nums={1,2,4,8,7,8,4,3,5};
 		System.out.println(largestDivisibleSubset(nums));
 	}
@@ -20,20 +21,19 @@ localMax with current number will be the current max
     */
     public static List<Integer> largestDivisibleSubset(int[] nums) {
         	List<Integer> max = new ArrayList<>();
-	List<List<Integer>> outerSubset = new ArrayList<>();
+	List<List<Integer>> outer = new ArrayList<>();
 	Arrays.sort(nums);
 	for (int i = 0; i < nums.length; i++) {
-		List<Integer> currentSubset = new ArrayList<>();
+		List<Integer> inner = new ArrayList<>();
 		for (int j = 0; j < i; j++) {
-			if (nums[i] % nums[j] == 0&&outerSubset.get(j).size() > currentSubset.size()) {
-
-					currentSubset = outerSubset.get(j);
+			if (nums[i] % nums[j] == 0&&outer.get(j).size() > inner.size()) {
+					inner = outer.get(j);
 			}
 		}
-		outerSubset.add(new ArrayList<>(currentSubset));
-		outerSubset.get(i).add(nums[i]);
-		if (outerSubset.get(i).size() > max.size()) {
-			max = outerSubset.get(i);
+		outer.add(new ArrayList<>(inner));
+		outer.get(i).add(nums[i]);
+		if (outer.get(i).size() > max.size()) {
+			max = outer.get(i);
 		}
 	}
 	return max;
