@@ -25,7 +25,7 @@ public class KnapSack {
         for(int ind =1; ind<n; ind++){
             for(int cap=W; cap>=0; cap--){
 
-                int notTaken = 0 + prev[cap];
+                int notTaken = prev[cap];
 
                 int taken = Integer.MIN_VALUE;
                 if(wt[ind] <= cap)
@@ -40,9 +40,7 @@ public class KnapSack {
 
     private static int tabulation(int[] wt, int[] val, int n, int W) {
         int dp[][] = new int[n][W+1];
-
         //Base Condition
-
         for(int i=wt[0]; i<=W; i++){
             dp[0][i] = val[0];
         }
@@ -95,8 +93,6 @@ public class KnapSack {
             if(wt[0] <=W) return val[0];
             else return 0;
         }
-
-
         int notTaken = knapsack(wt,val,ind-1,W);
 
         int taken = Integer.MIN_VALUE;

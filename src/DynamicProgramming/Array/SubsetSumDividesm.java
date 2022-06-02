@@ -5,7 +5,7 @@ public class SubsetSumDividesm {
         int nums[]={3,6};
         System.out.println(memorzation(nums,0,0,4,new int[nums.length]));
     }
-
+//gfg
     private static boolean memorzation(int[] nums, int index, int sum, int m,int[]dp) {
         if (index == nums.length) {
             return  dp[index]%m==0;
