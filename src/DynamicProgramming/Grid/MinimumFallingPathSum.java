@@ -13,65 +13,71 @@ class MinimumFallingPathSum {
             int m = matrix.length, n = matrix[0].length;
             int result = Integer.MAX_VALUE;
 
-            int[] dp = new int[n];
+            int[] prev = new int[n];
 
             //BASE CASE
-            for(int i = 0; i < n; i++) dp[i] = matrix[0][i];
+            for(int i = 0; i < n; i++) prev[i] = matrix[0][i];
 
 
             for(int i = 1; i < m; i++){
-                int[] temp = new int[n];
+                int[] cur = new int[n];
                 for(int j = 0; j < n; j++){
-                    int up = matrix[i][j] + dp[j], left = matrix[i][j], right = matrix[i][j];
+                    int up = matrix[i][j] + prev[j], left = matrix[i][j], right = matrix[i][j];
 
-                    if(j > 0) left += dp[j - 1];
+                    if(j > 0) left += prev[j - 1];
                     else left = (int)Math.pow(10,9);
 
-                    if(j < n - 1) right += dp[j + 1];
+                    if(j < n - 1) right += prev[j + 1];
                     else right = (int)Math.pow(10,9);
 
-                    temp[j] = Math.min(up, Math.min(left, right));
+                    cur[j] = Math.min(up, Math.min(left, right));
 
                 }
-                dp = temp;
+                prev = cur;
             }
 
             for(int i = 0; i < n; i++)
-                result = Math.min(result, dp[i]);
+                result = Math.min(result, prev[i]);
 
             return result;
         }
 
 
     private static int tabulation(int[][] matrix) {
-        int m = matrix.length, n = matrix[0].length;
-        int result = Integer.MAX_VALUE;
+        int n = matrix.length;
+        int m = matrix[0].length;
 
-        int[][] dp = new int[m][n];
+        int dp[][] = new int[n][m];
 
-        //BASE CASE
-        for(int i = 0; i < n; i++) dp[0][i] = matrix[0][i];
+        // Initializing first row - base condition
+        for(int j=0; j<m; j++){
+            dp[0][j] = matrix[0][j];
+        }
 
-        for(int i = 1; i < m; i++){
-            for(int j = 0; j < n; j++){
-                int up = matrix[i][j] + dp[i - 1][j], left = matrix[i][j], right = matrix[i][j];
+        for(int i=1; i<n; i++){
+            for(int j=0;j<m;j++){
 
-                if(j> 0) left += dp[i - 1][j - 1];
-               else left = (int)Math.pow(10,9);
+                int up = matrix[i][j] + dp[i-1][j];
 
-                if(j < n - 1) right += dp[i - 1][j + 1];
-             else right = (int)Math.pow(10,9);
+                int leftDiagonal= Integer.MAX_VALUE;
+                if(j-1>=0) leftDiagonal = matrix[i][j]+dp[i-1][j-1];
 
-                dp[i][j] = Math.min(up, Math.min(left, right));
 
-                // result = Math.min(result, dp[i][j]);
+                int rightDiagonal =Integer.MAX_VALUE;
+                if(j+1<m) rightDiagonal =matrix[i][j]+ dp[i-1][j+1];
+
+                dp[i][j] = Math.min(up, Math.min(leftDiagonal,rightDiagonal));
+
             }
         }
 
-        for(int i = 0; i < n; i++)
-            result = Math.min(result, dp[m - 1][i]);
+        int maxi = Integer.MAX_VALUE;
 
-        return result;
+        for(int j=0; j<m;j++){
+            maxi = Math.min(maxi,dp[n-1][j]);
+        }
+
+        return maxi;
     }
 
 
