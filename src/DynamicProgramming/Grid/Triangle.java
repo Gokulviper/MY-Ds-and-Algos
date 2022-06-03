@@ -6,7 +6,7 @@ public class Triangle {
     public static void main(String[] args) {
   int[][]triangle={{2},{3,4},{6,5,7},{4,1,8,3}};
   int[][]dp= {{-1},{-1,-1},{-1,-1,-1},{-1,-1,-1,-1}};
-        System.out.println(Tabluation(triangle));
+
     }
     public int memo(List<List<Integer>> t) {
         int[][]dp=new int[t.size()][t.size()];
@@ -24,14 +24,17 @@ public class Triangle {
         return dp[row][col];
     }
 
-    private static int Tabluation(int[][] nums) {
-        int[][]dp=new int[nums.length][nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            dp[nums.length-1][i]=nums[nums.length-1][i];
+    public int tabulation(List<List<Integer>> t) {
+        int[][]dp=new int[t.size()][t.size()];
+        for(int i=0;i<t.size();i++){
+            dp[t.size()-1][i]=t.get(t.size()-1).get(i);
         }
-        for (int i = nums.length-2; i >=0 ; i--) {
-            for (int j = i; j >=0; j--) {
-                dp[i][j]=nums[i][j]+Math.min(dp[i+1][j],dp[i+1][j+1]);
+
+        for(int i=t.size()-2;i>=0;i--){
+            for(int j=t.get(i).size()-1;j>=0;j--){
+                int d=t.get(i).get(j)+dp[i+1][j];
+                int di=t.get(i).get(j)+dp[i+1][j+1];
+                dp[i][j]= Math.min(d,di);
             }
         }
         return dp[0][0];
