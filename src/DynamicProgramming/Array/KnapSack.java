@@ -67,7 +67,6 @@ public class KnapSack {
             if(wt[0] <=W) return val[0];
             else return 0;
         }
-
         if(dp[ind][W]!=-1)
             return dp[ind][W];
 
