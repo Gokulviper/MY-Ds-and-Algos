@@ -23,6 +23,7 @@ public class Triangle {
         }
         return dp[row][col];
     }
+
     private static int Tabluation(int[][] nums) {
         int[][]dp=new int[nums.length][nums.length];
         for (int i = 0; i < nums.length; i++) {
