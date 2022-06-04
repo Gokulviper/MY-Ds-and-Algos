@@ -30,7 +30,7 @@ class TrappingRainWater {
     public int trap(int[] nums) {
         //idea
         /*
-    maxLeft array=    find the all left previous grater elemet -traverse from left
+    maxLeft array=    find the all left previous grater element -traverse from left
     maxRight array=find all right greater element in array -traverse from right
     after you easy find the same index get the min of both left and right
     and add the answer current height - min_height
@@ -43,7 +43,7 @@ class TrappingRainWater {
         for(int i=1;i<n;i++){
            maxLeft[i]=Math.max(nums[i],maxLeft[i-1]);
         }
-        max_right[n-1]=nums[n-1];  //thrre is no next element find make  the last greater element
+        max_right[n-1]=nums[n-1];  //there is no next element find make  the last greater element
           for(int i=n-2;i>=0;i--){
             max_right[i]= Math.max(nums[i],max_right[i+1]);
         }
