@@ -3,7 +3,7 @@ package DynamicProgramming.SubSequence;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class TargetSum {
+class   TargetSum {
     public static void main(String[] args) {
 
     }
