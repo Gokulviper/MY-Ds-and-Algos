@@ -12,20 +12,20 @@ class ProductArrayExceptItSelf {
     }
     public static int[] productExceptSelf1(int[] nums) {
         int n=nums.length;
-        int result[]=new int[n];
-        int product=nums[0];
-        //first pass cumulative multiply
-        for(int i=1 ; i<n ; i++){
-            result[i]=product;
-            product*=nums[i];
-        } result[0]=product;
-        product=nums[n-1];
-        for(int i=n-2 ; i>0 ; i--){
-            result[i]*=product;
-            product*=nums[i];
+        int []ans=new int[n];
+        int prod=nums[0];
+        for(int i=1;i<n;i++){
+            ans[i]=prod;
+            prod*=nums[i];
         }
 
-        return result;
+        prod=nums[n-1];
+        for(int i=n-2;i>0;i--){
+            ans[i]*=prod;
+            prod*=nums[i];
+        }
+        ans[0]=prod;
+        return ans;
     }
     public static int[] productExceptSelfUsingDivision(int[] nums) {
         int[]ans=new int[nums.length];
