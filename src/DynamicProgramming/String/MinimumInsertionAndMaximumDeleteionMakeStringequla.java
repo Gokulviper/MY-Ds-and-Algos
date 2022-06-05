@@ -1,6 +1,9 @@
 package DynamicProgramming.String;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
 /*
 you have two strings abdcf and anu
 first find the what is both common part using lcs
@@ -10,6 +13,7 @@ return insertion and deletions
 
  */
 class MinimumInsertionAndMaximumDeleteionMakeStringequla {
+
 static int lcs(String s1, String s2) {
     
     int n=s1.length();
@@ -51,7 +55,25 @@ public static void main(String args[]) {
 
   String str1= "abcd";
   String str2= "anc";
-  System.out.println("The Minimum operations required to convert str1 to str2: "
-  +canYouMake(str1,str2));
+//  System.out.println("The Minimum operations required to convert str1 to str2: "
+ // +canYouMake(str1,str2));
+    String s="12345*+-+";
+    System.out.println(find(s));
 }
+
+    private static int find(String s) {
+    int ans=s.charAt(0)-'0';
+    int j=1;
+
+        for (int i=1;i<s.length();i++){
+            if (!Character.isDigit(s.charAt(i))){
+                if (s.charAt(i)=='*')ans*=s.charAt(j)-'0';
+                else if (s.charAt(i)=='/')ans/=s.charAt(j)-'0';
+                else if (s.charAt(i)=='-')ans-=s.charAt(j)-'0';
+                else ans+=s.charAt(j)-'0';
+                j++;
+            }
+        }
+        return ans;
+    }
 }
