@@ -7,26 +7,22 @@ public class InsertInterval {
     public static void main(String[] args) {
 
     }
-    private int[][]insertInterval(int[][]intervals,int[]newIntervals){
-        List<int[]>ans=new ArrayList<>();
-        int n=intervals.length;
-        int i=0;
-        while (i<n&&intervals[i][1]<newIntervals[0]){
-            i++;
-        }
-        for (int j = 0; j < i; j++) {
-            ans.add(intervals[j]);
-        }
-        while (i<n&&intervals[i][0]<=newIntervals[1]){
-            newIntervals[0]=Math.min(newIntervals[0],intervals[i][0] );
-           newIntervals[1]=Math.max(newIntervals[1],intervals[i][1]);
-           i++;
-        }
-        ans.add(newIntervals);
-        while (i<n){
-            ans.add(intervals[i]);
-            i++;
-        }
-        return ans.toArray(new int[ans.size()][]);
+    private int[][]insertInterval(int[][]intervals,int[]newInterval){
+      List<int[]>ans=new ArrayList<>();
+      int i=0;
+      int n=intervals.length;
+      while (i<n&&intervals[i][1]<newInterval[0]){
+          ans.add(intervals[i++]);
+      }
+      while (i<n&&intervals[i][0]<=newInterval[1]){
+          newInterval[0]=Math.min(intervals[i][0],newInterval[0]);
+          newInterval[1]=Math.max(newInterval[1],intervals[i][1]);
+          i++;
+      }
+      ans.add(newInterval);
+      while (i<n){
+          ans.add(intervals[i++]);
+      }
+      return ans.toArray(new int[ans.size()][]);
     }
 }
