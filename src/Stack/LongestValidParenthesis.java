@@ -7,6 +7,9 @@ import java.util.Stack;
 public class LongestValidParenthesis {
     public int usingStack(String s) {
         Stack<Integer> stack=new Stack<>();
+        //when initially check the length index is make the lengtg
+        stack.push(-1);
+
         int max=0;
         for(int i=0;i<s.length();i++){
             if (s.charAt(i) =='(') {
