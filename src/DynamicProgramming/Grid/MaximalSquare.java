@@ -3,6 +3,23 @@ package DynamicProgramming.Grid;
 import java.util.Arrays;
 
 public class MaximalSquare {
+    public static void main(String[] args) {
+        System.out.println(('A'-'A')+1);
+    }
+    public int tabulation(char[][] nums) {
+        int[][]dp=new int[nums.length+1][nums[0].length+1];
+        int max=0;
+        for(int i=nums.length-1;i>=0;i--){
+            for(int j=nums[0].length-1;j>=0;j--){
+                if(nums[i][j]=='1'){
+                    dp[i][j]=1+Math.min(Math.min(dp[i+1][j],dp[i][j+1]),dp[i+1][j+1]);
+                    max=Math.max(max,dp[i][j]);
+                }
+            }
+        }
+
+        return max*max;
+    }
     public int maximalSquareMemo(char[][] nums) {
         int[][]dp=new int[nums.length][nums[0].length];
         for(int r[]:dp) Arrays.fill(r,-1);
@@ -25,14 +42,14 @@ public class MaximalSquare {
         int max=0;
         for(int i=0;i<nums.length;i++){
             for(int j=0;j<nums[0].length;j++){
-                max=Math.max(memoization1(nums,i,j),max);
+                max=Math.max(f(nums,i,j),max);
             }
         }
         return max*max;
     }
-    int memoization1(char[][]nums, int i, int j){
+    int f(char[][]nums, int i, int j){
         if(i>=nums.length||j>=nums[0].length||nums[i][j]=='0')return 0;
-        return 1+Math.min(Math.min(memoization1(nums,i+1,j), memoization1(nums,i,j+1)), memoization1(nums,i+1,j+1));
+        return 1+Math.min(Math.min(f(nums,i+1,j), f(nums,i,j+1)), f(nums,i+1,j+1));
     }
     public int maximalSquareBrute(char[][] matrix) {
         int rows = matrix.length, cols = rows > 0 ? matrix[0].length : 0;
