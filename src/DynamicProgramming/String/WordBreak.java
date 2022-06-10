@@ -12,6 +12,17 @@ class WordBreak {
         Arrays.fill(dp,-1);
        return memo(s,0,set,dp);
     }
+    public boolean tabulation(String s, List<String> wordDict) {
+        Set<String> set=new HashSet<>(wordDict);
+        boolean[]dp=new boolean[s.length()];
+        for(int i=0;i<s.length();i++){
+            for(int j=0;j<=i;j++){
+                if(set.contains(s.substring(j,i+1))){
+                    if(j==0||dp[j-1]){
+                        dp[i]=true;
+                    } } } }
+        return dp[s.length()-1];
+    }
 
     private boolean memo(String s, int i, Set<String> set, int[] dp) {
         if (i==s.length())return true;
