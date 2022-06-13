@@ -3,7 +3,24 @@ package Graph;
 import java.util.*;
 
 class BFS {
-    public static ArrayList< Integer > bfsOfGraph(int V, ArrayList < ArrayList < Integer >> adj) {
+
+    public static ArrayList< Integer > bfsOfGraph1(int V, ArrayList < ArrayList < Integer >> adj) {
+    boolean[]vis=new boolean[V];
+    ArrayList<Integer>ans=new ArrayList<>();
+    Queue<Integer> queue=new LinkedList<>();
+    vis[0]=true;
+    queue.add(0);
+    while (!queue.isEmpty()){
+        int u=queue.poll();
+        ans.add(u);
+        for (int v:adj.get(u)) {
+            if (!vis[v]) {
+                vis[v] = true;
+                queue.add(v);
+            } } }
+    return ans;
+    }
+        public static ArrayList< Integer > bfsOfGraph(int V, ArrayList < ArrayList < Integer >> adj) {
 
         ArrayList < Integer > bfs = new ArrayList < > ();
         boolean vis[] = new boolean[V];
@@ -19,10 +36,10 @@ class BFS {
             // Get all adjacent vertices of the dequeued vertex s
             // If a adjacent has not been visited, then mark it
             // visited and enqueue it
-            for (Integer it: adj.get(node)) {
-                if (!vis[it]) {
-                    vis[it] = true;
-                    q.add(it);
+            for (Integer i: adj.get(node)) {
+                if (!vis[i]) {
+                    vis[i] = true;
+                    q.add(i);
                 }
             }
         }
