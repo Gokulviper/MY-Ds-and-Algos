@@ -3,33 +3,10 @@ package Graph.Representation;
 import java.util.*;
 
 class DFS {
-<<<<<<< HEAD
 
 
-    public static void dfs(int u, boolean vis[], ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> ans) {
-        ans.add(u);
-        //marking current u as visited
-        vis[u] = true;
-        //getting neighbour nodes
-        for (Integer v : adj.get(u)) {
-            if (!vis[v]) {
-                //going recursively to the end
-                dfs(v, vis, adj, ans);
-            }
-        }
-    }
-    public static ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
-        ArrayList<Integer> ans = new ArrayList<>();
-        //boolean array to keep track of visited vertices
-        boolean[] vis = new boolean[V + 1];
-        //If you are starting from node 2, then i should start from 2.
-        for (int i = 1; i <= V; i++) {
-            if (!vis[i]) dfs(i, vis, adj, ans);
-        }
-        return ans;
-    }
 
-=======
+
     public static void dfs(int node, boolean vis[], ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> storeDfs) {
         storeDfs.add(node);
         //marking current node as visited
@@ -62,7 +39,7 @@ class DFS {
             System.out.print(ans.get(i) + " ");
         }
     }
->>>>>>> origin/master
+
 
     public static void main(String args[]) {
 
@@ -86,10 +63,8 @@ class DFS {
 
 
         ArrayList<Integer> ans = dfsOfGraph(5, adj);
-<<<<<<< HEAD
+
         System.out.println(ans);
-=======
-        printAns(ans);
->>>>>>> origin/master
+
     }
 }
