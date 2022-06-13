@@ -1,4 +1,4 @@
-package Graph;
+package Graph.Representation;
 
 import java.util.*;
 
