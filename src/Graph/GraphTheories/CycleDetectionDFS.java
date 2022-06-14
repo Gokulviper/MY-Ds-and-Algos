@@ -46,15 +46,17 @@ class CycleDetectionDFS {
 
 
 class Solution {
-    public boolean checkForCycle(int node, int parent, boolean vis[], ArrayList < ArrayList 
-    < Integer >> adj) {
-        vis[node] = true;
-        for (Integer it: adj.get(node)) {
-            if (!vis[it]) {
-                if (checkForCycle(it, node, vis, adj))
+    public boolean checkForCycle(int u, int previous, boolean vis[], ArrayList <ArrayList<Integer>> adj) {
+        vis[u] = true;
+        for (Integer v: adj.get(u)) {
+            if (!vis[v]) {
+                //this case we look for the all nodes to depth gives visited return true
+                if (checkForCycle(v, u, vis, adj)) {
                     return true;
-            } else if (it != parent)
+                }
+            } else if (v != previous) {
                 return true;
+            }
         }
 
         return false;
