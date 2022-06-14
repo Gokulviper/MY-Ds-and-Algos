@@ -2,7 +2,7 @@ package ArrayProblems.BinarySearch.Matrix;
 
 import java.util.Arrays;
 
-class Solution {
+class RussainDollEnvelopes {
     public static void main(String[] args) {
         int[][]nums={{5,4},{6,4},{6,7},{2,3}};
         System.out.println(maxEnvelopes(nums));
@@ -16,9 +16,11 @@ class Solution {
         int[]dp=new int[nums.length];
         int max=0;
         for(int i=0;i<nums.length;i++){
+            //dp is a sorted sequence so find the next height ceil sequence
+            //using binary search upperbound
             int index= ceil(dp,0,max,nums[i][1]);
             dp[index]=nums[i][1];
-            if(index==max)max++;
+            if(index==max)max++; //simple the length of largest sequnce in the dp array length
         }
         return max;
     }
