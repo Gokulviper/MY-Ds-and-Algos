@@ -46,21 +46,7 @@ class CycleDetectionDFS {
 
 
 class Solution {
-    public boolean checkForCycle(int u, int previous, boolean vis[], ArrayList <ArrayList<Integer>> adj) {
-        vis[u] = true;
-        for (Integer v: adj.get(u)) {
-            if (!vis[v]) {
-                //this case we look for the all nodes to depth gives visited return true
-                if (checkForCycle(v, u, vis, adj)) {
-                    return true;
-                }
-            } else if (v != previous) {
-                return true;
-            }
-        }
 
-        return false;
-    }
     // 0-based indexing Graph
     public boolean isCycle(int V, ArrayList < ArrayList < Integer >> adj) {
         boolean vis[] = new boolean[V];
@@ -74,4 +60,24 @@ class Solution {
 
         return false;
     }
+    public boolean checkForCycle(int u, int previous, boolean vis[], ArrayList <ArrayList<Integer>> adj) {
+        //recursive
+        vis[u] = true;
+        for (int v: adj.get(u)) {
+            if (!vis[v]) {
+                //this case we look for the all nodes to depth gives visited return true
+                if (checkForCycle(v, u, vis, adj)) {
+                    //recursivelly chheck for the depth
+                    return true;
+                }
+            } else if (v != previous) {
+                //this case the node is not a previous
+                //so this have a cycle
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
