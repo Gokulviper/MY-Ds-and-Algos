@@ -33,14 +33,11 @@ class CycleDetectionDFS {
         adj.get(4).add(1);
 
 
-        Solution obj = new Solution();
-        boolean ans = obj.isCycle(V, adj);
-        if (ans) {
-            System.out.println("Cycle Detected");
-        } else {
-            System.out.println("No Cycle Detected");
 
-        }
+        //boolean ans = obj.isCycle(V, adj);
+
+
+
     }
 }
 
