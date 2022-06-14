@@ -2,23 +2,22 @@ package ArrayProblems.Greedy;
 
 public class GasStations {
     public static void main(String[] args) {
-
+//gas = [1,2,3,4,5], cost = [3,4,5,1,2]
+        int[]gas={1,2,3,4,5};
+        int []cost={3,4,5,1,2};
+        System.out.println(canCompleteCircuit(gas,cost));
     }
-    public int canCompleteCircuit(int[] gas, int[] cost) {
-        int currentPetrol=0,prevPetrol=0,result=0;
-        for(int i=0;i<gas.length;i++){
-
-            currentPetrol += (gas[i]-cost[i]);
-            //check whether at any point our petrol reached a negative value
-
-            if(currentPetrol <0){ // if it does
-                result = i+1;
-                // then all previous index will not yield result as our petrol reaches negative value hence //result will be atleast greater than index at which petrol is negative
-                prevPetrol+=currentPetrol;  // our current petrol is added to previous petrol
-                currentPetrol = 0; // current petrol becomes zero
+    public static int canCompleteCircuit(int[] gas, int[] cost) {
+        int sum = 0, surplus = 0, start = 0;
+        for (int i = 0; i < gas.length; i++){
+            sum += gas[i] - cost[i];
+            surplus += gas[i] - cost[i];
+            if (surplus < 0){
+                surplus = 0;
+                start = i + 1;
             }
         }
-        return (currentPetrol+prevPetrol) >= 0 ? result : -1; // here if current petrol and all previous sum of pterol yields atleast 0 we return index
+        return sum >= 0 ? start : -1;
 
     }
 }

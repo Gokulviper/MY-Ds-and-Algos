@@ -2,21 +2,20 @@ package Graph.GraphTheories;
 
 import java.util.*;
 
-class BipartiteGraphBFS
-{
+class BipartiteGraphBFS {
 	boolean bfsCheck(ArrayList<ArrayList<Integer>> adj, int node, int color[]) {
 		Queue<Integer> q = new LinkedList<>();
 		q.add(node); 
 		color[node] = 1; 
 		while(!q.isEmpty()) {
-			Integer nde = q.poll(); 
+			Integer u = q.poll();
 
-			for(Integer it: adj.get(nde)) {
-				if(color[it] == -1) {
-					color[it] = 1 - color[nde]; 
-					q.add(it); 
+			for(Integer v: adj.get(u)) {
+				if(color[v] == -1) {
+					color[v] = 1 - color[u];
+					q.add(v);
 				}
-				else if(color[it] == color[nde]) {
+				else if(color[v] == color[u]) {
 					return false; 
 				}
 			}
@@ -28,9 +27,7 @@ class BipartiteGraphBFS
     boolean checkBipartite(ArrayList<ArrayList<Integer>> adj, int n)
     {
         int color[] = new int[n];
-        for(int i = 0;i<n;i++) {
-        	color[i] = -1; 
-        }
+     Arrays.fill(color,-1);
         for(int i = 0;i<n;i++) {
         	if(color[i] == -1) {
         		if(!bfsCheck(adj, i, color)) {
@@ -71,7 +68,7 @@ class BipartiteGraphBFS
 		
 			
 		BipartiteGraphBFS obj = new BipartiteGraphBFS();
-		if(obj.checkBipartite(adj, n) == true) System.out.println("Yes Bipartite"); 
+		if(obj.checkBipartite(adj, n)) System.out.println("Yes Bipartite");
 		else System.out.println("Not Bipartite"); 
 		
     }
