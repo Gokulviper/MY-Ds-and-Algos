@@ -46,7 +46,7 @@ isCyclic(6,adj);
             }
         }
 
-        int cnt = 0;
+        int cnt = 0; //the counter is find the cycle in graph
         int ind=0;
 
         while(!q.isEmpty()) {
@@ -66,7 +66,8 @@ isCyclic(6,adj);
         for (int i=0;i< topo.length;i++){
             System.out.print(topo[i]+" ");
         }
-        if(cnt == N) return false;
+        if(cnt == N) return false;//the count== n so the all elements are filled
+        //but is not return true graph has cycle
         return true;
     }
     }
