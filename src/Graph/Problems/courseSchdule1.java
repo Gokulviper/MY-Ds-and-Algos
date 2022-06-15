@@ -9,7 +9,6 @@ import java.util.ArrayList;
 class courseSchdule1 {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
        ArrayList<ArrayList<Integer>>adj=createGraph(numCourses,prerequisites);
-        
         boolean ans=isCyclic(adj.size(),adj);
         return !ans;
         
