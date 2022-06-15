@@ -49,6 +49,7 @@ class CycleDetectionDirectedGraphDFS {
 
 
 	private static boolean checkCycle(int u,  ArrayList<ArrayList<Integer>> adj, boolean vis[], boolean dfsVis[]) {
+     //use backtacking becasue some points become over w need to check for next
         vis[u] = true;
         dfsVis[u] = true;
         for(Integer v: adj.get(u)) {
