@@ -9,7 +9,7 @@ class pair
     pair(int _v, int _w) {
         v = _v; weight = _w;
     }
-    int getV() {
+    int getValue() {
         return v;
     }
     int getWeight() {
@@ -20,49 +20,43 @@ class pair
 class Main
 {
 
-    void topologicalSortUtil(int node, Boolean visited[], Stack stack, ArrayList<ArrayList<pair>> adj)
+    void topologicalSortUtil(int u, boolean visited[], Stack stack, ArrayList<ArrayList<pair>> adj)
     {
 
-        visited[node] = true;
-        for(pair v: adj.get(node)) {
-            if(!visited[v.getV()]) {
-                topologicalSortUtil(v.getV(), visited, stack, adj);
+        visited[u] = true;
+        for(pair v: adj.get(u)) {
+            if(!visited[v.getValue()]) {
+                topologicalSortUtil(v.getValue(), visited, stack, adj);
             }
         }
-        stack.add(node);
+        stack.add(u);
     }
 
-    void shortestPath(int s, ArrayList<ArrayList<pair>> adj, int N)
+    void shortestPath(int target, ArrayList<ArrayList<pair>> adj, int N)
     {
         Stack stack = new Stack();
         int dist[] = new int[N];
-
-        Boolean visited[] = new Boolean[N];
+Arrays.fill(dist,Integer.MAX_VALUE);
+        boolean visited[] = new boolean[N];
         for (int i = 0; i < N; i++)
-            visited[i] = false;
-
-        for (int i = 0; i < N; i++)
-            if (!visited[i])
+        {
+            if (!visited[i]) {
                 topologicalSortUtil(i, visited, stack, adj);
-
-        for (int i = 0; i < N; i++)
-            dist[i] = Integer.MAX_VALUE;
-        dist[s] = 0;
-
+            }
+        }
+        dist[target] = 0;
         while (!stack.empty())
         {
-            int node = (int)stack.pop();
-
-            if (dist[node] != Integer.MAX_VALUE)
+            int u = (int)stack.pop();
+            if (dist[u] != Integer.MAX_VALUE)
             {
-                for(pair it: adj.get(node)) {
-                    if(dist[node] + it.getWeight() < dist[it.getV()]) {
-                        dist[it.getV()] = dist[node] + it.getWeight(); 
+                for(pair v: adj.get(u)) {
+                    if(dist[u] + v.getWeight() < dist[v.getValue()]) {
+                        dist[v.getValue()] = dist[u] + v.getWeight();
                     }
                 }
             }
         }
-
         for (int i = 0; i < N; i++)
         {
             if (dist[i] == Integer.MAX_VALUE)
