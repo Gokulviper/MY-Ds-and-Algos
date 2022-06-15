@@ -15,7 +15,7 @@ class courseSchdule1 {
         
     }
     private static boolean checkCycle(int u, ArrayList<ArrayList<Integer>> adj, boolean vis[], boolean dfsVis[]) {
-     //use backtacking becasue some points become over w need to check for next
+     //use backtracking because some points become over w need to check for next
         vis[u] = true;
         dfsVis[u] = true;
         for(Integer v: adj.get(u)) {
@@ -43,6 +43,7 @@ class courseSchdule1 {
         return false;
     }
      private ArrayList<ArrayList<Integer>> createGraph(int numCourses, int[][] pre) {
+        //this function nothing the question
        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
         for(int i=0; i<numCourses; i++) {
             graph.add(new ArrayList<>());
