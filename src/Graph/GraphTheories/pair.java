@@ -2,6 +2,8 @@ package Graph.GraphTheories;
 
 import java.util.*;
 //shortest path using directed acyclic graph
+//we already create graph is duel node the node long how is from source
+//to maintain the using the current distance + graph.getweight
 class pair
 {
     private int v;
@@ -29,7 +31,7 @@ class Main
                 topologicalSortUtil(v.getValue(), visited, stack, adj);
             }
         }
-        stack.add(u);
+        stack.push(u);
     }
 
     void shortestPath(int target, ArrayList<ArrayList<pair>> adj, int N)
