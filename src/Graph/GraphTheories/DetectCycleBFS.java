@@ -40,8 +40,8 @@ class Node {
 }
 class FindCycle {
     static boolean checkForCycle(ArrayList<ArrayList<Integer>> adj, int s, boolean vis[]) {
-        Queue<Node> q = new LinkedList<>(); //BFS
-        q.add(new Node(s, -1));
+        Queue<Node3> q = new LinkedList<>(); //BFS
+        q.add(new Node3(s, -1));
         vis[s] = true;
 
         while (!q.isEmpty()) {
@@ -51,7 +51,7 @@ class FindCycle {
 
             for (Integer v : adj.get(u)) {
                 if (!vis[v]) {
-                    q.add(new Node(v, u));
+                    q.add(new Node3(v, u));
                     vis[v] = true;
                 } else if (previous != v) return true;
             }
