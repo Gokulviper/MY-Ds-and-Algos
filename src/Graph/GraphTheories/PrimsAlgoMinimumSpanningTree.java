@@ -29,19 +29,14 @@ class PrimsAlgoMinimumSpanningTree
     {
         int key[] = new int[N];
         int parent[] = new int[N]; 
-        boolean mstSet[] = new boolean[N]; 
-        for(int i = 0;i<N;i++) {
-        	key[i] = 100000000; 
-        	mstSet[i] = false; 
-        }
-
-        PriorityQueue<Node3> pq = new PriorityQueue<Node3>(N, new Node3());
-
+        boolean mst[] = new boolean[N];
+       Arrays.fill(key,Integer.MAX_VALUE);
+        PriorityQueue<Node3> pq = new PriorityQueue(N, new Node3());
         key[0] = 0;
         parent[0] = -1; 
         pq.add(new Node3(key[0], 0));
 		// Run the loop till all the nodes have been visited
-	    // because in the brute code we checked for mstSet[node] == false while computing the minimum
+	    // because in the brute code we checked for mst[node] == false while computing the minimum
 	    // but here we simply take the minimal from the priority queue, so a lot of times a node might be taken twice
 	    // hence its better to keep running till all the nodes have been taken. 
 	    // try the following case: 
@@ -56,13 +51,13 @@ class PrimsAlgoMinimumSpanningTree
 	    // 4 5 50 
         while(!pq.isEmpty()) {
         	int u = pq.poll().getV();
-        	mstSet[u] = true;
+        	mst[u] = true;
         
-        	for(Node3 it: adj.get(u)) {
-        		if(!mstSet[it.getV()] && it.getWeight() < key[it.getV()]) {
-        			parent[it.getV()] = u; 
-        			key[it.getV()] = it.getWeight(); 
-        			pq.add(new Node3(it.getV(), key[it.getV()]));
+        	for(Node3 v: adj.get(u)) {
+        		if(!mst[v.getV()] && v.getWeight() < key[v.getV()]) {
+        			parent[v.getV()] = u;
+        			key[v.getV()] = v.getWeight();
+        			pq.add(new Node3(v.getV(), key[v.getV()]));
         		}
         	}
         }
