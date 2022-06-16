@@ -19,10 +19,10 @@ class pair
     }
 }
 
-class Main
+class ShotestPathDAGGraph
 {
 
-    void topologicalSortUtil(int u, boolean visited[], Stack stack, ArrayList<ArrayList<pair>> adj)
+  static   void topologicalSortUtil(int u, boolean visited[], Stack stack, ArrayList<ArrayList<pair>> adj)
     {
 
         visited[u] = true;
@@ -34,7 +34,7 @@ class Main
         stack.push(u);
     }
 
-    void shortestPath(int target, ArrayList<ArrayList<pair>> adj, int N)
+  static   void shortestPath(int target, ArrayList<ArrayList<pair>> adj, int N)
     {
         Stack stack = new Stack();
         int dist[] = new int[N];
@@ -82,8 +82,8 @@ Arrays.fill(dist,Integer.MAX_VALUE);
 		adj.get(4).add(new pair(2, 2));
 		adj.get(4).add(new pair(5, 4));
 		adj.get(5).add(new pair(3, 1));
-		Main obj = new Main();
-		obj.shortestPath(0, adj, n); 
+		DijktrasAlgotithmFindingShortestPath obj = new DijktrasAlgotithmFindingShortestPath();
+		shortestPath(0, adj, n);
 		
     }
 }
