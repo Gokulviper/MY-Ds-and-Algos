@@ -3,6 +3,7 @@ package Graph.Problems;
 import java.util.*;
 
 class MinimumHeightTrees {
+
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
 
         List<Integer> res = new ArrayList();
@@ -17,10 +18,10 @@ class MinimumHeightTrees {
             return res;
         }
 
-        // degree
-        int[] degree = new int[n];
+        // indegree
+        int[] indegree = new int[n];
         // adjacency list
-        List<List<Integer>> adj = new ArrayList();
+        List<List<Integer>> adj = new ArrayList<>();
 
         // for each and every node add an empty adjacency list
         for(int i=0; i<n; i++) {
@@ -29,40 +30,40 @@ class MinimumHeightTrees {
 
         // adjacency list for every node is updated
         for(int[] e: edges) {
-            degree[e[0]]++;
-            degree[e[1]]++;
+            indegree[e[0]]++;
+            indegree[e[1]]++;
             adj.get(e[0]).add(e[1]);
             adj.get(e[1]).add(e[0]);
         }
 
         // BFS starts
-        Queue<Integer> q = new LinkedList();
+        Queue<Integer> queue = new LinkedList<>();
 
         for(int i=0; i<n; i++) {
-            if(degree[i] == 1) {
-                q.add(i);
+            if(indegree[i] == 1) {
+                queue.add(i);
             }
         }
 
         // There can be atmost 2 MHTs
         while(n > 2) {
-            int size = q.size();
+            int size = queue.size();
             n -= size;
 
             // if we remove a leaf node, the neighbouring nodes' degrees must be decremented
             while(size --> 0) {
-                int v = q.poll();
-                for(int i: adj.get(v)) {
-                    degree[i]--;
-                    // the queue maintains all the nodes of degree 1
-                    if(degree[i] == 1) {
-                        q.add(i);
+                int u = queue.poll();
+                for(int v: adj.get(u)) {
+                    indegree[v]--;
+                    // the queue maintains all the nodes of indegree 1
+                    if(indegree[v] == 1) {
+                        queue.add(v);
                     }
                 }
             }
         }
 
-        res.addAll(q);
+        res.addAll(queue);
         return res;
     }
         }
