@@ -9,7 +9,7 @@ class Node6
 	private int v;
 	private int weight;
 
-	Node6(int _u, int _v, int _w) { u = _u; v = _v; weight = _w; }
+	Node6(int u, int v, int w) { this.u = u; this.v = v; weight = w; }
 
 	Node6() {}
 
@@ -55,25 +55,26 @@ class KrusKalAlgo
 	}
     void KruskalAlgo(ArrayList<Node6> adj, int N)
     {
-        Collections.sort(adj, new SortComparator());
-        int parent[] = new int[N]; 
-        int rank[] = new int[N];
+        Collections.sort(adj, new SortComparator()); //first step of kruskal sort by the edge weight
+        int parent[] = new int[N];  //the parent array store the first the every node parent node
+        int rank[] = new int[N];     //the rank array store the which having more values they increase the rank
+		//that helps to find the add the value in the same component
 
-        for(int i = 0;i<N;i++) {
+        for(int i = 0;i<N;i++) {//initially all have that index has parent
         	parent[i] = i;
         }
-
-        int costMst = 0;
+        int minimumCost = 0;
         ArrayList<Node6> mst = new ArrayList<Node6>();
-        for(Node6 it: adj) {
-        	if(findPar(it.getU(), parent) != findPar(it.getV(), parent)) {
-        		costMst += it.getWeight(); 
-        		mst.add(it); 
-        		union(it.getU(), it.getV(), parent, rank); 
+        for(Node6 v: adj) {
+        	if(findPar(v.getU(), parent) != findPar(v.getV(), parent)) { //so check both parent is same or not is same we can't because both have same component that leads a cycle the minimum sapanning tree dosent have a cycle
+        		minimumCost += v.getWeight(); //add the mst weight
+        		mst.add(v);
+        		union(v.getU(), v.getV(), parent, rank); //so the next step the connncet the the nodes
+				//the most weight of parent
         	}
         } 
-        System.out.println(costMst);
-        for(Node6 it: mst) {
+        System.out.println(minimumCost);
+        for(Node6  it: mst) {
         	System.out.println(it.getU() + " - " +it.getV()); 
         }
     }

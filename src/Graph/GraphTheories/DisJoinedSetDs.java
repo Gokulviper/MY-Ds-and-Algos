@@ -82,7 +82,7 @@ class DisjointUnionSets {
 }
  
 // Driver code
-public class Main {
+public class DisJoinedSetDs {
     public static void main(String[] args)
     {
         // Let there be 5 persons with ids as
