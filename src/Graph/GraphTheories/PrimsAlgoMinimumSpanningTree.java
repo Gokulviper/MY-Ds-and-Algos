@@ -10,7 +10,7 @@ class Node3 implements Comparator<Node3>
 
 	Node3() {}
 
-	int getV() { return v; }
+	int getValue() { return v; }
 	int getWeight() { return weight; }
 
 	@Override
@@ -25,43 +25,50 @@ class Node3 implements Comparator<Node3>
 }
 class PrimsAlgoMinimumSpanningTree
 {
+	void primsAlg1o(ArrayList<ArrayList<Node3>> adj, int N)
+	{
+		int []key=new int[N];
+		int []node=new int[N];
+		boolean[]mst=new boolean[N];
+		Arrays.fill(key,Integer.MAX_VALUE);
+		PriorityQueue<Node3>pq=new PriorityQueue<>(N,new Node3());
+		key[0]=0;
+		node[0]=-1;
+		pq.add(new Node3(key[0],0));
+		while (!pq.isEmpty()){
+			int u=pq.poll().getValue();
+			mst[u]=true;
+			for (Node3 v:adj.get(u)){
+				if (!mst[v.getValue()]&&v.getWeight()<key[v.getValue()]){
+				node[v.getValue()]= u;
+				key[v.getValue()]=v.getWeight();
+				pq.add(new Node3(v.getValue(),key[v.getValue()]));
+				}
+			}
+		}
+	}
     void primsAlgo(ArrayList<ArrayList<Node3>> adj, int N)
     {
-        int key[] = new int[N];
-        int parent[] = new int[N]; 
+        int key[] = new int[N];//this stores the edge weights get the minimum edge weight
+        int parent[] = new int[N]; //this store the actual node
         boolean mst[] = new boolean[N];
        Arrays.fill(key,Integer.MAX_VALUE);
         PriorityQueue<Node3> pq = new PriorityQueue(N, new Node3());
         key[0] = 0;
         parent[0] = -1; 
         pq.add(new Node3(key[0], 0));
-		// Run the loop till all the nodes have been visited
-	    // because in the brute code we checked for mst[node] == false while computing the minimum
-	    // but here we simply take the minimal from the priority queue, so a lot of times a node might be taken twice
-	    // hence its better to keep running till all the nodes have been taken. 
-	    // try the following case: 
-	    // Credits: Srejan Bera
-	    // 6 7 
-	    // 0 1 5 
-	    // 0 2 10 
-	    // 0 3 100 
-	    // 1 3 50 
-	    // 1 4 200
-	    // 3 4 250
-	    // 4 5 50 
         while(!pq.isEmpty()) {
-        	int u = pq.poll().getV();
+        	int u = pq.poll().getValue();
         	mst[u] = true;
         
         	for(Node3 v: adj.get(u)) {
-        		if(!mst[v.getV()] && v.getWeight() < key[v.getV()]) {
-        			parent[v.getV()] = u;
-        			key[v.getV()] = v.getWeight();
-        			pq.add(new Node3(v.getV(), key[v.getV()]));
+        		if(!mst[v.getValue()] && v.getWeight() < key[v.getValue()]) {//check the mst is not visited  and already the weigth in the key array lesser
+        			parent[v.getValue()] = u;//change the parent node
+        			key[v.getValue()] = v.getWeight();//and change the weight
+        			pq.add(new Node3(v.getValue(), key[v.getValue()]));
         		}
         	}
         }
-
         for(int i = 1;i<N;i++) {
         	System.out.println(parent[i] + " - " + i); 
         }
