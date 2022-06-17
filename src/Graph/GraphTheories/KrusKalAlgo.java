@@ -1,5 +1,5 @@
 package Graph.GraphTheories;
-
+///for minimum spanning tree
 
 import java.util.*;
 
@@ -32,6 +32,7 @@ class SortComparator implements Comparator<Node6> {
 
 	}
 }
+
 class KrusKalAlgo
 {
 	private int findPar(int u, int parent[]) {

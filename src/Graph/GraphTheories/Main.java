@@ -24,7 +24,7 @@ class DisjointUnionSets {
     }
  
     // Returns representative of x's set
-    int find(int x)
+    int findParent(int x)
     {
         // Finds the representative of the set
         // that x is an element of
@@ -32,7 +32,7 @@ class DisjointUnionSets {
             // if x is not the parent of itself
             // Then x is not the representative of
             // his set,
-            parent[x] = find(parent[x]);
+            parent[x] = findParent(parent[x]);
  
             // so we recursively call Find on its parent
             // and move i's node directly under the
@@ -47,7 +47,7 @@ class DisjointUnionSets {
     void union(int u, int v)
     {
         // Find representatives of two sets
-        int node1 = find(u), node2 = find(v);
+        int node1 = findParent(u), node2 = findParent(v);
  
         // Elements are in the same set, no need
         // to unite anything.
@@ -101,13 +101,13 @@ public class Main {
         dus.union(3, 1);
  
         // Check if 4 is a friend of 0
-        if (dus.find(4) == dus.find(0))
+        if (dus.findParent(4) == dus.findParent(0))
             System.out.println("Yes");
         else
             System.out.println("No");
  
         // Check if 1 is a friend of 0
-        if (dus.find(1) == dus.find(0))
+        if (dus.findParent(1) == dus.findParent(0))
             System.out.println("Yes");
         else
             System.out.println("No");
