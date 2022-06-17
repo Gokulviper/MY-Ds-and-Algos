@@ -17,6 +17,7 @@ class BipartiteGraphDFS {
         return true;
     }
 
+
     static boolean checkBipartite(ArrayList < ArrayList < Integer >> graph, int n) {
         int color[] = new int[n];
 
@@ -37,7 +38,7 @@ class BipartiteGraphDFS {
         ArrayList < ArrayList < Integer >> graph = new ArrayList <ArrayList< Integer >> ();
 
         for (int i = 0; i < n; i++)
-            graph.add(new ArrayList < Integer > ());
+            graph.add(new ArrayList <> ());
 
         graph.get(0).add(1);
         graph.get(1).add(0);
