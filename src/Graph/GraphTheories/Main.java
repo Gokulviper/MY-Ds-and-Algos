@@ -42,41 +42,41 @@ class DisjointUnionSets {
         return parent[x];
     }
  
-    // Unites the set that includes x and the set
-    // that includes x
-    void union(int x, int y)
+    // Unites the set that includes u and the set
+    // that includes u
+    void union(int u, int v)
     {
         // Find representatives of two sets
-        int xRoot = find(x), yRoot = find(y);
+        int node1 = find(u), node2 = find(v);
  
         // Elements are in the same set, no need
         // to unite anything.
-        if (xRoot == yRoot)
+        if (node1 == node2)
             return;
  
-        // If x's rank is less than y's rank
-        if (rank[xRoot] < rank[yRoot])
+        // If u's rank is less than v's rank
+        if (rank[node1] < rank[node2])
  
-            // Then move x under y  so that depth
+            // Then move u under v  so that depth
             // of tree remains less
-            parent[xRoot] = yRoot;
+            parent[node1] = node2;
  
-        // Else if y's rank is less than x's rank
-        else if (rank[yRoot] < rank[xRoot])
+        // Else if v's rank is less than u's rank
+        else if (rank[node2] < rank[node1])
  
-            // Then move y under x so that depth of
+            // Then move v under u so that depth of
             // tree remains less
-            parent[yRoot] = xRoot;
+            parent[node2] = node1;
  
         else // if ranks are the same
         {
-            // Then move y under x (doesn't matter
+            // Then move v under u (doesn't matter
             // which one goes where)
-            parent[yRoot] = xRoot;
+            parent[node2] = node1;
  
             // And increment the result tree's
             // rank by 1
-            rank[xRoot] = rank[xRoot] + 1;
+            rank[node1] = rank[node1] + 1;
         }
     }
 }
