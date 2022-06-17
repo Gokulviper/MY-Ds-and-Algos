@@ -4,44 +4,65 @@ import java.util.*;
 
 class MinimumHeightTrees {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
-        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-        int[] inDegree = new int[n];
-        Queue<Integer> queue = new LinkedList<>();
-        List<Integer> list = new ArrayList<>();
-        if ( n==1 ) {
-            list.add(0);
-            return list;
+
+        List<Integer> res = new ArrayList();
+
+        // security check 1
+        if(n <= 0) return res;
+
+        // security check 2
+        // returning the root node itself
+        if(n == 1) {
+            res.add(0);
+            return res;
         }
-        for ( int i=0; i<n; i++ ) {
+
+        // degree
+        int[] degree = new int[n];
+        // adjacency list
+        List<List<Integer>> adj = new ArrayList();
+
+        // for each and every node add an empty adjacency list
+        for(int i=0; i<n; i++) {
             adj.add(new ArrayList<>());
         }
-        for ( int t[]: edges ) {
-            int x = t[0];
-            int y = t[1];
-            adj.get(x).add(y);
-            adj.get(y).add(x);
-            inDegree[x]++;
-            inDegree[y]++;
+
+        // adjacency list for every node is updated
+        for(int[] e: edges) {
+            degree[e[0]]++;
+            degree[e[1]]++;
+            adj.get(e[0]).add(e[1]);
+            adj.get(e[1]).add(e[0]);
         }
-        for ( int i=0; i<n; i++ ) {
-            if ( inDegree[i]==1 ) {
-                queue.offer(i);
+
+        // BFS starts
+        Queue<Integer> q = new LinkedList();
+
+        for(int i=0; i<n; i++) {
+            if(degree[i] == 1) {
+                q.add(i);
             }
         }
-        while ( !queue.isEmpty() ) {
-            int size = queue.size();
-            list.clear();
-            while ( size-->0 ) {
-                int x = queue.poll();
-                list.add(x);
-                for ( int j: adj.get(x) ) {
-                    inDegree[j]--;
-                    if ( inDegree[j]==1 ) {
-                        queue.offer(j);
+
+        // There can be atmost 2 MHTs
+        while(n > 2) {
+            int size = q.size();
+            n -= size;
+
+            // if we remove a leaf node, the neighbouring nodes' degrees must be decremented
+            while(size --> 0) {
+                int v = q.poll();
+                for(int i: adj.get(v)) {
+                    degree[i]--;
+                    // the queue maintains all the nodes of degree 1
+                    if(degree[i] == 1) {
+                        q.add(i);
                     }
                 }
             }
         }
-        return list;
+
+        res.addAll(q);
+        return res;
     }
         }
