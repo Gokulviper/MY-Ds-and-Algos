@@ -11,20 +11,22 @@ class BridgesInGraph
 
 		for(Integer v: adj.get(u)) {
 			if(v == parent) continue;
-
 			if(!vis[v]) {
 				dfs(v, u, vis, tin, low, adj, timer);
-				low[u] = Math.min(low[u], low[v]);//after the reach the end the recursive
+				low[u] = Math.min(low[u], low[v]);//after the reach the end the recursive the change low array make that and pervious positon
 
-				if(low[v] > tin[u]) {
+				if(low[v] > tin[u]) {  //this case no way to reach the index so that is bridge
 					System.out.println(v + " " +u);
 				}
 			} else {
-				low[u] = Math.min(low[u], tin[v]);
+				low[u] = Math.min(low[u], tin[v]); //otherwise you can go the path  using other way
 			}
 		}
 	}
-    void printBridges(ArrayList<ArrayList<Integer>> adj, int n)
+
+
+
+	void printBridges(ArrayList<ArrayList<Integer>> adj, int n)
     {
        boolean vis[] = new boolean[n];
         int tin[] = new int[n];
