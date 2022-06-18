@@ -4,6 +4,13 @@ import java.util.*;
 
 class KosaRajuAlgotithmForSCC
 {
+	/*
+	1)first find the topo sort
+	2)use the stack get from the topo sort
+	//create new graph for transpose graph
+	3)make a transpose graph-because the we change directions so the strong components dosent go out
+	4)again make a dfs call for the ordering in the stack is reversely called the dfs
+	 */
 	private void dfs(int node, Stack<Integer> st, ArrayList<ArrayList<Integer>> adj, boolean vis[]) {
 		vis[node] = true;
 		for(Integer it : adj.get(node)) {
@@ -15,12 +22,12 @@ class KosaRajuAlgotithmForSCC
 		st.push(node); 
 	}
 
-	private void revDfs(int node, ArrayList<ArrayList<Integer>> transpose, boolean vis[]) {
-		vis[node] = true;
-		System.out.print(node + " "); 
-		for(Integer it : transpose.get(node)) {
-			if(!vis[it] ) {
-				revDfs(it, transpose, vis); 
+	private void revDfs(int u, ArrayList<ArrayList<Integer>> transpose, boolean vis[]) {
+		vis[u] = true;
+		System.out.print(u + " ");
+		for(Integer v : transpose.get(u)) {
+			if(!vis[v] ) {
+				revDfs(v, transpose, vis);
 			}
 		}
 	}
@@ -47,7 +54,7 @@ class KosaRajuAlgotithmForSCC
 			}
 		}
 
-		while(st.size() > 0) {
+		while(!st.isEmpty()) {
 			int node = st.peek(); 
 			st.pop(); 
 			if(!vis[node] ) {
@@ -58,7 +65,9 @@ class KosaRajuAlgotithmForSCC
 		}
 
     }
-    public static void main(String args[])
+
+
+	public static void main(String args[])
     {
         int n = 7;
         ArrayList<ArrayList<Integer> > adj = new ArrayList<ArrayList<Integer> >();
