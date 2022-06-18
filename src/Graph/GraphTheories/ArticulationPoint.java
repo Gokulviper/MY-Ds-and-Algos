@@ -1,5 +1,6 @@
 package Graph.GraphTheories;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 class ArticulationPoint
@@ -64,12 +65,22 @@ class ArticulationPoint
 	vis[u]=true;
 
 	lowTime[u]=timing[u]=timer++;
+	int child=0;
 	for (int v:adj.get(u)){
 		if (!vis[v]){
 			dffs(v,u,vis,timing,lowTime,adj,articulation,timer);
+			lowTime[u]=Math.min(lowTime[u],lowTime[v]);
+			if (parent!=1&&lowTime[v]>=timing[u]){
+				articulation[u]=1;
+			}
+			child++;
+
+		}else{
+			lowTime[u]=Math.min(lowTime[u],timing[v]);
 		}
 
 	}
+	if (child>1&&parent!=-1)articulation[u]=1;
 	}
 
 	public static void main(String args[])
