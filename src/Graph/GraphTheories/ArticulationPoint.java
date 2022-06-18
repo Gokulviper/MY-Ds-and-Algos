@@ -45,7 +45,34 @@ class ArticulationPoint
             if(isArticulation[i] == 1) System.out.println(i); 
         }
     }
-    public static void main(String args[])
+	void prin1tBridges(ArrayList<ArrayList<Integer>> adj, int n)
+	{
+		boolean[]vis=new boolean[n];
+		int[]timing=new int[n];
+		int[]lowTime=new int[n];
+		int[]Articulation=new int[n];
+		int timer=0;
+		for (int i = 0; i < n; i++) {
+			if (!vis[i]){
+				dffs(i,-1,vis,timing,lowTime,adj,Articulation,timer);
+			}
+		}
+
+	}
+
+	private void dffs(int u, int parent, boolean[] vis, int[] timing, int[] lowTime, ArrayList<ArrayList<Integer>> adj, int[] articulation, int timer) {
+	vis[u]=true;
+
+	lowTime[u]=timing[u]=timer++;
+	for (int v:adj.get(u)){
+		if (!vis[v]){
+			dffs(v,u,vis,timing,lowTime,adj,articulation,timer);
+		}
+
+	}
+	}
+
+	public static void main(String args[])
     {
         int n = 5;
         ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer> >();
