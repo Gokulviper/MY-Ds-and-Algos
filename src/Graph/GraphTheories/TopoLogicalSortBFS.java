@@ -36,11 +36,9 @@ isCyclic(6,adj);
                 indegree[v]++;
             }
         }
-
-
         Queue<Integer> q = new LinkedList<Integer>();
         for(int i = 0;i<N;i++) {
-            //adding nodes to queue with indegree = 0
+            //adding nodes to queue with inDegree = 0
             if(indegree[i] == 0) {
                 q.add(i);
             }

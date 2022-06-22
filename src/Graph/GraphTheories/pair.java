@@ -22,7 +22,7 @@ class pair
 class ShotestPathDAGGraph
 {
 
-  static   void topologicalSortUtil(int u, boolean visited[], Stack stack, ArrayList<ArrayList<pair>> adj)
+    static   void topologicalSortUtil(int u, boolean[] visited, Stack stack, ArrayList<ArrayList<pair>> adj)
     {
 
         visited[u] = true;
@@ -37,7 +37,7 @@ class ShotestPathDAGGraph
   static   void shortestPath(int target, ArrayList<ArrayList<pair>> adj, int N)
     {
         Stack stack = new Stack();
-        int dist[] = new int[N];
+        int dist[] = new int[N];//make a distance array for the exact distance value from the src to target
 Arrays.fill(dist,Integer.MAX_VALUE);
         boolean visited[] = new boolean[N];
         for (int i = 0; i < N; i++)
@@ -49,11 +49,12 @@ Arrays.fill(dist,Integer.MAX_VALUE);
         dist[target] = 0;
         while (!stack.empty())
         {
-            int u = (int)stack.pop();
+            int u = (int) stack.pop();
             if (dist[u] != Integer.MAX_VALUE)
             {
                 for(pair v: adj.get(u)) {
-                    if(dist[u] + v.getWeight() < dist[v.getValue()]) {
+                    if(dist[u] + v.getWeight() < dist[v.getValue()]) {//the new is distance is less then current distance
+                        //then make the changes
                         dist[v.getValue()] = dist[u] + v.getWeight();
                     }
                 }

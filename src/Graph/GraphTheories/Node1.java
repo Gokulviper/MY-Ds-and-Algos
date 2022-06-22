@@ -11,7 +11,7 @@ class Node1 implements Comparator<Node1>
     
     Node1() {}
     
-    int getV() { return v; }
+    int getValue() { return v; }
     int getWeight() { return weight; }
     
     @Override
@@ -39,10 +39,10 @@ class DijktrasAlgotithmFindingShortestPath
         while(pq.size() > 0) {
             Node1 u = pq.poll();
             
-            for(Node1 v: adj.get(u.getV())) {
-                if(dist[u.getV()] + v.getWeight() < dist[v.getV()]) {
-                    dist[v.getV()] = dist[u.getV()] + v.getWeight();
-                    pq.add(new Node1(v.getV(), dist[v.getV()]));
+            for(Node1 v: adj.get(u.getValue())) {
+                if(dist[u.getValue()] + v.getWeight() < dist[v.getValue()]) {
+                    dist[v.getValue()] = dist[u.getValue()] + v.getWeight();
+                    pq.add(new Node1(v.getValue(), dist[v.getValue()]));
                 }
             }
         }
