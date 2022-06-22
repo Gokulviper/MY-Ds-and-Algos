@@ -1,4 +1,4 @@
-package Graph.DFSandBFS;
+package Graph.MatrixProblems;
 
 class surroundedRegions {
 

@@ -1,4 +1,4 @@
-package Graph.DFSandBFS;
+package Graph.MatrixProblems;
 
 public class ShortestPathInBinaryMatrics {
     public static void main(String[] args) {
