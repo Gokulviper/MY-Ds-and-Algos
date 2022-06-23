@@ -27,25 +27,26 @@ class PrimsAlgoMinimumSpanningTree
 {
 	void primsAlg1o(ArrayList<ArrayList<Node3>> adj, int N)
 	{
-		int []key=new int[N];
-		int []node=new int[N];
+		int[]key=new int[N];
+		int []parent=new int[N];
 		boolean[]mst=new boolean[N];
-		Arrays.fill(key,Integer.MAX_VALUE);
 		PriorityQueue<Node3>pq=new PriorityQueue<>(N,new Node3());
+		Arrays.fill(key,Integer.MAX_VALUE);
 		key[0]=0;
-		node[0]=-1;
+		parent[0]=-1;
 		pq.add(new Node3(key[0],0));
 		while (!pq.isEmpty()){
-			int u=pq.poll().getValue();
+			int u=pq.peek().getValue();
 			mst[u]=true;
 			for (Node3 v:adj.get(u)){
 				if (!mst[v.getValue()]&&v.getWeight()<key[v.getValue()]){
-				node[v.getValue()]= u;
-				key[v.getValue()]=v.getWeight();
-				pq.add(new Node3(v.getValue(),key[v.getValue()]));
+					parent[v.getValue()]=u;
+					key[v.getValue()]=v.getWeight();
+					pq.add(new Node3(v.getValue(),key[v.getValue()]));
 				}
 			}
 		}
+
 	}
     void primsAlgo(ArrayList<ArrayList<Node3>> adj, int N)
     {
@@ -62,8 +63,9 @@ class PrimsAlgoMinimumSpanningTree
         	mst[u] = true;
         
         	for(Node3 v: adj.get(u)) {
-        		if(!mst[v.getValue()] && v.getWeight() < key[v.getValue()]) {//check the mst is not visited  and already the weigth in the key array lesser
-        			parent[v.getValue()] = u;//change the parent node
+  if(!mst[v.getValue()] && v.getWeight() < key[v.getValue()]) {//check the mst is not visited
+  	// and already the weigth in the key array lesser
+    	parent[v.getValue()] = u;//change the parent node
         			key[v.getValue()] = v.getWeight();//and change the weight
         			pq.add(new Node3(v.getValue(), key[v.getValue()]));
         		}

@@ -1,7 +1,9 @@
 package Graph.GraphTheories;
 
 import java.util.*;
-
+//this is dijskra s algo for finding sortest path in undirected graph
+//make a  distance use pq for get the minimum value
+//and update using the weight
 class Node1 implements Comparator<Node1>
 {
     private int v;
@@ -27,6 +29,22 @@ class Node1 implements Comparator<Node1>
 
 class DijktrasAlgotithmFindingShortestPath
 {
+    void short1estPath1(int s, ArrayList<ArrayList<Node1>> adj, int N){
+        int[]dis=new int[N];
+        Arrays.fill(dis,Integer.MAX_VALUE);
+        PriorityQueue<Node1>pq=new PriorityQueue<>(N,new Node1());
+        pq.add(new Node1(s,0));
+        while (!pq.isEmpty()){
+            Node1 u=pq.poll();
+            for (Node1 v:adj.get(u.getValue())){
+                if (dis[u.getValue()]+v.getWeight()<dis[v.getValue()]){
+                    dis[v.getValue()]=dis[u.getValue()]+v.getWeight();
+                    pq.add(new Node1(v.getValue(),dis[v.getWeight()]));
+                }
+            }
+        }
+    }
+
     void shortestPath1(int s, ArrayList<ArrayList<Node1>> adj, int N)
     {
         int dist[] = new int[N];
