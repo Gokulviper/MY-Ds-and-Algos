@@ -1,4 +1,6 @@
-package Treee.problems;
+package Treee.problems.HeightRelaltedProblems;
+
+
 
 class BalancedBinaryTree {
     public boolean isBalanced(TreeNode root) {

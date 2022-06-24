@@ -1,4 +1,4 @@
-package Treee.problems;
+package Treee.problems.HeightRelaltedProblems;
  class TreeNode {
     int val;
       TreeNode left;

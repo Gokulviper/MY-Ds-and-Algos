@@ -1,6 +1,8 @@
-package Treee.problems;
+package Treee.problems.HeightRelaltedProblems;
 
-class DiameterOfBinaryTree {
+import Treee.problems.HeightRelaltedProblems.TreeNode;
+
+class MaximumPathSum {
   
     public int diameterOfBinaryTree(TreeNode root) {
         int[]nums=new int[1];
