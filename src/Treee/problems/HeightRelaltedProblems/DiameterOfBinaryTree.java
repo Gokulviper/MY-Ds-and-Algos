@@ -3,6 +3,9 @@ package Treee.problems.HeightRelaltedProblems;
 
 
 class DiameterOfBinaryTree {
+    public static void main(String[] args) {
+        System.out.println(7/-2);
+    }
   
     public int diameterOfBinaryTree(TreeNode root) {
         int[]nums=new int[1];
