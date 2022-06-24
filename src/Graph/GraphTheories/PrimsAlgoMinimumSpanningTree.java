@@ -23,14 +23,38 @@ class Node3 implements Comparator<Node3>
 		return 0;
 	}
 }
-class PrimsAlgoMinimumSpanningTree
-{
+class PrimsAlgoMinimumSpanningTree{
+		void prim1sAlg1o(ArrayList<ArrayList<Node3>> adj, int N)
+		{
+			int[]key=new int[N];
+			int[] parent=new int[N];
+			boolean[]mst=new boolean[N];
+			PriorityQueue<Node3> pq=new PriorityQueue<>(N,new Node3());
+
+			Arrays.fill(key,Integer.MAX_VALUE);
+			key[0]=0;
+			parent[0]=-1;
+			pq.add(new Node3(key[0],0));
+			while (!pq.isEmpty()){
+				int u=pq.peek().getValue();
+				mst[u]=true;
+				for (Node3 v:adj.get(u)){
+					if(!mst[v.getValue()]&&key[v.getValue()]>v.getWeight()){
+						key[v.getValue()]=v.getWeight();
+						parent[v.getValue()]=u;
+					}
+				}
+			}
+
+
+		}
+
 	void primsAlg1o(ArrayList<ArrayList<Node3>> adj, int N)
 	{
 		int[]key=new int[N];
 		int []parent=new int[N];
 		boolean[]mst=new boolean[N];
-		PriorityQueue<Node3>pq=new PriorityQueue<>(N,new Node3());
+		PriorityQueue<Node3> pq=new PriorityQueue<>(N,new Node3());
 		Arrays.fill(key,Integer.MAX_VALUE);
 		key[0]=0;
 		parent[0]=-1;
