@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-;
+
 
 public class BinaryTree {
 
@@ -42,7 +42,7 @@ public class BinaryTree {
         third.left=sixth;
     }
     void preOrder(TreeNode node){
-        //this recurive approach
+        //this recursive approach
         if (node==null){
             return;
         }
