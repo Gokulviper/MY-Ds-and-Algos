@@ -15,7 +15,7 @@ class Tuple {
 
 class VericalOrderTraversal {
     public List<List<Integer>> verticalTraversal(TreeNode root) {
-         TreeMap < Integer, TreeMap < Integer, PriorityQueue < Integer >>> map = new TreeMap < > ();
+         TreeMap < Integer, TreeMap < Integer, PriorityQueue < Integer >>> map = new TreeMap <> ();
         Queue < Tuple > q = new LinkedList < Tuple > ();
         q.offer(new Tuple(root, 0, 0));
         while (!q.isEmpty()) {
