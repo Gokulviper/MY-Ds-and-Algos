@@ -1,9 +1,6 @@
 package Treee.ReprsentationAndTraversals;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-
+import java.util.*;
 
 
 public class BinaryTree {
@@ -120,6 +117,7 @@ public class BinaryTree {
         }
     }
 
+
     public static void main(String[] args) {
         BinaryTree b=new BinaryTree();
         b.createBinaryTree();
@@ -132,6 +130,24 @@ public class BinaryTree {
         b.inOrder(root);
         System.out.println();
         b.levelOrder();
+        List<List<Integer>> ans=new ArrayList<>();
+        List<Integer> path=new ArrayList<>();
+        printPath(root,path,ans);
+        System.out.println(ans);
+    }
+
+    private static void printPath(TreeNode root, List<Integer> path, List<List<Integer>> ans) {
+        if (root==null){
+            ans.add(path);
+            return;
+        }
+        path.add(root.val);
+        printPath(root.left,path,ans);
+        path.remove(path.size()-1);
+        path.add(root.val);
+        printPath(root.right, path, ans);
+        path.remove(path.size()-1);
+     //   return;
     }
 
 }
