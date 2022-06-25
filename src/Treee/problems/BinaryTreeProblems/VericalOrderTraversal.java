@@ -24,7 +24,7 @@ class VericalOrderTraversal {
             int x = temp.row;
             int y = temp.col;
             if (!map.containsKey(x)) {
-                map.put(x, new TreeMap < > ());
+                map.put(x, new TreeMap<>());
             }
             if (!map.get(x).containsKey(y)) {
                 map.get(x).put(y, new PriorityQueue < > ());
