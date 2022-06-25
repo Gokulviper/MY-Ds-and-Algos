@@ -1,7 +1,17 @@
-package Treee.problems.BinaryTreeProblems;
+package Treee.problems.BinaryTreeProblems.VerticalLinepattern;
 
 import java.util.*;
+class TreeNode
+{
+    int val;
+    TreeNode left, right;
 
+    public TreeNode(int d)
+    {
+        val = d;
+        left = right = null;
+    }
+}
 class Tuple {
     TreeNode node;
     int row;

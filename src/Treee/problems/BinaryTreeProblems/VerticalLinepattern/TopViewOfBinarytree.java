@@ -1,7 +1,18 @@
-package Treee.problems.BinaryTreeProblems;
+package Treee.problems.BinaryTreeProblems.VerticalLinepattern;
+
 
 import java.util.*;
+class Node
+{
+    int data;
+   Node left, right;
 
+    public Node(int d)
+    {
+        data = d;
+        left = right = null;
+    }
+}
 class Pair{
     int line;
     Node node;
@@ -25,7 +36,7 @@ class TopViewOfBinarytree
             Pair node = q.remove();
             int line = node.line;
             Node temp = node.node;
-            if(map.get(line) == null) map.put(line, temp.data);
+            if(!map.containsKey(line) ) map.put(line, temp.data);
             if(temp.left != null) {
                 q.add(new Pair(temp.left, line - 1));
             }
