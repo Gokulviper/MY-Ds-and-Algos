@@ -14,17 +14,15 @@ class Tuple {
 }
 
 class VericalOrderTraversal {
-    public List<List<Integer>> verticalTraversal(TreeNode root) {
-         TreeMap < Integer, TreeMap < Integer, PriorityQueue < Integer >>> map = new TreeMap <> ();
+    public static List<List<Integer>> verticalTraversal(TreeNode root) {
+         TreeMap < Integer, TreeMap < Integer, PriorityQueue <Integer>>> map = new TreeMap <> ();
         Queue < Tuple > q = new LinkedList < Tuple > ();
         q.offer(new Tuple(root, 0, 0));
         while (!q.isEmpty()) {
-            Tuple tuple = q.poll();
-            TreeNode node = tuple.node;
-            int x = tuple.row;
-            int y = tuple.col;
-
-
+            Tuple temp = q.poll();
+            TreeNode node = temp.node;
+            int x = temp.row;
+            int y = temp.col;
             if (!map.containsKey(x)) {
                 map.put(x, new TreeMap < > ());
             }
