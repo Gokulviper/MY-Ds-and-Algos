@@ -1,7 +1,24 @@
 package Treee.problems.BinaryTreeProblems;
+/*algorithm
+        /first explanation why do this modified index approach
+        --
+        *we use  to solve indexing
+        *so we maintain node as inside node type node value and the index
+        *take the first index and last index
+        *use the formula last-first+1
+        *the given a skew tree the index go around integer Overflow
 
+//so the real idea is if the level is finished make next starting node as 0
+//using  take peek and minus by the peek
+//do every children finding  index*2+1 for left
+//index*2+2 for right
+//maintain max value and return   */
 import java.util.*;
-
+/*
+inorder to avoid overflow maintain evrry level makes the every node makes the index
+so we get the minimum of previous level take that mininum take the subract with current
+node add that index 2*index+1
+ */
 class pair{
     TreeNode node;
     int num;
