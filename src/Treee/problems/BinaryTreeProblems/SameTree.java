@@ -1,16 +1,13 @@
 package Treee.problems.BinaryTreeProblems;
- class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
+
+class TreeNode{
+    int val;
+    TreeNode left,right;
+    TreeNode(int val){
+        this.val=val;
+    }
+        }
+
 class SameTree {
     public boolean isSameTree(TreeNode p, TreeNode q) {
        

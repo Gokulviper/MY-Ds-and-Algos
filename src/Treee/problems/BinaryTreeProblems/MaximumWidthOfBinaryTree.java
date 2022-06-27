@@ -20,15 +20,15 @@ so we get the minimum of previous level take that mininum take the subract with 
 node add that index 2*index+1
  */
 class pair{
-    TreeNode node;
+    Node node;
     int num;
-    pair(TreeNode node,int num){
+    pair(Node node, int num){
         this.node=node;
         this.num=num;
     }
 }
 class MaximumWidthOfBinaryTree {
-           public int widthOfBinaryTree(TreeNode root) {
+           public int widthOfBinaryTree(Node root) {
                Queue<pair> q=new LinkedList();
                if(root==null){
                    return 0;
@@ -41,7 +41,7 @@ class MaximumWidthOfBinaryTree {
                    int first=0,last=0;
                    for(int i=0;i<size;i++){
                        int index=q.peek().num-min;
-                       TreeNode temp=q.peek().node;
+                       Node temp=q.peek().node;
                        q.poll();
                        if(i==0)first=index;
                        if(i==size-1)last=index;

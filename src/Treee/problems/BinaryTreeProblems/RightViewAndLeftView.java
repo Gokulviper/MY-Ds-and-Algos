@@ -3,12 +3,12 @@ package Treee.problems.BinaryTreeProblems;
 import java.util.*;
 
 class RightViewAndLeftView {
-    public List<Integer> rightSideView(TreeNode root) {
+    public List<Integer> rightSideView(Node root) {
         List<Integer> ans=new ArrayList();
         r(root,ans,0);
         return ans;
     }
-    void r(TreeNode root,List<Integer> ans,int level){
+    void r(Node root, List<Integer> ans, int level){
         if(root==null)return ;
          if(ans.size()==level){
              ans.add(root.val);
@@ -22,7 +22,7 @@ class RightViewAndLeftView {
         f(root,ans,0);
         return ans;
     }
-    void f(Node root,ArrayList<Integer> ans,int l){
+    void f(Node root, ArrayList<Integer> ans, int l){
         if(root==null)return ;
         if(ans.size()==l){
             ans.add(root.data);
