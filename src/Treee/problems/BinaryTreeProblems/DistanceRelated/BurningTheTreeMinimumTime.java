@@ -35,11 +35,11 @@ public class BurningTheTreeMinimumTime
         }
         return ans;
     }
-    private static int findMaxDistance(HashMap<Node, Node> mpp, Node target) {
+    private static int findMaxDistance(HashMap<Node, Node> parent_track, Node root      ) {
         Queue<Node> q = new LinkedList<>();
-        q.offer(target);
-        HashMap<Node,Integer> vis = new HashMap<>();
-        vis.put(target, 1);
+        q.offer(root);
+        HashMap<Node,Boolean> visited = new HashMap<>();
+        visited.put(root, true);
         int maxi = 0;
         
         while(!q.isEmpty()) {
@@ -47,22 +47,24 @@ public class BurningTheTreeMinimumTime
             int fl = 0;
             
             for(int i = 0;i<sz;i++) {
-                Node node = q.poll();
-                if(node.left != null && vis.get(node.left) == null) {
+                Node temp = q.poll();
+                if(temp.left != null && !visited.containsKey(temp.left)) {
                     fl = 1;
-                    vis.put(node.left, 1);
-                    q.offer(node.left);
+                    visited.put(temp.left, true);
+                    q.offer(temp.left);
                 }
-                if(node.right != null && vis.get(node.right) == null) {
+                if(temp.right != null && !visited.containsKey(temp.right)) {
                     fl = 1;
-                    vis.put(node.right, 1);
-                    q.offer(node.right);
+                    visited.put(temp.right, true);
+                    q.offer(temp.right);
                 }
 
-                if(mpp.get(node) != null && vis.get(mpp.get(node)) == null) {
+                if(parent_track.containsKey(temp)  && !visited.containsKey(parent_track.get(temp)) ) {
+                    //this for checking up so first the the current node in the parent map
+                    //so check the visited not visit the parent so add the parent that is one of adjacent
                     fl = 1;
-                    vis.put(mpp.get(node), 1);
-                    q.offer(mpp.get(node));
+                    visited.put(parent_track.get(temp), true);
+                    q.offer(parent_track.get(temp));
                 }
             }
             if(fl == 1) maxi++;
@@ -71,11 +73,11 @@ public class BurningTheTreeMinimumTime
     }
     public static int timeToBurnTree(Node root, int target)
     {
-        HashMap<Node, Node> mpp = new HashMap<>();
+
         HashMap<Node, Node> parent_track=new HashMap<>();
         Node n=markParents(root,parent_track,target);
-        int ans=findMaxDistance(parent_track,n);
-      return ans;
+        return  findMaxDistance(parent_track,n);
+
 
     }
 }
