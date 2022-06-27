@@ -10,7 +10,7 @@ public class SerializeAndDeserialize {
         }
         Queue<TreeNode> q=new LinkedList();
         q.add(root);
-        //sb.append(root.val);
+
         while(!q.isEmpty()){
             TreeNode temp=q.poll();
            if(temp==null){
