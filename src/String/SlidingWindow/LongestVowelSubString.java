@@ -2,7 +2,7 @@ package String.SlidingWindow;
 
 public class LongestVowelSubString {
     public static void main(String[] args) {
-        String s="abclehjsgfi";
+        String s="aergtdgdebclehjsgfi";
         System.out.println(s.substring(1,4));
         System.out.println(longest(s));
     }
