@@ -9,7 +9,7 @@ class SymmetricTree {
        boolean f(Node node1, Node node2){
           if(node1==null&&node2==null)return true;
            if(node1==null||node2==null)return false;
-           if(node1.val!=node2.val){
+           if(node1.data!=node2.data){
                return false;
            }
            return f(node1.left,node2.right)&&f(node1.right,node2.left);

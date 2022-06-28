@@ -15,7 +15,7 @@ public class LevelOrderZigZagTraversal {
             while(size-->0)
             {
                 Node temp=q.poll();
-                level.add(temp.val);
+                level.add(temp.data);
                 if(temp.left!=null)q.add(temp.left);
                 if(temp.right!=null)q.add(temp.right);
             }

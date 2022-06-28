@@ -11,7 +11,7 @@ class RightViewAndLeftView {
     void r(Node root, List<Integer> ans, int level){
         if(root==null)return ;
          if(ans.size()==level){
-             ans.add(root.val);
+             ans.add(root.data);
          }
         r(root.right,ans,level+1);
         r(root.left,ans,level+1);
