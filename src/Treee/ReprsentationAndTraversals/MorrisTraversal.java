@@ -9,8 +9,35 @@ class MorrisTraversal {
     //use the thraded binary tree concept
     //if you go the left before mark the node the end of
     //subtree right node next connect the current head that easily we came back without recursion
-
     public List<Integer> inorderTraversal(BinaryTree.TreeNode root) {
+        List<Integer> inorder = new ArrayList<Integer>();
+
+        BinaryTree.TreeNode cur = root;
+        while(cur != null) {
+            if(cur.left == null) {
+                inorder.add(cur.val);
+                cur = cur.right;
+            }
+            else {
+                BinaryTree.TreeNode prev = cur.left;
+                while(prev.right != null && prev.right != cur) {
+                    prev = prev.right;
+                }
+
+                if(prev.right == null) {
+                    prev.right = cur;
+                    cur = cur.left;
+                }
+                else {
+                    prev.right = null;
+                    inorder.add(cur.val);
+                    cur = cur.right;
+                }
+            }
+        }
+        return inorder;
+    }
+    public List<Integer> preorder(BinaryTree.TreeNode root) {
         ArrayList < Integer > preorder = new ArrayList < > ();
         BinaryTree.TreeNode cur = root;
         while (cur != null) {
