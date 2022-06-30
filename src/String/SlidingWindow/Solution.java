@@ -3,10 +3,12 @@ package String.SlidingWindow;
 import java.util.*;
 
 class Solution {
-    public static void main(String[] args) {
-
+    public static void main(String[]a){
+        String s = "barfoothefoobarman";
+        String[]wors={"foo","bar"};
+        System.out.println(findSubstring(s,wors));
     }
-    public List<Integer> findSubstring(String s1, String[] words) {
+    public static List<Integer> findSubstring(String s1, String[] words) {
         int[]hash1=new int[26];
         int[]hash2=new int[26];
         String s2="";
@@ -32,7 +34,7 @@ class Solution {
         }
         return ans;
     }
-    private boolean match(int[]hash1,int[]hash2){
+    private static boolean match(int[]hash1,int[]hash2){
         for(int i=0;i<hash1.length;i++){
             if(hash1[i]!=hash2[i]){
                 return false;
