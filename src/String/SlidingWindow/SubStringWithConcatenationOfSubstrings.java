@@ -4,6 +4,7 @@ import java.util.*;
 
 class SubStringWithConcatenationOfSubstrings {
     public static void main(String[]a){
+        System.out.println(35-10*3);
         String s = "barfoofoobarthefoobarman";
         String[]wors={"bar","foo","the"};
         System.out.println(findSubstring(s,wors));
