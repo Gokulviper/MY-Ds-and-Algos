@@ -46,6 +46,31 @@ public class MaxPq {
         }
         heap=temp;
     }
+    public int poll(){
+        int max=heap[1];
+        Swap(1,n);
+        n--;
+
+        sink(1);  heap[n+1]=0;
+        if (n>1&&(n==(heap.length-1)/4)) {
+             resizeHeap(heap.length/2);
+        }
+        return max;
+    }
+
+    private void sink(int k) {
+        while (2*k<=n){
+            int j=2*k;
+            if (j<n&&heap[j]<heap[j+1]){
+                j++;
+            }
+            if (heap[k]>=heap[j]){
+                break;
+            }
+            Swap(j,k);
+            k=j;
+        }
+    }
 
     public static void main(String[] args) {
         MaxPq pq=new MaxPq(10);
