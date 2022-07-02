@@ -24,7 +24,6 @@ public class MinPQ {
         sink(1);
         return min;
     }
-
     private void sink(int k) {
         while (2*k<=n){
             int j=2*k;
@@ -38,7 +37,6 @@ public class MinPQ {
             k=j;
         }
     }
-
     void add(int value){
         if (n==heap.length-1){
             resize(2*heap.length);
