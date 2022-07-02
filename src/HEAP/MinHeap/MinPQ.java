@@ -18,9 +18,9 @@ public class MinPQ {
         swap(1,n);
         n--;
         heap[n+1]=0;
-        if (n>0&&(n==(heap.length-1)/4)){
-            resize(heap.length/2);
-        }
+        //if (n>0&&(n==(heap.length-1)/4)){
+      //      resize(heap.length/2);
+      //  }
         sink(1);
         return min;
     }
@@ -67,6 +67,17 @@ public class MinPQ {
     }
 
     public static void main(String[] args) {
+    MinPQ pq=new MinPQ(10);
+    pq.add(2);
+        pq.add(1);
+
+        pq.add(6);
+
+        pq.add(8);
+        pq.add(10);
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+
 
     }
 }
