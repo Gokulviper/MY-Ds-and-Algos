@@ -12,7 +12,7 @@ class SlidingWindowMaximum {
         int k=3;
         System.out.println(Arrays.toString(maxSlidingWindow(nums,k)));
     }
-    public int[] maxSlidingWindowOptiMize(int[] nums, int k) {
+    public int[] maxSlidingWindowOptimize(int[] nums, int k) {
 
         int n = nums.length;
         int[] ans = new int[n - k + 1];
