@@ -81,7 +81,11 @@ public class MaxPq {
         pq.insert(9);
         pq.insert(21);
         pq.insert(1);
-        System.out.println(pq.size());
+     //   System.out.println(pq.size());
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
         System.out.println(Arrays.toString(pq.heap));
     }
 
