@@ -5,8 +5,9 @@ import java.util.Arrays;
 public class LongestSubstringWithKRepratingCharacters {
     public static void main(String[] args) {
      String   s = "ababbc";int  k = 2;
+        System.out.println(longestSubstring(s,k));
     }
-    public int longestSubstring(String s, int k) {
+    public static int longestSubstring(String s, int k) {
         char[] str = s.toCharArray();
         int[] hash = new int[26];
         int maxUnique = getMaxUniqueLetters(s);
@@ -41,7 +42,7 @@ public class LongestSubstringWithKRepratingCharacters {
     }
 
     // get the maximum number of unique letters in the string s
-    int getMaxUniqueLetters(String s) {
+    static int getMaxUniqueLetters(String s) {
         boolean map[] = new boolean[26];
         int maxUnique = 0;
         for (int i = 0; i < s.length(); i++) {
