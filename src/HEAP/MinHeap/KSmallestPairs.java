@@ -3,15 +3,22 @@ package HEAP.MinHeap;
 import java.util.*;
 
 class KSmallestPairs {
-   public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+    public static void main(String[] args) {
+        // nums1 = [1,7,11], nums2 = [2,4,6], k = 3
+        int[]nums1={1,7,11},nums2={2,4,6};
+        int k=3;
+        System.out.println(kSmallestPairs(nums1,nums2,k));
+
+    }
+   public static List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
  
 		//In the minHeap array, 0th element refers to the curr element in nums1 and 1st element refers to curr element in nums2 
         PriorityQueue<int[]> minHeap = new PriorityQueue<>((a,b) -> (a[0] + a[1]) - (b[0] + b[1]));
         
-		// The 2nd element in the minHeap is the index of nums2, the corresponding element of nums2 is in index1 of minHeap
-        for(int i=0; i < nums1.length && i < k; i++)
-            minHeap.add(new int[]{nums1[i], nums2[0], 0});
-        
+            // The 2nd element in the minHeap is the index of nums2, the corresponding element of nums2 is in index1 of minHeap
+            for(int i=0; i < nums1.length && i < k; i++)
+                minHeap.add(new int[]{nums1[i], nums2[0], 0});
+
         List<List<Integer>> result = new ArrayList<>();
         
         for(int i=0; i < k && !minHeap.isEmpty(); i++){
