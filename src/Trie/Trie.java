@@ -1,104 +1,124 @@
 package Trie;
-class Node {
-    Node links[] = new Node[26];
-    boolean flag = false;
+class Node1 {
+    Node1 links[] = new Node1[26];
+    int cntEndWith = 0;
+    int cntPrefix = 0;
 
-    public Node() {
-
+    public Node1() {
     }
 
     boolean containsKey(char ch) {
         return (links[ch - 'a'] != null);
     }
-    Node get(char ch) {
+    Node1 get(char ch) {
         return links[ch-'a'];
     }
-    void put(char ch, Node node) {
+    void put(char ch, Node1 node) {
         links[ch-'a'] = node;
+
     }
-    void setEnd() {
-        flag = true;
+    void increaseEnd() {
+        cntEndWith++;
     }
-    boolean isEnd() {
-        return flag;
+    void increasePrefix() {
+        cntPrefix++;
+    }
+    void deleteEnd() {
+        cntEndWith--;
+    }
+    void reducePrefix() {
+        cntPrefix--;
+    }
+    int getEnd() {
+        return cntEndWith;
+    }
+    int getPrefix() {
+        return cntPrefix;
     }
 }
 public class Trie {
-    private static Node root; 
+    private Node1 root;
 
     //Initialize your data structure here
 
     Trie() {
-        root = new Node(); 
+        root = new Node1();
     }
+
+
     //Inserts a word into the trie
 
-    public static void insert(String word) {
-        Node node = root;
-        for(int i=0;i<word.length();i++) {
-            if(!node.containsKey(word.charAt(i))) { //the node is already present simply add the
-                node.put(word.charAt(i), new Node()); //every time create new reference node with marking
-            }
-            node = node.get(word.charAt(i)); //go to the next marked node
-        }
-        node.setEnd(); //at the end make true
-    }
-
-
-    //Returns if the word is in the trie
-
-    public static boolean search(String word) {
-        Node node = root; 
+    public void insert(String word) {
+        Node1 node = root;
         for(int i = 0;i<word.length();i++) {
-            if(!node.containsKey(word.charAt(i))) { //if any charcter not match with word return false
-                return false; 
+            if(!node.containsKey(word.charAt(i))) {
+                node.put(word.charAt(i), new Node1());
             }
             node = node.get(word.charAt(i)); 
+            node.increasePrefix(); 
         }
-       return node.isEnd(); //in at the end check the fully word or not
+        node.increaseEnd(); 
     }
 
-    
-    //Returns if there is any word in the trie that starts with the given prefix
 
-    public static boolean startsWith(String prefix) {
-        Node node = root; 
-        for(int i = 0;i<prefix.length();i++) {
-            if(!node.containsKey(prefix.charAt(i))) { //this function you dont need to check the end
-                return false; 
+    public int countWordsEqualTo(String word) {
+        Node1 node = root;
+        for(int i = 0;i<word.length();i++) {
+            if(node.containsKey(word.charAt(i))) {
+                node = node.get(word.charAt(i));
             }
-            node = node.get(prefix.charAt(i)); 
+            else {
+                return 0; 
+            }  
         }
-        return true; 
+        return node.getEnd(); 
     }
-    public static void main(String args[])
-{
-	int n = 5;
-	int type[] = {1, 1, 2, 3, 2};
-	String value[] = {"hello", "help", "help", "hel", "hel"};
-	Trie trie=new Trie();
-	insert("hello");
-    insert("help");
-	for (int i = 0; i < n; i++) {
-		if (type[i] == 1) {
-			trie.insert(value[i]);
-		}
-		else if (type[i] == 2) {
-			if (trie.search(value[i])) {
-				System.out.println( "true" );
-			}
-			else {
-				System.out.println("false");
-			}
-		}
-		else {
-			if (trie.startsWith(value[i])) {
-				System.out.println("true" );
-			}
-			else {
-				System.out.println("false");
-			}
-		}
-	}
+
+    public int countWordsStartingWith(String word) {
+        Node1 node = root;
+        for(int i = 0;i<word.length();i++) {
+            if(node.containsKey(word.charAt(i))) {
+                node = node.get(word.charAt(i));
+            }
+            else {
+                return 0; 
+            }  
+        }
+        return node.getPrefix(); 
+    }
+
+    public void erase(String word) {
+        Node1 node = root;
+        for(int i = 0;i<word.length();i++) {
+            if(node.containsKey(word.charAt(i))) {
+                node = node.get(word.charAt(i));
+                node.reducePrefix(); 
+            }
+            else {
+                return;
+            }
+        }
+        node.deleteEnd(); 
+    }
+ public static void main(String args[]) {
+  Trie T=new Trie();
+  T.insert("apple");
+  T.insert("apple");
+  T.insert("apps");
+  T.insert("apps");
+  String word1 = "apps";
+  System.out.println("Count Words Equal to "+word1+" "+T.countWordsEqualTo(word1));
+  String word2 = "abc";
+  System.out.println("Count Words Equal to "+word2+" "+T.countWordsEqualTo(word2));
+  String word3 = "ap";
+  System.out.println("Count Words Starting With "+word3+" "+T.countWordsStartingWith
+  (word3));
+  String word4 = "appl";
+  System.out.println("Count Words Starting With "+word4+" "+T.countWordsStartingWith
+  (word4));
+  T.erase(word1);
+  System.out.println("Count Words equal to "+word1+" "+T.countWordsEqualTo(word1));
+  
 }
+
 }
