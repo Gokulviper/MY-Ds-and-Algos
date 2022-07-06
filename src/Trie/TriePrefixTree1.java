@@ -6,6 +6,9 @@ class Node {
     public Node() {
 
     }
+    boolean isNull(int num){
+        return links[num]==null;
+    }
 
     boolean containsKey(char ch) {
         return (links[ch - 'a'] != null);
