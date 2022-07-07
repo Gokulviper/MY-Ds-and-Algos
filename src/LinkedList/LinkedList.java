@@ -1,19 +1,19 @@
 package LinkedList;
 
 import java.util.List;
-
+  class ListNode{
+    int data;
+    ListNode next;
+    ListNode(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
 
 public class LinkedList {
 
     ListNode head;
-  static   class ListNode{
-        int data;
-        ListNode next;
-        ListNode(int data){
-            this.data=data;
-            this.next=null;
-        }
-    }
+
     void add(int value){
         ListNode node=new ListNode(value);
         if (head==null){
@@ -57,15 +57,19 @@ public class LinkedList {
     }
 
     public static void main(String[] args) {
+   RemoveDupicatesFromSortedList r=new RemoveDupicatesFromSortedList();
 
 
         LinkedList l=new LinkedList();
-        l.add(5);
-        l.add(6);
-        l.add(8);
-        l.add(9);
+        l.add(1);
+        l.add(1);
+        l.add(2);
+        l.add(2);
+        l.add(3);
+        l.add(4);
+        l.add(4);
         ;
-         l.insert(1,11,null,1, l.head);
+       r.deleteDuplicates(l.head);
 
 
         l.print();
