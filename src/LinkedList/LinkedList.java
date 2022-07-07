@@ -4,10 +4,14 @@ import java.util.List;
   class ListNode{
     int data;
     ListNode next;
-    ListNode(int data){
-        this.data=data;
-        this.next=null;
+
+    ListNode(){
+   this.next=null;
     }
+      ListNode(int data){
+          this.data=data;
+          this.next=null;
+      }
 }
 
 public class LinkedList {
@@ -26,7 +30,7 @@ public class LinkedList {
         }
         current.next=node;
     }
-    void print(){
+   static void print(ListNode head){
         if(head==null){
             System.out.println("no nodes ");
             return;
@@ -58,21 +62,23 @@ public class LinkedList {
 
     public static void main(String[] args) {
    RemoveDupicatesFromSortedList r=new RemoveDupicatesFromSortedList();
+MergeTwoSortedLists m=new MergeTwoSortedLists();
+  LinkedList l2=new LinkedList();
+        LinkedList l1=new LinkedList();
+        l1.add(1);
+
+        l1.add(2);
+
+        l1.add(4);
+        l1.add(4);
+        l2.add(6);
+        l2.add(3);
+        l2.add(9);
+      ListNode node=  m.mergeTwoLists(l1.head, l2.head);
+        System.out.println();
 
 
-        LinkedList l=new LinkedList();
-        l.add(1);
-        l.add(1);
-        l.add(2);
-        l.add(2);
-        l.add(3);
-        l.add(4);
-        l.add(4);
-        ;
-       r.deleteDuplicates(l.head);
-
-
-        l.print();
+        print(node);
     }
 
     private  boolean search(int value) {
