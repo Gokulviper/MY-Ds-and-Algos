@@ -37,17 +37,31 @@ public class LinkedList {
     }
 
     public static void main(String[] args) {
+        SumOfLinkedList s=new SumOfLinkedList();
+
         LinkedList l=new LinkedList();
         l.add(5);
         l.add(6);
-        l.add(2);
+        l.add(8);
         l.add(9);
-        l.add(10);
+        ;
+
+        System.out.println(s.sum(l.head));
 
         l.print();
-        l.remove(6);
-        System.out.println();
-        l.print();
+    }
+
+    private  boolean search(int value) {
+        if (head==null)return false;
+        if (head.data==value)return true;
+        ListNode current=head;
+        while (current!=null){
+            if (current.data==value){
+                return true;
+            }
+            current=current.next;
+        }
+        return false;
     }
 
     private void remove(int value) {
