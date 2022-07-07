@@ -2,16 +2,18 @@ package LinkedList;
 
 import java.util.List;
 
-class ListNode{
-  int data;
-  ListNode next;
-   ListNode(int data){
-       this.data=data;
-       this.next=null;
-   }
-}
+
 public class LinkedList {
+
     ListNode head;
+  static   class ListNode{
+        int data;
+        ListNode next;
+        ListNode(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
     void add(int value){
         ListNode node=new ListNode(value);
         if (head==null){
@@ -35,9 +37,27 @@ public class LinkedList {
             current=current.next;
         }
     }
+    void insert(int index,int value,ListNode prev,int currentIndex,ListNode node1){
+      if (node1==null){
+          return;
+      }
+      if (index==1){
+          ListNode node=new ListNode(value);
+          node.next=node1;
+          head=node;
+          return;
+      }
+      if (currentIndex==index){
+          ListNode node=new ListNode(value);
+          ListNode t=node1;
+          prev.next=node;
+          node.next=t;
+      }
+      insert(index,value,node1,currentIndex+1,node1.next);
+    }
 
     public static void main(String[] args) {
-        SumOfLinkedList s=new SumOfLinkedList();
+
 
         LinkedList l=new LinkedList();
         l.add(5);
@@ -45,8 +65,8 @@ public class LinkedList {
         l.add(8);
         l.add(9);
         ;
+         l.insert(1,11,null,1, l.head);
 
-        System.out.println(s.sum(l.head));
 
         l.print();
     }
