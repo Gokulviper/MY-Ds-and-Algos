@@ -63,22 +63,15 @@ public class LinkedList {
     public static void main(String[] args) {
    RemoveDupicatesFromSortedList r=new RemoveDupicatesFromSortedList();
 MergeTwoSortedLists m=new MergeTwoSortedLists();
+  AddTwoNumbers a=new AddTwoNumbers();
+
   LinkedList l2=new LinkedList();
         LinkedList l1=new LinkedList();
-        l1.add(1);
+  l1.add(0);
+        l2.add(0);
+         ListNode node=a.addTwoNumbers(l1.head, l2.head);
+         print(node);
 
-        l1.add(2);
-
-        l1.add(4);
-        l1.add(4);
-        l2.add(6);
-        l2.add(3);
-        l2.add(9);
-      ListNode node=  m.mergeTwoLists(l1.head, l2.head);
-        System.out.println();
-
-
-        print(node);
     }
 
     private  boolean search(int value) {
