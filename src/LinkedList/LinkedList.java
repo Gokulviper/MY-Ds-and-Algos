@@ -1,7 +1,7 @@
 package LinkedList;
 
 import java.util.List;
-  class ListNode{
+   class ListNode{
     int data;
     ListNode next;
 

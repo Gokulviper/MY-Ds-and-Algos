@@ -1,4 +1,9 @@
-package LinkedList;
+package LinkedList.CycleDetectionProblems;
+
+class ListNode{
+    int data;
+    ListNode next;
+        }
 
 public class cycleDetection1 {
     public boolean hasCycle(ListNode head) {
