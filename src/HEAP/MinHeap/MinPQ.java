@@ -3,17 +3,17 @@ package HEAP.MinHeap;
 public class MinPQ {
     int n;
     int[]heap;
-    MinPQ(int size){
+    public MinPQ(int size){
         heap=new int[size+1];
         n=0;
     }
-    int size(){
+   public int size(){
         return n;
     }
-    boolean isEmpty(){
+  public   boolean isEmpty(){
         return n==0;
     }
-    int poll(){
+  public    int poll(){
         int min=heap[1];
         swap(1,n);
         n--;
@@ -24,7 +24,7 @@ public class MinPQ {
         sink(1);
         return min;
     }
-    private void sink(int k) {
+    public void sink(int k) {
         while (2*k<=n){
             int j=2*k;
             if (j>0&&heap[j]>heap[j+1]){
@@ -37,7 +37,7 @@ public class MinPQ {
             k=j;
         }
     }
-    void add(int value){
+   public void add(int value){
         if (n==heap.length-1){
             resize(2*heap.length);
         }
@@ -46,19 +46,19 @@ public class MinPQ {
         swim(n);
     }
 
-    private void swim(int k) {
+    public void swim(int k) {
         while (k>0&&heap[k]<heap[k/2]){
             swap(k,k/2);
             k/=2;
         }
     }
-    void swap(int a,int b){
+    public  void swap(int a,int b){
         int t=heap[a];
         heap[a]=heap[b];
         heap[b]=t;
     }
 
-    private void resize(int size) {
+    public void resize(int size) {
         int[]temp=new int[size];
         for (int i = 0; i < heap.length ; i++) {
             temp[i]= heap[i];

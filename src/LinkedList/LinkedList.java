@@ -61,15 +61,18 @@ public class LinkedList {
     }
 
     public static void main(String[] args) {
-        RotateList r=new RotateList();
+        //[1,4,5],[1,3,4],[2,6]]
   LinkedList l=new LinkedList();
+        LinkedList l2=new LinkedList();
+        LinkedList l3=new LinkedList();
   l.add(1);
-        l.add(2);
-        l.add(3);
         l.add(4);
         l.add(5);
-     ListNode cur=  r.rotateRight(l.head, 2);
-        print(cur);
+        l2.add(1);
+        l2.add(3);
+        l2.add(4);
+        l3.add(2);
+        l3.add(6);
 
 
     }
