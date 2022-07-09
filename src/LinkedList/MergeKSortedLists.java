@@ -5,9 +5,11 @@ import HEAP.MinHeap.MinPQ;
 class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
         MinPQ pq=new MinPQ(10);
+        int len=0;
         for (ListNode nodes:lists){
             ListNode current=nodes;
             while (current!=null){
+                len++;
                 pq.add(current.data);
                 current=current.next;
             }
