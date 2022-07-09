@@ -61,16 +61,16 @@ public class LinkedList {
     }
 
     public static void main(String[] args) {
-   RemoveDupicatesFromSortedList r=new RemoveDupicatesFromSortedList();
-MergeTwoSortedLists m=new MergeTwoSortedLists();
-  AddTwoNumbers a=new AddTwoNumbers();
+        RotateList r=new RotateList();
+  LinkedList l=new LinkedList();
+  l.add(1);
+        l.add(2);
+        l.add(3);
+        l.add(4);
+        l.add(5);
+     ListNode cur=  r.rotateRight(l.head, 2);
+        print(cur);
 
-  LinkedList l2=new LinkedList();
-        LinkedList l1=new LinkedList();
-  l1.add(0);
-        l2.add(0);
-         ListNode node=a.addTwoNumbers(l1.head, l2.head);
-         print(node);
 
     }
 

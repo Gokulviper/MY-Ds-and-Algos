@@ -15,7 +15,7 @@ class ReverseKgroup {
             ListNode end = present;
 
             ListNode newPresent = present;
-            for (int i = 0; newPresent != null && i < k - 1; i++) {
+            for (int i = 0; newPresent != null && i < k  - 1; i++) {
                 newPresent = newPresent.next;
             }
 
