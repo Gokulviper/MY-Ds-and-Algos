@@ -51,6 +51,7 @@ public class HashTable {
           if (head.key==key){
               return head.value;
           }
+          head=head.next;
       }
       return -1;
     }
@@ -81,5 +82,14 @@ public class HashTable {
     private int getBucketIndex(Integer key) {
         return key%numOfBuckets;
 
+    }
+
+    public static void main(String[] args) {
+        HashTable hs=new HashTable();
+        hs.put(3,3);
+        hs.put(6,6);
+        hs.put(16,16);
+        hs.put(9,9);
+        System.out.println(hs.get(16));
     }
 }
