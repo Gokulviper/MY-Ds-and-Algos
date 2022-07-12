@@ -10,7 +10,7 @@ class Node{
         this.val=val;
     }
 }
-class Solution {
+class CopyRandomList {
     public Node copyRandomList(Node head) {
         HashMap<Node,Node> map=new HashMap();
         Node cur=head;
