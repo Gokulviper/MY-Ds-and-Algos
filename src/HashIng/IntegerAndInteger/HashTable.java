@@ -43,8 +43,43 @@ public class HashTable {
         node.next=head;
       buckets[index]=node;
     }
+    public int get(Integer key){
+        if (key==null) throw new IllegalArgumentException("key is null");
+        int index=getBucketIndex(key);
+        HashNode head=buckets[index] ;
+      while (head!=null){
+          if (head.key==key){
+              return head.value;
+          }
+      }
+      return -1;
+    }
+    public int remove(Integer key){
+        if (key==null)throw new IllegalArgumentException("key not valid");
+        int index=getBucketIndex(key);
+        HashNode previous=null;
+        HashNode head=buckets[index];
+        while (head!=null){
+            if (head.key==key){
+                break;
+            }
+            if (head==null){
+                return -222;
+            }
+            previous=head;
+            head=head.next;
+        }
+        size--;
+        if (previous!=null){
+            previous.next=head.next;
+        }else{
+            buckets[index]=head.next;
+        }
+        return head.value;
+    }
 
     private int getBucketIndex(Integer key) {
         return key%numOfBuckets;
+
     }
 }
