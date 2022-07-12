@@ -1,4 +1,4 @@
-package HashIng;
+package HashIng.IntegerAndStringHash;
 
 public class HashTable {
     private HashNode[] buckets;
@@ -38,8 +38,8 @@ public class HashTable {
         if(key == null || value == null){
             throw new IllegalArgumentException("Key or Value is null !!!");
         }
-        int bucketIndex = getBucketIndex(key);
-        HashNode head = buckets[bucketIndex];
+        int index= getBucketIndex(key);
+        HashNode head = buckets[index];
         while(head != null){
             if(head.key.equals(key)){
                 head.value = value;
@@ -48,10 +48,10 @@ public class HashTable {
             head = head.next;
         }
         size++;
-        head = buckets[bucketIndex];
+        head = buckets[index];
         HashNode node = new HashNode(key, value); // (key, value) -> null
         node.next = head;
-        buckets[bucketIndex] = node;
+        buckets[index] = node;
     }
 
     private int getBucketIndex(Integer key){
@@ -62,8 +62,8 @@ public class HashTable {
         if(key == null){
             throw new IllegalArgumentException("Key is null !!!");
         }
-        int bucketIndex = getBucketIndex(key);
-        HashNode head = buckets[bucketIndex];
+        int index = getBucketIndex(key);
+        HashNode head = buckets[index];
         while(head != null){
             if(head.key.equals(key)){
                 return head.value;
