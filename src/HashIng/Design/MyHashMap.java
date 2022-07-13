@@ -1,16 +1,13 @@
 package HashIng.Design;
 
-import HashIng.IntegerAndInteger.HashTable;
-
 class MyHashMap {
    HashNode[]bucket;
-
    int numBucketIndex;
     public MyHashMap() {
         bucket=new HashNode[10];
         this.numBucketIndex=10;
     }
-    class HashNode{
+  class HashNode{
         int key;
         int value;
         HashNode next;
@@ -21,7 +18,7 @@ class MyHashMap {
     }
     
     public void put(int key, int value) {
-        int index=getBucketIndex(key);
+         int index=getBucketIndex(key);
         HashNode head=bucket[index];
         while (head!=null){
             if (head.key==key){
@@ -34,14 +31,14 @@ class MyHashMap {
         head=bucket[index];
         node.next=head;
         bucket[index]=node;
+        
     }
-
-    private int getBucketIndex(int key) {
+     private int getBucketIndex(int key) {
         return key%numBucketIndex;
     }
-
+    
     public int get(int key) {
-        int index=getBucketIndex(key);
+         int index=getBucketIndex(key);
         HashNode head=bucket[index];
         while (head!=null){
             if (head.key==key){
@@ -50,11 +47,10 @@ class MyHashMap {
             head=head.next;
         }
         return -1;
-        
     }
     
     public void remove(int key) {
-        int index=getBucketIndex(key);
+         int index=getBucketIndex(key);
         HashNode head=bucket[index],prev=null;
         while (head!=null){
             if (head.key==key)break;
@@ -65,8 +61,11 @@ class MyHashMap {
         if (prev!=null){
             prev.next=head.next;
         }else{
+            if(head!=null)
             bucket[index]=head.next;
         }
-
     }
 }
+
+
+
