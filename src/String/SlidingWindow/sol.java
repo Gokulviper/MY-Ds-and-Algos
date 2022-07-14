@@ -1,41 +1,34 @@
 package String.SlidingWindow;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class sol {
     public static void main(String[] args) {
-      foo(2345);
-        int[] nums = {1,3,5,7,9};
+
+        System.out.println(foo(23,4)); ;
+        int[] nums = {1,3,5,7,9,6,6};
+
         int n=nums.length;
         for (int i = 0; i <n ; i++) {
-            if (nums[i]%7==0){
+            if (nums[i]/3==0){
                 nums[i]=nums[i+1]+1;
-            }else if(nums[i]*2>12){
+            }else if(nums[i]*2>15){
                 nums[i-1]=nums[i]+nums[i-1];
                 break;
             }else{
                     nums[i]=nums[i]-1;
             }
         }
-        System.out.println(Arrays.toString(nums));
+     //   System.out.println(Arrays.toString(nums));
     }
-  static   void foo(int  m){
-  int n=m,i=1,j=1,k=0;
-  while (n>0){
-      i*=10;
-      n/=10;
-  }
-  i/=10;
-  while (i>0){
-      j=(m/i);
-      if (j%3==0){
-          k=(k*10)+1;
-      }else{
-          k=k*10;
+  static   int foo(int  a,int b){
+   if(b==0){
+       return a;
+   }
+   if (a%2==0){
+     foo(a/2,b/2);
+   }
+   return foo(a+1,b-1);
       }
-      i/=10;
-  }
-      System.out.println(k);
 
-    }
 }
