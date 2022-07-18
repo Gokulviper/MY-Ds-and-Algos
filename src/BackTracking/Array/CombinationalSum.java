@@ -8,29 +8,29 @@ public class CombinationalSum {
       int[]nums={2,3,6,7};int target=7;
         System.out.println(combinationSum(nums,7));
     }
+
+
     public static List<List<Integer>> combinationSum(int[] nums, int target) {
-                List<List<Integer>> ans=new ArrayList<>();
-                List<Integer>list=new ArrayList<>();
-                recur(0,nums,target,ans,list);
+                List<List<Integer>> ans = new ArrayList();
+
+                f(nums, target, new ArrayList<>(), ans, 0);
                 return ans;
-        }
-
-        private static void recur(int start, int[] nums, int target, List<List<Integer>> ans, List<Integer> list) {
-            if(target==0||target<0){
-                if(target==0){
-                   ans.add(new ArrayList(list));
-
-
-                }
-                return;
             }
-            for(int i=start;i<nums.length;i++)  {
-                if(target<nums[i]){
-                    continue;
+
+      static   void f(int[] nums, int target, List<Integer> list, List<List<Integer>> ans, int index) {
+                if (index == nums.length) {
+                    return;
                 }
-                list.add(nums[i]);
-                recur(i,nums,target-nums[i],ans,list);
-                list.remove(list.size()-1);
+                if (target == 0) {
+                    ans.add(new ArrayList<>(list));
+                    return;
+                }
+                f(nums, target, list, ans, index + 1);
+                if (nums[index] <= target) {
+                    list.add(nums[index]);
+                    f(nums, target - nums[index], list, ans, index);
+                    list.remove(list.size() - 1);
+                }
+
             }
         }
-    }
