@@ -14,51 +14,38 @@ class Nqueens2 {
 
     public int totalNQueens(int n) {
 
-        // Create n*n board and fill it with dots "."
-        char[][] board = new char[n][n];
 
-        for (char[] row : board) {
-            Arrays.fill(row, '.');
+        char[][]nums=new char[n][n];
+        for(char[]row:nums){
+            Arrays.fill(row,'.');
         }
-
-        // Call recursive function for 0th row
-         solveNQueens(board, n, 0);
-
-      return count;
+        solve(n,nums,0);
+        return count;
     }
-
-    private void solveNQueens(char[][] board, int n, int row ) {
+    public  void solve(int n,char[][]nums,int row){
         if(row==n){
-            count++;
+          count++;
             return;
         }
-        for (int col = 0; col <n ; col++) {
-
-
-        if (isSafe(board,row,col,n)) {
-            board[row][col] = 'Q';
-            solveNQueens(board, n, row + 1);
-            board[row][col] = '.';
-        }
+        for(int col=0;col<n;col++){
+            if(isSafe(n,row,col,nums)){
+                nums[row][col]='Q';
+                solve(n,nums,row+1);
+                nums[row][col]='.';
+            }
         }
     }
-
-    private boolean isSafe(char[][] board, int row, int col, int n) {
-        for (int i = 0; i <n ; i++) {
-            if (board[i][col]=='Q'){
-                return false;
-            }
+    private  boolean isSafe(int n,int row,int col,char[][]nums){
+        for(int i=0;i<n;i++){
+            if(nums[i][col]=='Q')return false;
         }
-        for (int i = row-1,j=col-1; i >=0&&j>=0 ; i--,j--) {
-            if (board[i][j]=='Q'){
-                return false;
-            }
+        for(int i=row-1,j=col-1;i>=0&&j>=0;i--,j--){
+            if(nums[i][j]=='Q')return false;
         }
-        for (int i = row-1,j=col+1; i >=0&&j<n ; i--,j++) {
-            if (board[i][j]=='Q'){
-                return false;
-            }
+        for(int i=row-1,j=col+1;i>=0&&j<n;i--,j++){
+            if(nums[i][j]=='Q')return false;
         }
         return true;
     }
+
 }
