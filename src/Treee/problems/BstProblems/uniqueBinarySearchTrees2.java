@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class uniqueBinarySearchTrees2 {
-    public List<TreeNode> generateTrees(int n) {
+    public static void main(String[] args) {
+        System.out.println(generateTrees(3));
+    }
+    public static List<TreeNode> generateTrees(int n) {
         return subTrees(1, n);
     }
-    private List<TreeNode> subTrees(int start, int end){
+    private static List<TreeNode> subTrees(int start, int end){
         List<TreeNode> res = new ArrayList<>();
         if(start>end) {
             res.add(null);
