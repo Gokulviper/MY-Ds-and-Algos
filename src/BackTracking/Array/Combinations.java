@@ -5,6 +5,9 @@ import java.util.*;
 class Combinations {
     public static void main(String[] args) {
         System.out.println(combine(4,2));
+        StringBuilder sb=new StringBuilder("abcaddddd");
+        sb.setLength(5);
+        System.out.println(sb);
     }
     public static List<List<Integer>> combine(int n, int k) {
            List ans=new ArrayList();
