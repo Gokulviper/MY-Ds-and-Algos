@@ -1,6 +1,6 @@
 package DynamicProgramming.CatlanNumber;
 
-class Solution {
+class UniqueBinarySearchTrees {
     public int numTrees(int n) {
         
       
