@@ -5,6 +5,7 @@ class Node1 {
     int cntPrefix = 0;
 
     public Node1() {
+
     }
 
     boolean containsKey(char ch) {
@@ -44,10 +45,7 @@ public class Trie {
     Trie() {
         root = new Node1();
     }
-
-
     //Inserts a word into the trie
-
     public void insert(String word) {
         Node1 node = root;
         for(int i = 0;i<word.length();i++) {
@@ -59,8 +57,6 @@ public class Trie {
         }
         node.increaseEnd(); 
     }
-
-
     public int countWordsEqualTo(String word) {
         Node1 node = root;
         for(int i = 0;i<word.length();i++) {
