@@ -1,9 +1,12 @@
 package ArrayProblems.QuickSelect;
 
+import java.util.PriorityQueue;
+
 class FindKthLargest {
     public static void main(String[] args) {
-            int[]nums={2,1,5,6,7,3,8,11,5,56};
-        System.out.println(findKthLargest(nums,3));
+            int[]nums={3,7,1,6,17,22,9,11};
+        System.out.println(findKthLargest(nums,5));
+        PriorityQueue<Integer>pq=new PriorityQueue<>((a,b)->a -b);
 
     }
     public static int findKthLargest(int[] nums, int k) {
@@ -23,7 +26,6 @@ class FindKthLargest {
         }else{
             return quickSelect(nums,pivotIndex+1,high,k);
         }
-
     }
 
     private static int partition(int[] nums, int pivot, int low, int high) {
@@ -39,7 +41,6 @@ class FindKthLargest {
          }
          return j-1;
     }
-
     private static void swap(int[] nums, int i, int j) {
         int t=nums[i];
         nums[i]=nums[j];

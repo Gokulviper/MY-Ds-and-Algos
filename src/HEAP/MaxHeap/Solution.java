@@ -9,7 +9,7 @@ class p{
         this.index=index;
     }
 }
-class KClosestPointstoOrgin {
+class Solution {
     public static void main(String[] args) {
 
     }

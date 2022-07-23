@@ -1,4 +1,4 @@
-package String;
+package String.KMP;
 
 class ImplementStrStr {
     public static void main(String[] args) {
