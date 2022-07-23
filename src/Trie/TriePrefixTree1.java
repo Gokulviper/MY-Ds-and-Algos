@@ -27,7 +27,7 @@ class Node {
     }
 }
 public class TriePrefixTree1 {
-     static Node root;
+    static Node root;
     //Initialize your data structure here
     TriePrefixTree1() {
         root = new Node(); 
@@ -43,10 +43,7 @@ public class TriePrefixTree1 {
         }
         node.setEnd(); //at the end make true
     }
-
-
     //Returns if the word is in the trie
-
     public static boolean search(String word) {
         Node node = root; 
         for(int i = 0;i<word.length();i++) {
@@ -64,7 +61,7 @@ public class TriePrefixTree1 {
     public static boolean startsWith(String prefix) {
         Node node = root; 
         for(int i = 0;i<prefix.length();i++) {
-            if(!node.containsKey(prefix.charAt(i))) { //this function you dont need to check the end
+            if(!node.containsKey(prefix.charAt(i))) { //this function you don't need to check the end
                 return false; 
             }
             node = node.get(prefix.charAt(i)); 
