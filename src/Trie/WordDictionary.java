@@ -18,35 +18,32 @@ class WordDictionary {
     }
     
     public boolean search(String word) {
-     Node node=root;
-     return dfs(word,0,root);
-    }
-
-    private boolean dfs(String word, int i, Node node) {
         boolean res=false;
         if (root==null){
             return false;
         }
-        if (i==word.length()&& root.isEnd()){
-            return true;
-        }
-        if (i==word.length()){
-            return res;
-        }
-        if (word.charAt(i)=='.'){
-            for (int j = 0; j <26 ; j++) {
-                if (!node.isNull(j)){
-                res=res||dfs(word,i+1,node.links[j]);
-
-
+        Node node = root;
+        for(int i = 0;i<word.length();i++) {
+            if (word.charAt(i) == '.') {
+                for (int j = 0; j < 26; j++) {
+                    if (!node.isNull(j)){
+                        node=node.links[j];
+                        continue;
+                    }
                 }
+                return false;
+            } else {
+                if(!node.containsKey(word.charAt(i))){ //if any charcter not match with word return false
+                    return false;
+                }
+                node = node.get(word.charAt(i));
             }
-        }else{
-            int index=word.charAt(i)-'a';
-            res=res||dfs(word, i+1, node.links[index]);
         }
-        return res;
+        return node.isEnd(); //in at the end check
+     //   return res;
     }
+
+
 
     public static void main(String[] args) {
         WordDictionary w=new WordDictionary();
