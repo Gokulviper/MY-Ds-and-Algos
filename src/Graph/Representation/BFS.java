@@ -15,7 +15,6 @@ class BFS {
         while (!q.isEmpty()) {
             Integer u = q.poll();
             bfs.add(u);
-
             // Get all adjacent vertices of the dequeued vertex s
             // If a adjacent has not been visited, then mark it
             // visited and enqueue it

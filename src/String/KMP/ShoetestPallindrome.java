@@ -2,7 +2,7 @@ package String.KMP;
 
 class ShoetestPallindrome {
     public static void main(String[] args) {
-            String s="abcd";
+            String s="aacecaaa";
         System.out.println(shortestPalindrome(s));
 
     }
@@ -16,16 +16,16 @@ class ShoetestPallindrome {
     public static int LPS(String s){
         int lps[]=new int[s.length()];
         
-        int len=0;
+        int J=0;
         int i=1;
         
         while(i<s.length()){
-            if(s.charAt(i)==s.charAt(len)){
-                len++;
-                lps[i++]=len;
+            if(s.charAt(i)==s.charAt(J)){
+
+                lps[i++]=++J;
             }
             else{
-                if(len>0) len=lps[len-1];
+                if(J>0) J=lps[J-1];
                 else i++;
             }
         }

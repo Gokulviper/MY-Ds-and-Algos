@@ -4,9 +4,6 @@ import java.util.*;
 
 class DFS {
 
-
-
-
     public static void dfs(int node, boolean vis[], ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> storeDfs) {
         storeDfs.add(node);
         //marking current node as visited
