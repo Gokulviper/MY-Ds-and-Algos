@@ -12,7 +12,6 @@ class Pair{
 class NetworkDelaytime {
 
     public int networkDelayTime(int[][] times, int n, int k) {
-
         List<List<Pair>> adj=new ArrayList<>();
         for(int i=0;i<n+1;i++){
             adj.add(new ArrayList<Pair>());
