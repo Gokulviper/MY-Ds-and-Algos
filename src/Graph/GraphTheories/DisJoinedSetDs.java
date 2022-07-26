@@ -3,7 +3,6 @@ package Graph.GraphTheories;
 class DisjointUnionSets {
     int[] rank, parent;
     int n;
- 
     // Constructor
     public DisjointUnionSets(int n)
     {
@@ -12,7 +11,6 @@ class DisjointUnionSets {
         this.n = n;
         makeSet();
     }
- 
     // Creates n sets with single item in each
     void makeSet()
     {
@@ -22,7 +20,6 @@ class DisjointUnionSets {
             parent[i] = i;
         }
     }
- 
     // Returns representative of x's set
     int findParent(int x)
     {

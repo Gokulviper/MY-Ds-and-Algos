@@ -1,4 +1,4 @@
-package Graph.Problems;
+package Graph.Problems.toposort;
 
 import java.util.ArrayList;
 //the problem is check the course is valid finsih or not
