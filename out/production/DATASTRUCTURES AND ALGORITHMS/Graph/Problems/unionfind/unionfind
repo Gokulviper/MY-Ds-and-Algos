@@ -1,0 +1,304 @@
+https://leetcode.com/problems/redundant-connection/
+https://leetcode.com/problems/redundant-connection-ii/
+https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
+https://leetcode.com/problems/number-of-operations-to-make-network-connected/
+https://leetcode.com/problems/number-of-provinces/
+There is a similar code for the simple concept. I hope this Helps:
+
+1. 684. Redundant Connection
+
+// Union Find
+class Solution {
+
+    int[] parent;
+    public int[] findRedundantConnection(int[][] edges) {
+        parent = new int[edges.length+1];
+
+        for(int i=0; i<parent.length; i++) {
+            parent[i] = i;
+        }
+
+        for(int[] edge : edges) {
+            if(find(edge[0]) == find(edge[1])) {
+                return edge;
+            }
+
+            union(edge[0], edge[1]);
+        }
+
+        return new int[]{-1,-1};
+    }
+
+
+    // Find Operation
+    private int find(int node) {
+        while(parent[node] != node) {
+            node = parent[node];
+        }
+
+        return node;
+    }
+
+    //Find Union Operation
+    private void union(int i, int j) {
+        int iRoot = find(i);
+        int jRoot = find(j);
+
+        if(iRoot != jRoot) {
+            parent[jRoot] = iRoot;
+        }
+    }
+}
+2. 685. Redundant Connection II
+
+/*
+To  detect a cycle in Directed graph, there are two possible cases.
+
+Case 1: There is a cycle but every node has a single parent
+Case 2: These is no cycle but a single node has two or more parents
+
+1)    5<-----1----->2                 2)            5<-----1----->2
+             ^      |                                      |      |
+             |      |                                      |      |
+             |      V                                      V      V
+             4<-----3                                      4<-----3
+*/
+class Solution {
+
+    int[] parent;
+
+    public int[] findRedundantDirectedConnection(int[][] edges) {
+        parent = new int[edges.length+1];
+
+        int[] ans1 = null;
+        int[] ans2 = null;
+
+		// checking that how many parents are possible for each node
+        for(int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+
+            if(parent[v] > 0) {
+                ans1 = new int[]{parent[v], v};
+                ans2 = edge;      // Last possible edge which is creating the cycle - need to return this of we have multiple answer
+            }
+
+            parent[v] = u;
+        }
+
+//         System.out.println(Arrays.toString(parent)+" "+Arrays.toString(ans1)+" "+Arrays.toString(ans2));
+        parent = new int[edges.length+1];
+
+        for(int i=0; i<parent.length; i++) {
+            parent[i] = i;
+        }
+
+        for(int[] edge: edges) {
+
+            if(edge == ans2) continue;
+
+            if(find(edge[0]) == find(edge[1])) {
+                return ans1 == null ? edge : ans1;
+            }
+            union(edge[0], edge[1]);
+        }
+
+        return ans2;
+    }
+
+    private int find(int node) {
+        while(parent[node] != node) {
+            node = parent[node];
+        }
+
+        return node;
+    }
+
+    private void union(int i, int j) {
+        int iRoot = find(i);
+        int jRoot = find(j);
+
+        if(iRoot!=jRoot) {
+            parent[jRoot] = iRoot;
+        }
+
+    }
+}
+3. 947. Most Stones Removed with Same Row or Column
+
+class Solution {
+    public int removeStones(int[][] stones) {
+        int[] parent = new int[stones.length];
+
+        Arrays.fill(parent, -1);
+
+        for(int i=0; i<stones.length; i++) {
+            for(int j=i+1; j<stones.length; j++) {
+                int[] stone1 = stones[i];
+                int[] stone2 = stones[j];
+
+                if(stone1[0] == stone2[0] || stone1[1] == stone2[1]) {
+                    union(i, j, parent);
+                }
+            }
+        }
+
+        int component = 0;
+        for(int i=0; i<parent.length; i++) {
+            if(parent[i] == -1) {
+                component++;
+            }
+        }
+
+        return stones.length-component;
+    }
+
+    private int find(int node, int[] parent) {
+        while(parent[node]!=-1) {
+            node = parent[node];
+        }
+
+        return node;
+    }
+
+    private void union(int A, int B, int[] parent) {
+        int parentA = find(A, parent);
+        int parentB = find(B, parent);
+
+        if(parentA != parentB) {
+            parent[parentB] = parentA;
+        }
+    }
+}
+4. 1319. Number of Operations to Make Network Connected
+
+class Solution {
+    public int makeConnected(int n, int[][] connections) {
+        int[] parent = new int[n];
+        int extraCable = 0;
+
+        Arrays.fill(parent, -1);
+
+        for(int[] connection : connections) {
+
+            if(find(connection[0], parent) == find(connection[1], parent)) {
+                extraCable++;
+            } else {
+                union(connection[0], connection[1], parent);
+            }
+        }
+
+        int component = 0;
+
+        for(int i=0; i<parent.length; i++) {
+           if( parent[i] == -1) {
+               component++;
+           }
+        }
+
+        return extraCable >= (component-1) ? component-1 : -1;
+    }
+
+    private int find(int node, int[] parent) {
+        while(parent[node] != -1) {
+            node = parent[node];
+        }
+
+        return node;
+    }
+
+    private void union(int a, int b, int[] parent) {
+        int parentA = find(a, parent);
+        int parentB = find(b, parent);
+
+        if(parentA != parentB) {
+            parent[parentB] = parentA;
+        }
+    }
+}
+5. 547. Number of Provinces
+
+/*
+// Same as https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
+
+class Solution {
+
+    int ans = 0;
+    public int findCircleNum(int[][] isConnected) {
+
+        BFS(isConnected);
+
+        return ans;
+    }
+
+    private void BFS(int[][] isConnected) {
+        boolean[] visited = new boolean[isConnected.length];
+
+        for(int i=0; i<isConnected.length; i++) {
+            if(visited[i] == false) {
+                ans++;
+                BFSHelper(isConnected, visited, i);
+            }
+        }
+    }
+
+    private void BFSHelper(int[][] isConnected, boolean[] visited, int start) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
+        visited[start] = true;
+
+        while(!queue.isEmpty()) {
+            int node = queue.poll();
+
+            for(int i=0; i<isConnected.length; i++) {
+                if(isConnected[node][i] == 1 && visited[i] != true) {
+                    queue.add(i);
+                    visited[i] = true;
+                }
+            }
+        }
+    }
+}
+*/
+class Solution {
+    int[] parent;
+    public int findCircleNum(int[][] isConnected) {
+        parent = new int[isConnected.length];
+        int result = 0;
+
+        Arrays.fill(parent, -1);
+
+        for(int i=0; i<isConnected.length; i++) {
+            for(int j=0; j<isConnected[0].length; j++) {
+                if(isConnected[i][j] == 1) {
+                    union(i,j);
+                }
+            }
+        }
+
+        for(int i=0; i<parent.length; i++) {
+            if(parent[i] == -1) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
+    private int find(int node) {
+        while(parent[node] != -1) {
+            node = parent[node];
+        }
+
+        return node;
+    }
+
+    private void union(int a, int b) {
+        int parentA = find(a);
+        int parentB = find(b);
+
+        if(parentA != parentB) {
+            parent[parentB] = parentA;
+        }
+    }
+}
