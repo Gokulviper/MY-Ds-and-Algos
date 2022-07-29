@@ -5,13 +5,8 @@ import java.util.*;
 public class LongestCommonSubsequence {
     public static void main(String[] args) {
         List<String>ans=new ArrayList<>();
-        printAllSubsequence("","abc",ans,2);
-        int n=6;
-        int i=7;
-        System.out.println(i%n);
-        System.out.println(tabulationPrintTheString("abcde","bdgek"));
-     //   System.out.println(ans);
-      //  System.out.println(space("abcde","ace"));
+      tabulation("abcde","ace");
+
     }
     private static int space(String s1, String s2) {
         int n=s1.length(),m=s2.length();
@@ -71,8 +66,9 @@ int []prev=new int[m+1],cur=new int[m+1];
     private static int tabulation(String s1, String s2) {
         int n=s1.length(),m=s2.length();
         int[][]dp=new int[n+1][m+1];
-        for(int i=1;i<=n;i++){
-            for(int j=1;j<=m;j++){
+        int i=1,j=1;
+        for( i=1;i<=n;i++){
+            for( j=1;j<=m;j++){
                 if(s1.charAt(i-1)==s2.charAt(j-1))dp[i][j]=1+dp[i-1][j-1];
                 else dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
             }
