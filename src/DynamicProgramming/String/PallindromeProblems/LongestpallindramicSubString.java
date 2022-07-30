@@ -1,4 +1,4 @@
-package DynamicProgramming.String;
+package DynamicProgramming.String.PallindromeProblems;
 /*
 : Expand Around Center
 Algorithm :

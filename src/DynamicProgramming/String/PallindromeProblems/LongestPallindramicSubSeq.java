@@ -1,4 +1,4 @@
-package DynamicProgramming.String;
+package DynamicProgramming.String.PallindromeProblems;
 
 class LongestPallindramicSubSeq {
     //you know how to get the longest subseq

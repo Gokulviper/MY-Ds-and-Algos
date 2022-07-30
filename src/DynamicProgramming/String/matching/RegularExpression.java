@@ -1,9 +1,40 @@
 package DynamicProgramming.String.matching;
 
 class RegularExpression {
+
+
+    public boolean tabulation(String s, String p) {
+        boolean[][]dp=new boolean[s.length()+1][p.length()+1];
+        dp[s.length()][p.length()]=true;
+        for (int i = s.length(); i >=0; i--) {
+            for (int j = p.length()-1; j >=0 ; j--) {
+                boolean match= (i<s.length()&&(s.charAt(i)==p.charAt(j)||p.charAt(j)=='.'));
+                if(j+1<p.length()&&p.charAt(j+1)=='*'){
+                    dp[i][j]=dp[i][j+2]||(match&&dp[i+1][j]);
+                }else if(match) {
+                  dp[i][j]=dp[i+1][j+1];
+                }
+            }
+        }
+        return dp[0][0];
+    }
     public boolean isMatch(String s, String p) {
         Boolean[][] dp = new Boolean[s.length()+1][p.length()];
         return dfs(s, p, dp, 0, 0);
+    }
+    boolean dfsRecursion(String s, String p, boolean[][] dp, int i, int j){
+        if(i>=s.length()&&j>=p.length())return true;
+        if(j>=p.length())return false;
+
+        boolean match= (i<s.length()&&(s.charAt(i)==p.charAt(j)||p.charAt(j)=='.'));
+        if(j+1<p.length()&&p.charAt(j+1)=='*'){
+            return dfsRecursion(s,p,dp,i,j+2)||(match&&dfsRecursion(s,p,dp,i+1,j));
+        }else if(match){
+            return dfsRecursion(s,p,dp,i+1,j+1);
+        }else{
+            return false;
+        }
+
     }
     boolean dfs(String s, String p, Boolean[][] dp, int i, int j){
         // Both i and j have reached the end of the respective strings, then definitely we have found a match
