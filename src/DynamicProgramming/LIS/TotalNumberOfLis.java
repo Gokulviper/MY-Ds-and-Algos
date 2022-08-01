@@ -3,7 +3,11 @@ package DynamicProgramming.LIS;
 import java.util.Arrays;
 
 class TotalNumberOfLis {
-    public int findNumberOfLIS(int[] nums) {
+    public static void main(String[] args) {
+        int[]nums={1,3,5,4,7};
+        System.out.println(findNumberOfLIS(nums));
+    }
+    public static int findNumberOfLIS(int[] nums) {
           int[]dp=new int[nums.length];
         int count[]=new int[nums.length];//count is make how many differnt subsequnce
         ///if you see any equal dp[i]==dp[j]+1 index you can add up the current count you can return count

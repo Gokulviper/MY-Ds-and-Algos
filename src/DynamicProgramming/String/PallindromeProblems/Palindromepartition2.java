@@ -1,7 +1,23 @@
 package DynamicProgramming.String.PallindromeProblems;
 
 class Palindromepartition2 {
-    public int minCut(String s) {
+    int minCut(String s , int i , int n , int[] dp){
+        if(i == n)  return 0;
+
+        if(dp[i] != -1)     return dp[i];
+
+        int mini = Integer.MAX_VALUE;
+        for(int ind = i ; ind < n ; ind++){
+            if(pal(s,i , ind))
+            {
+                mini = Math.min(mini , 1+minCut(s , ind+1 , n , dp));
+            }
+        }
+
+        return dp[i] = mini;
+    }
+
+    public int tabulation(String s) {
         int[]dp=new int[s.length()+1];
    
         if(s.length()==0||s.length()==1)return 0;

@@ -1,4 +1,4 @@
-package Stack;
+package Stack.MonotonicstackProblems;
 
 
 import java.util.Arrays;
