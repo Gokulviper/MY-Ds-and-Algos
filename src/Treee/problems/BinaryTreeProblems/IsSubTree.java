@@ -1,6 +1,6 @@
 package Treee.problems.BinaryTreeProblems;
 
-class Solution {
+class IsSubTree {
 
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
          if(root==null||subRoot==null)return false;

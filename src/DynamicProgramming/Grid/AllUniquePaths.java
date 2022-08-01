@@ -12,6 +12,24 @@ public class AllUniquePaths {
         System.out.println(tabulation(4,4));
         System.out.println(allPaths(2,6));
     }
+    public int uniquePaths(int m, int n) {
+        int[]prev=new int[n];
+        int[]cur=new int[n];
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(i==0&&j==0){
+                    cur[j]=1;
+                }else{
+                    int count=0;
+                    if(i>0) count+=prev[j];
+                    if(j>0) count+=cur[j-1];
+                    cur[j]=count;
+                }
+            }
+            prev=cur;
+        }
+        return prev[n-1];
+    }
 
     private static int tabulation(int row, int col) {
         int[][]dp=new int[row][col];

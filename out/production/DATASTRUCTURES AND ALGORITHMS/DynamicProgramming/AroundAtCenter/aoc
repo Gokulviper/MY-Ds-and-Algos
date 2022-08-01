@@ -1,0 +1,127 @@
+EXPAND FROM CENTER Approach is used here :
+Its an optimal approach for many palindrome ques
+Example -
+
+Longest Palindrome
+Print all Palindrome
+Count all Palindrome
+All ques code are present below
+
+Count All palindrome (Curr ques) ->
+class Solution {
+
+
+    int expandFromCenter(String s , int i , int j){
+        int count=0;
+        while(i>=0 && j<s.length() && s.charAt(i--)==s.charAt(j++)){
+
+            count++;
+        }
+        return count;
+    }
+
+
+    public int countSubstrings(String str) {
+
+       if(str.length()==0) return 0;
+       int res=0;
+
+        for(int i=0 ;i<str.length() ;i++){
+            res+=expandFromCenter(str ,i , i);
+            res+=expandFromCenter(str ,i , i+1);
+        }
+         return res;
+     }
+
+}
+Longest Palindrome ->
+
+class Solution {
+
+    public int ExpandFromCenter(String s ,int i , int j){
+
+        while(i>=0 && j<s.length()){
+            if(s.charAt(i)==s.charAt(j)){
+                i--;
+                j++;
+            }
+            else{
+                break;
+            }
+        }
+
+        return j-i-1;
+    }
+    public String longestPalindrome(String s) {
+
+        if(s.length()==0) return s;
+
+        int start=0;
+        int end=0;
+
+
+        for(int i=0 ;i<s.length();i++){
+
+            int l1 = ExpandFromCenter(s , i ,i);
+            int l2 = ExpandFromCenter(s , i , i+1);
+
+            int len = Math.max(l1, l2);
+
+            if((end-start)<len){
+
+                start= i-(len-1)/2;
+                end = i+len/2;
+            }
+        }
+
+        return s.substring(start , end+1);
+
+
+    }
+}
+Print all Palindromes ->
+package com.company;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class allPalindromes {
+
+    static void ExpandFromCenter(String str , int i , int j,  List<String> res){
+
+        while(i>=0 &&  j<str.length()){
+
+            if(str.charAt(i)== str.charAt(j)){
+                res.add(str.substring(i , j+1));
+                i--;
+                j++;
+            }
+            else{
+                break;
+            }
+        }
+
+    }
+    static List<String>  allP(String str){              //Use set for non repeating palindromes
+
+        List<String> res = new ArrayList<>();
+        for(int i=0 ;i<str.length() ;i++){
+            ExpandFromCenter(str , i , i , res);
+            ExpandFromCenter(str , i , i+1 , res);
+        }
+        return res;
+    }
+    public static void main(String[] args) {
+
+        String str = "abba";
+
+        List<String> res = allP(str);
+
+        System.out.println("All palindromes: ");
+        for(String s : res){
+            System.out.println(s);
+        }
+
+
+    }
+}
