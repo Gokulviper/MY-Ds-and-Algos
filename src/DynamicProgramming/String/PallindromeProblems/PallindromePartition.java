@@ -3,12 +3,16 @@ package DynamicProgramming.String.PallindromeProblems;
 import java.util.*;
 
 class PallindromePartition {
-    public List<List<String>> partition(String s) {
+    public static void main(String[] args) {
+        String s="aab";
+        System.out.println(partition(s));
+    }
+    public static List<List<String>> partition(String s) {
         List<List<String>> result = new ArrayList<List<String>>();
         dfs(0, result, new ArrayList<String>(), s);
         return result;
     }
-    void dfs(int start, List<List<String>> result, List<String> currentList, String s) {
+   static void  dfs(int start, List<List<String>> result, List<String> currentList, String s) {
         if (start >= s.length()) result.add(new ArrayList<String>(currentList));
         for (int end = start; end < s.length(); end++) {
             if (isPalindrome(s, start, end)) {
@@ -21,7 +25,7 @@ class PallindromePartition {
         }
     }
 
-    boolean isPalindrome(String s, int low, int high) {
+  static   boolean isPalindrome(String s, int low, int high) {
         while (low < high) {
             if (s.charAt(low++) != s.charAt(high--)) return false;
         }
