@@ -1,7 +1,21 @@
 package DynamicProgramming.Grid;
 
 import java.util.Arrays;
+/*
+the general idea is [ 0 1 1 1
+																1 1 1 1
+																0  1 11 ] simplye traverse the 3 ways
+											right==down== diagonal
+											three given right answer thats true
+		but that makes three call for every time that makes lot time to run
 
+	the idea is check the deptn first search find the min of three methods
+	  this case [ 0 0 1
+											1 11]
+											this case we at the index mat[1][2] the check the diagonal backword
+											that is zero the minimum of this call is 1 that why we can get the min
+						if we get 2 so the square is 2*2 =4 total length
+*/
 public class MaximalSquare {
     public static void main(String[] args) {
         System.out.println(('A'-'A')+1);

@@ -1,7 +1,18 @@
 package DynamicProgramming.CatlanNumber;
 
 class UniqueBinarySearchTrees {
-    public int numTrees(int n) {
+    public static void main(String[] args) {
+        System.out.println(numTrees(5));
+    }
+    public int Recursion(int n) {
+        int ans=0;
+        if(n<=1)return 1;
+        for(int i=0;i<n;i++){
+            ans+=numTrees(i)*numTrees(n-i-1);
+        }
+        return ans;
+    }
+    public static int numTrees(int n) {
         
       
         int dp[] = new int[n+1];
