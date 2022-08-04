@@ -1,14 +1,17 @@
 package DynamicProgramming.String.PallindromeProblems;
 
 class LongestPallindramicSubSeq {
+    public static void main(String[] args) {
+        System.out.println(longestPalindromeSubseq("bbbab"));
+    }
     //you know how to get the longest subseq
     //pallindrome is same to reverse the string send same method os lcs
-    public int longestPalindromeSubseq(String s) {
+    public static int longestPalindromeSubseq(String s) {
         StringBuilder sb=new StringBuilder(s);
         String rev=sb.reverse().toString();
         return lcs(s,rev);
     }
-    private int lcs(String s1,String s2){
+    private static int lcs(String s1,String s2){
         int n=s1.length();
         int[][]dp=new int[n+1][n+1];
         for(int i=1;i<=n;i++){
