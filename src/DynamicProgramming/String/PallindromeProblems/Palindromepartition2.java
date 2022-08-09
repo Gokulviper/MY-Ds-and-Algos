@@ -16,6 +16,15 @@ class Palindromepartition2 {
 
         return dp[i] = mini;
     }
+    int recursion(String s,int index){
+        if(index==s.length())return 0;
+        int min=Integer.MAX_VALUE;
+        for(int i=index;i<s.length();i++){
+            if(pal(s,index,i))
+                min=Math.min(min,1+recursion(s,i+1));
+        }
+        return min;
+    }
 
     public int tabulation(String s) {
         int[]dp=new int[s.length()+1];
