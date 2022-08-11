@@ -8,19 +8,7 @@ public class LongestCommonSubsequence {
       tabulation("abcde","ace");
 
     }
-    private static int space(String s1, String s2) {
-        int n=s1.length(),m=s2.length();
-int []prev=new int[m+1],cur=new int[m+1];
-        for(int i=1;i<=n;i++){
-            for(int j=1;j<=m;j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1))cur[j]=1+prev[j-1];
-                else cur[j]=Math.max(prev[j],cur[j-1]);
-            }
-            prev=cur.clone();
-        }
-        return prev[m];
-    }
-    private static int tabulationPrintTheString(String s1, String s2) {
+    private static String space(String s1, String s2) {
         int n=s1.length(),m=s2.length();
         int[][]dp=new int[n+1][m+1];
 
@@ -30,37 +18,31 @@ int []prev=new int[m+1],cur=new int[m+1];
                 else dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
             }
         }
-        int i=n;
-        int j=m;
         StringBuilder sb=new StringBuilder();
-        while (i>0&&j>0){
-            if (s1.charAt(i-1)==s2.charAt(j-1)){
+        int i=n,j=m;
+        while(i>0&&j>0){
+
+            if(s1.charAt(i-1)==s2.charAt(j-1)){
                 sb.insert(0,s1.charAt(i-1));
-                i--;j--;
-            }else if(s1.charAt(i-1)>s2.charAt(j-1)){
-                i--;
-            }else j--;
-        }
-        System.out.println(sb.toString());
-      //  for(int k=1; k<=len;k++){
-        //    str +="$"; // dummy string
-      //  }
-    /*    StringBuilder ss= new StringBuilder(s1);
-        StringBuilder str2=new StringBuilder(str);
-        while(i>0 && j>0){
-            if(ss.charAt(i-1) == s2.charAt(j-1)){
-                str2.setCharAt(index,ss.charAt(i-1) );
-                index--;
                 i--;
                 j--;
-            }
-            else if(ss.charAt(i-1)>s2.charAt(j-1)){
+            }else if(dp[i-1][j]>dp[i][j-1]){
+                sb.insert(0,s1.charAt(i-1));
                 i--;
+            }else{
+                sb.insert(0,s2.charAt(j-1));
+                j--;
             }
-            else j--;
         }
-        System.out.println(str2);*/
-        return dp[n][m];
+        while(i>0){
+            sb.insert(0,s1.charAt(i-1));
+            i--;
+        }
+        while(j>0){
+            sb.insert(0,s2.charAt(j-1));
+            j--;
+        }
+        return sb.toString();
     }
 
     private static int tabulation(String s1, String s2) {
