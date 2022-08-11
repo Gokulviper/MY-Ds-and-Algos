@@ -12,7 +12,7 @@ class ConstructPreorderAndInorder {
         return build(preorder,inorder,0,n-1,0,n-1,map);
         
     }
-    TreeNode build(int[] preorder, int[] inorder,int ps,int pe,int is,int ie,Map<Integer,Integer>map){
+    TreeNode build(int[] preorder, int[] inorder, int ps, int pe, int is, int ie, Map<Integer,Integer>map){
         if(ps>pe||is>ie)return null;
         TreeNode root=new TreeNode(preorder[ps]);
         int ipos=map.get(preorder[ps]);

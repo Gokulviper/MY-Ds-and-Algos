@@ -1,6 +1,6 @@
 package Treee.problems.BinaryTreeProblems;
 
-class TreeNode{
+class TreeNode {
     int val;
     TreeNode left,right;
     TreeNode(int val){

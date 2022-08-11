@@ -11,7 +11,7 @@ class ConstructInorderAndPostorder {
         }
         return build(inorder,postorder,0,n-1,0,n-1,map);
     }
-    TreeNode build(int[]inorder,int[]postorder,int is,int ie,int ps,int pe,Map<Integer,Integer> map){
+    TreeNode build(int[]inorder, int[]postorder, int is, int ie, int ps, int pe, Map<Integer,Integer> map){
         if(ps>pe||is>ie)return null;
         TreeNode root=new TreeNode(postorder[pe]);
         int inpos=map.get(postorder[pe]);
