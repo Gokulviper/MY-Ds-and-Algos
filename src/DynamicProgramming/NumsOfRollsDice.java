@@ -8,6 +8,7 @@ class NumsOfRollsDice {
     int f(int n,int faces,int target){
         if(target==0)return 1;
         if(target<0)return 0;
+
         if(n==0)return target==0?1:0;
         int ans=0;
         for(int i=1;i<=faces;i++){
