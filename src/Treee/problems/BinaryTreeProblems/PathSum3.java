@@ -71,6 +71,7 @@ class PathSum3 {
         if(root==null){
             return ans;
         }
+
        
        sum+=root.val;
         if(map.containsKey(sum-target)){
