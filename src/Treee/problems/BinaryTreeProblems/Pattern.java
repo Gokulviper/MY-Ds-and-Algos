@@ -8,7 +8,7 @@ import java.util.*;
 public class Pattern {
     public static void main(String[] args) {
         int[] nums = {4, 4, 52, 5, 7, 9, 8, 22, 35};
-        print(467876);
+      prin1t(6);
     }
 
     private static void shortestPath(int[] nums) {
@@ -42,6 +42,27 @@ public class Pattern {
         if (sign == '*') return num1 * num2;
         return num1 / num2;
     }
+    static void prin1t(int n) {
+        for (int i = 0; i <n ; i++) {
+            for (int j = 0; j <2*n ; j++) {
+                if (i==0||i==n-1){
+                    System.out.print("* ");
+
+                }else if(j==0){
+                    System.out.print("* ");
+                }
+            }
+            if (i!=0&&i!=n-1) {
+                for (int j = 0; j < 2 * n - 2; j++) {
+                    System.out.print("  ");
+                }
+
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+    }
 
     static void print(int n) {
         int size = 2 * n - 1;
@@ -50,7 +71,9 @@ public class Pattern {
 //outer loop
             for (int j = 1; j <= size; j++) {
 //calculates and prints the values for pattern
-                System.out.print(Math.max(Math.abs(i - n), Math.abs(j - n)) + 1 + " ");
+                int val=Math.abs(i-n)+1;
+                int val2=Math.abs(j-n)+1;
+                System.out.print(Math.max(val,val2));
             }
             System.out.println();
         }
