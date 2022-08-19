@@ -4,11 +4,23 @@ import java.util.Arrays;
 
 public class SortColors {
     public static void main(String[] args) {
-        int[]nums={2,1,2,1,0,2,2,1,0,1};
-        sortColors(nums);
+        int[]nums={0,1,0,1,0,0,0,1,1,0};
+        move(nums);
+   //     sortColors(nums);
 
         System.out.println(Arrays.toString(nums));
     }
+
+    private static void move(int[] nums) {
+        int j=0;
+        for (int i = 0; i <nums.length ; i++) {
+            if(nums[i]==1&&nums[j]==0){
+                swap(nums,i,j);
+                j++;
+            }else if(nums[j]==1)j++;
+        }
+    }
+
     public static void sortColors(int[] nums) {
         int start=0,mid=0,end=nums.length-1;
         while (mid<=end){
