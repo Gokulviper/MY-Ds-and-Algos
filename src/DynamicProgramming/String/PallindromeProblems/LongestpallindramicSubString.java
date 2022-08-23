@@ -16,6 +16,8 @@ class LongestpallindramicSubString {
         System.out.println(longestPalindrome(s));
 
     }
+
+
     public static String longestPalindrome(String s) {
         if(s==null || s.length()<1) return "";
         

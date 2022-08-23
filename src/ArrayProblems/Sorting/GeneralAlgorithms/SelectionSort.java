@@ -9,10 +9,31 @@ import java.util.Arrays;
 public class SelectionSort {
     public static void main(String[] args) {
         int[]nums={6,4,76,2,7,2,};
-        selectionSort(nums);
+        selectionS1ort(nums);
         System.out.println(Arrays.toString(nums));
 
     }
+
+    private static void selectionS1ort(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            int last=nums.length-i-1;
+            int max=getMax(nums,0,last);
+            int t=nums[max];
+            nums[max]=nums[last];
+            nums[last]=t;
+        }
+    }
+
+    private static int getMax(int[] nums, int start, int end) {
+        int max=start;
+        for (int i = start; i <=end ; i++) {
+            if (nums[i]>nums[max]){
+                max=i;
+            }
+        }
+        return max;
+    }
+
     static void selectionSort(int[]nums){
         for (int i = 0; i < nums.length; i++) {
             int last=nums.length-i-1;
