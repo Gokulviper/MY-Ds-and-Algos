@@ -11,11 +11,26 @@ import java.util.Arrays;
 //
 public class BubbleSort {
     public static void main(String[] args) {
-        int[]nums={4,3,6,2,79,98};
-        bubbleSort(nums);
+        int[]nums={0,0,4,0,3,4,2,445};
+        bubbleSort1(nums);
         System.out.println(Arrays.toString(nums));
-
     }
+
+    private static void bubbleSort1(int[] nums) {
+        for (int i = 0; i <nums.length ; i++) {
+            boolean swaped=false;
+            for (int j = 1; j <nums.length-i ; j++) {
+                if (nums[j]<nums[j-1]){
+                    swaped=true;
+                  int t=nums[j];
+                  nums[j]=nums[j-1];
+                  nums[j-1]=t;
+                }
+            }
+            if (!swaped)break;
+        }
+    }
+
     public static void bubbleSort(int[]nums){
 
         for (int i = 0; i < nums.length ; i++) {
