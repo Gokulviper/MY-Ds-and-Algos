@@ -13,10 +13,23 @@ import java.util.Arrays;
 public class InsertionSort {
     public static void main(String[] args) {
         int[]nums={6,3,7,8,93,3,7,2};
-        insertionSort(nums);
+        insertionSort1(nums);
         System.out.println(Arrays.toString(nums));
 
     }
+
+    private static void insertionSort1(int[] nums) {
+        for (int i = 0; i <nums.length-1 ; i++) {
+            for (int j = i+1; j >0 ; j--) {
+                if(nums[j]<nums[j-1]){
+                    int t=nums[j];
+                    nums[j]=nums[j-1];
+                    nums[j-1]=t;
+                }
+            }
+        }
+    }
+
     static void insertionSort(int[]nums){
         for (int i = 0; i <nums.length-1     ; i++) {
             for (int j =i+1; j >0 ; j--) {
