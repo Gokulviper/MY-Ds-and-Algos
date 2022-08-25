@@ -37,12 +37,13 @@ class LongestpallindramicSubString {
     
     private static int expandAroundCenter(String s, int left , int right){
         while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
-            left--;
+                left--;
             right++;
         }
         return right-left-1;
     }
     public String longestPalindrome1(String s) {
+
         int n = s.length();
         String res = null;
 
