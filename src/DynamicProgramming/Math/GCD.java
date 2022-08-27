@@ -4,7 +4,6 @@ public class GCD {
     public static void main(String[] args) {
         gcd(24,8);
     }
-
     private static void gcd(int a, int b) {
             int n=Math.min(a,b);
             int ans=1;

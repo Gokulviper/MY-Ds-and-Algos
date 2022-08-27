@@ -4,15 +4,15 @@ package DynamicProgramming.String.PallindromeProblems;
 
 //import static sun.net.ftp.FtpReplyCode.find;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import ArrayProblems.Sorting.GeneralAlgorithms.P;
+
+import java.util.*;
 
 public class Practice {
     public static void main(String[] args) {
- int[]nums={2,3,0,0,2,3,5,6,23,56,77,211};
-  fun1(nums,4);
-        System.out.println(Arrays.toString(nums));
+ int[]nums={5,7,2,3,9,0,0};
+  fun1(nums,15);
+
     }
 
     private static void funstr(String s) {
@@ -21,22 +21,31 @@ public class Practice {
                 System.out.println(s.substring(i,j));
             }
         }
-   
     }
-
     private static void fun1(int[] nums,int target) {
-         int i=0;
-        for (int j = 0; j <nums.length ; j++) {
-            if (nums[i]%2==0&&nums[j]%2!=0){
-                int t=nums[i];
-                nums[i]=nums[j];
-                nums[j]=t;
-                i++;
-            }else if(nums[i]%2!=0){
-                i++;
-            }
 
+
+            int ans=-1;
+        for (int i = 0; i <nums.length ; i++) {
+            int left_sum=0,right_sum=0;
+            int partition=0;
+            boolean first_half=true;
+            for (int j = 0; j <nums.length ; j++) {
+                if (i==j){
+                    partition=nums[i];
+                    first_half=false;
+                }else if(first_half){
+                    left_sum+=nums[j];
+                }else if (!first_half){
+                    right_sum+=nums[j];
+                }
+
+            }
+            if (right_sum==left_sum){
+                ans=partition;
+            }
         }
+        System.out.println(ans);
         }
 
 
@@ -45,30 +54,7 @@ public class Practice {
     }
 
     static void find(int n) {
-        int outerSpace=n-1;
-        int starts=1;
-        for (int i = 0; i <=n; i++) {
-            if(i<n/2) {
-                for (int j = 0; j < outerSpace; j++) {
-                    System.out.print(" ");
-                }
-                for (int j = 0; j < starts; j++) {
-                    System.out.print("* ");
-                }
-                outerSpace--;
-                starts++;
 
-            }else{
-                for (int j = 0; j <outerSpace ; j++) {
-                    System.out.print(" ");
-                }
-                for (int j = 0; j <starts ; j++) {
-                    System.out.print("* ");
-                }
-                outerSpace++;
-                starts--;
-            }
-            System.out.println();
-        }
+
     }
 }
