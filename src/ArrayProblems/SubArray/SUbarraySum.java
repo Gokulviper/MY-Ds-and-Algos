@@ -1,6 +1,6 @@
 package ArrayProblems.SubArray;
 
-public class Solution {
+public class SUbarraySum {
     public static void main(String[] args) {
 
     }
