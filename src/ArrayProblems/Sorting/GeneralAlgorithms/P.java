@@ -14,7 +14,7 @@ public class P {
         }
 
         int sum=0;
-        for(int v:count){
+            for(int v:count){
             sum+=v/2*2;
             if(sum%2==0&&v%2==1){
                 sum++;

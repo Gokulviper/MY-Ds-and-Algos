@@ -18,10 +18,29 @@ class Node{
 }
 public class Practice {
     public static void main(String[] args) {
- int[]nums={5,5,2,4,5,2,67,7,3,2,67,2255,55,6,3,2};
+ int[]nums={3,4,5,2,5,7,989,7766};
+  String[] strs = {"anwarrr","anwarring","anwa"};
+     find(4);
 
-      find(5);
+    }
 
+    private static void stringrr(String[] strs) {
+        String s=strs[0];
+        for (int i = 1; i <strs.length ; i++) {
+            s=str(s,strs[i]);
+        }
+        System.out.println(s);
+    }
+
+    private static String str(String s1, String s2) {
+        int start=0;
+      int end=0;
+      for (;end<Math.min(s1.length(),s2.length());end++){
+          if (s1.charAt(end)!=s2.charAt(end)){
+              break;
+          }
+      }
+      return s1.substring(start,end);
     }
 
     private static void gcd(int a, int b) {
@@ -45,13 +64,17 @@ public class Practice {
 
     }
 
-    private static void funstr(String s) {
-        for (int i = 0; i <s.length() ; i++) {
-            for (int j = i+1; j <=s.length() ; j++) {
-                System.out.println(s.substring(i,j));
-            }
-        }
+    private static void funstr(String s,int i) {
+
     }
+      int f(String s,String t,int i,int j){
+        if(i<0||j<0)return 0;
+          if (s.charAt(i)==t.charAt(j)){
+              return 1+f(s,t,i-1,j-1);
+          }
+       return Math.max(f(s,t,i-1,j),f(s,t,i,j-1));
+
+      }
     private static void fun1(int[] nums,int target) {
       int[]lis=new int[nums.length];
       Arrays.fill(lis,1);
@@ -64,8 +87,17 @@ public class Practice {
             }
             max=Math.max(max,lis[i]);
         }
-        int[]ans=new int[nums.length];
-
+      List<Integer>ans=new ArrayList<>();
+      int i=0;
+      int prev=-1;
+        for (int j = nums.length-1; j >=0 ; j--) {
+            if (lis[j]==max&&(prev==-1||prev>nums[j])){
+                ans.add(nums[j]);
+                max-=1;
+                prev=nums[j];
+            }
+        }
+        System.out.println(ans);
 
         }
 
@@ -108,6 +140,22 @@ public class Practice {
 
 
     static void find(int n) {
+       int number=1;
+        for (int i = 0; i < n; i++) {
+            if (number!=1){
+                number+=4;
+            }
+            if (i%2==0) {
 
+                for (int j = 0; j < n; j++) {
+                    System.out.print(number+++" ");
+                }
+            }else{
+                for (int j = 0; j < n; j++) {
+                    System.out.print(--number+" ");
+                }
+            }
+            System.out.println();
+        }
     }
 }

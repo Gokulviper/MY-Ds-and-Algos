@@ -4,9 +4,14 @@ import java.util.Arrays;
 
 public class MergeSort {
     public static void main(String[] args) {
-         int[]nums={4,7,-2,8,9,2};
-       int[]ans=  mergeSo1rt(nums);
-        System.out.println(Arrays.toString(ans));
+        int ans=0;
+        int num=12;
+        for (int i = 2; i <12 ; i++) {
+            if (num%i==0){
+                ans++;
+            }
+        }
+        System.out.println(ans);
     }
 
     private static int[] mergeSo1rt(int[] nums) {

@@ -9,7 +9,35 @@ public class SpiralMatrix {
                 {4,7,8,3},
                 {6,9,2,8},
                 {23,78,1,7}};
-        System.out.println(spiralMatrix(nums));;
+        System.out.println(spiralMatri11x(nums));;
+    }
+    private static List<Integer> spiralMatri11x(int[][] nums) {
+        int row=nums.length,col=nums[0].length,i=0,j=0,k=0;
+        List<Integer> ans=new ArrayList<>();
+        while (i<col&&j<row){
+           for (k=i;k<col;k++){
+               ans.add(nums[j][k]);
+           }
+           j++;
+            for (k=j;k<row;k++) {
+                ans.add(nums[k][col-1]);
+            }
+            col--;
+            if(j<row){
+                for(k=col-1;k>=i;k--){
+                    ans.add(nums[row-1][k]);
+                }
+                row--;
+            }
+            if (i<col){
+                for(k=row-1;k>=j;k--){
+                    ans.add(nums[k][i]);
+                }
+                i++;
+            }
+        }
+        return ans;
+
     }
     private static List<Integer> spiralMatri1x(int[][] nums) {
         List<Integer>ans=new ArrayList<>();

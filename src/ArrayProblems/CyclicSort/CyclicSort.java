@@ -9,6 +9,7 @@ public class CyclicSort {
      cyclicSort(nums);
         System.out.println(Arrays.toString(nums));
     }
+
      static void cyclicSort(int[]nums){
         int i=0;
         while (i<nums.length){
