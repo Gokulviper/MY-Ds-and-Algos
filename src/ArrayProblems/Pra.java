@@ -35,7 +35,7 @@ set.add('a');set.add('e');set.add('i');set.add('o');set.add('u');
         int j=vowel.length()-1;
         for (int i = 0; i <s.length() ; i++) {
             if (set.contains(s.charAt(i))){
-                ans+=s.charAt(j--);
+                ans+=vowel.charAt(j--);
             }else{
                 ans+=s.charAt(i);
             }
