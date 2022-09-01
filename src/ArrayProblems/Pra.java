@@ -7,8 +7,7 @@ import java.util.*;
 
 public class Pra {
     public static void main(String[] args) {
-  String s="ahfhieksgsjou";
-  cal(s);
+    gcg(6);
     }
 
     private static void alternateDub(int[] nums) {
@@ -23,24 +22,18 @@ public class Pra {
         }
     }
 
-    private static void cal(String s) {
-        Set<Character>set=new HashSet<>();
-set.add('a');set.add('e');set.add('i');set.add('o');set.add('u');
-        String vowel="";
-        for(char ch:s.toCharArray()){
-            if (set.contains(ch)){
-                vowel+=ch;
-            } }
-        String ans="";
-        int j=vowel.length()-1;
-        for (int i = 0; i <s.length() ; i++) {
-            if (set.contains(s.charAt(i))){
-                ans+=vowel.charAt(j--);
-            }else{
-                ans+=s.charAt(i);
-            }
-        }
-        System.out.println(ans);
+    private static void cal(String s1,String s2) {
+        StringBuilder sb=new StringBuilder();
+     int i=s1.length()-1,j=s2.length()-1,carry=0;
+     while (i>=0||j>=0||carry>0){
+         int val1=i>=0?s1.charAt(i--)-'0':0;
+         int val2=j>=0?s2.charAt(j--)-'0':0;
+         int sum=val1+val2+carry;
+         sb.insert(0,sum%10);
+         carry=sum/10;
+
+     }
+        System.out.println(sb);
     }
 
     private static int ma(int a, int b, char sign) {
@@ -86,13 +79,14 @@ set.add('a');set.add('e');set.add('i');set.add('o');set.add('u');
     }
 
     private static void gcg(int n) {
-     int size=2*n;
-        for (int i = 0; i <=size ; i++) {
-            for (int j = 0; j <=size ; j++) {
-                int val1=Math.abs(i-n)+1;
-                int val2=Math.abs(j-n)+1;
-                System.out.print(Math.max(val1,val2)+" ");
+        int space=0;
+        for (int i = 0; i <n ; i++) {
+            int j = 0;
+            for (; j <space ; j++) {
+                System.out.print(" ");
             }
+           while (j++<n) System.out.print("*");
+space++;
             System.out.println();
         }
 
