@@ -2,12 +2,13 @@ package ArrayProblems;
 
 import com.sun.jdi.event.StepEvent;
 
+import javax.sound.midi.MidiFileFormat;
 import java.util.*;
 
 public class Pra {
     public static void main(String[] args) {
-     int[]nums={1 ,2 ,2, 5 ,6, 9, 5, 2};
-   gcg(6);
+  String s="ahfhieksgsjou";
+  cal(s);
     }
 
     private static void alternateDub(int[] nums) {
@@ -23,11 +24,23 @@ public class Pra {
     }
 
     private static void cal(String s) {
-      int i=0,j=s.length()-1;
-      String ans="";
-      while (i<s.length()){
-
-      }
+        Set<Character>set=new HashSet<>();
+set.add('a');set.add('e');set.add('i');set.add('o');set.add('u');
+        String vowel="";
+        for(char ch:s.toCharArray()){
+            if (set.contains(ch)){
+                vowel+=ch;
+            } }
+        String ans="";
+        int j=vowel.length()-1;
+        for (int i = 0; i <s.length() ; i++) {
+            if (set.contains(s.charAt(i))){
+                ans+=s.charAt(j--);
+            }else{
+                ans+=s.charAt(i);
+            }
+        }
+        System.out.println(ans);
     }
 
     private static int ma(int a, int b, char sign) {
