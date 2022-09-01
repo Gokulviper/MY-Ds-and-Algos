@@ -43,25 +43,7 @@ public class Pra {
         return a/b;
 
     }
-/*
-  int leftSum=0,rightSum=0;
-        int i=0,j=nums.length-1;
-        for ( i = 0,j=nums.length-1; i <j ; i++,j--) {
-         leftSum+=nums[i];
-         rightSum+=nums[j];
-         while (i<j&&leftSum<rightSum){
-             i++;
-             leftSum+=nums[i];
-         }
-         while(i<j&&leftSum>rightSum){
-             j--;
-             rightSum+=nums[j];
-         }
 
-        }
-        if (leftSum==rightSum&&i==j) System.out.println(nums[j]);
-        else System.out.println(-1);
- */
     private static void find(int[] nums) {
       int left_sum=0,right_sum=0;
       int i=0,j=nums.length-1;
