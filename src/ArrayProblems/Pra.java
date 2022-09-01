@@ -7,8 +7,7 @@ import java.util.*;
 public class Pra {
     public static void main(String[] args) {
      int[]nums={1 ,2 ,2, 5 ,6, 9, 5, 2};
-     alternateDub(nums);
-        System.out.println(Arrays.toString(nums));
+   gcg(6);
     }
 
     private static void alternateDub(int[] nums) {
@@ -24,20 +23,11 @@ public class Pra {
     }
 
     private static void cal(String s) {
-       Map<Character,Character> map=new HashMap<>();
-       int j=97+25;
-        for (int i = 97; i <=97+25 ; i++) {
-             map.put((char)i,(char)j--);
-        }
-        j=65+25;
-        for (int i = 65; i <=65+25 ; i++) {
-            map.put((char)i,(char)j--);
-        }
-        String ans="";
-       for(char ch:s.toCharArray()){
-           ans+=map.get(ch);
-       }
-        System.out.println(ans);
+      int i=0,j=s.length()-1;
+      String ans="";
+      while (i<s.length()){
+
+      }
     }
 
     private static int ma(int a, int b, char sign) {
@@ -83,16 +73,14 @@ public class Pra {
     }
 
     private static void gcg(int n) {
-       boolean[]primes=new boolean[n+1];
-        for (int i = 2; i <=n ; i++) {
-            if (!primes[i]){
-                for (int j = i*i; j <=n ; j+=i) {
-                    primes[j]=true;
-                }
+     int size=2*n;
+        for (int i = 0; i <=size ; i++) {
+            for (int j = 0; j <=size ; j++) {
+                int val1=Math.abs(i-n)+1;
+                int val2=Math.abs(j-n)+1;
+                System.out.print(Math.max(val1,val2)+" ");
             }
-        }
-        for (int i = 2; i <=n ; i++) {
-            if (!primes[i]) System.out.println(i);
+            System.out.println();
         }
 
     }
