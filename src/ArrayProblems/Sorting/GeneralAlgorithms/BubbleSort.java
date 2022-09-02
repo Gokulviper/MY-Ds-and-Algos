@@ -18,16 +18,16 @@ public class BubbleSort {
 
     private static void bubbleSort1(int[] nums) {
         for (int i = 0; i <nums.length ; i++) {
-            boolean swaped=false;
+            boolean iss=false;
             for (int j = 1; j <nums.length-i ; j++) {
                 if (nums[j]<nums[j-1]){
-                    swaped=true;
-                  int t=nums[j];
-                  nums[j]=nums[j-1];
-                  nums[j-1]=t;
+                    iss=true;
+                    int t=nums[j];
+                    nums[j]=nums[j-1];
+                    nums[j-1]=t;
                 }
             }
-            if (!swaped)break;
+            if (iss)break;
         }
     }
 
