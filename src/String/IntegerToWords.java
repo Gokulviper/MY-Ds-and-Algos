@@ -133,7 +133,7 @@ class IntegerToWords {
 
   return ans;
     }
- static   String convertToWords(long num) {
+ static   String convertToWords(long l) {
        HashMap<Integer,String> hash = new HashMap<>();
        hash.put(0,"");
        hash.put(1,"one ");hash.put(2,"two ");hash.put(3,"three ");hash.put(4,"four ");
@@ -147,7 +147,7 @@ class IntegerToWords {
        hash.put(1000,"thousand ");hash.put(100000,"lakh ");hash.put(10000000,"crore ");
 
    String ans = "";
-   int n = (int)num;
+   int n = (int)l;
    if(n>=10000000){
        int c = n/10000000;
        if(c>=20) ans = ans + hash.get(c-(c%10)) + hash.get(c%10) + "crore ";
@@ -171,12 +171,12 @@ class IntegerToWords {
       ans = ans + hash.get(c) + "hundred ";
       n=n%100;
    }
-   if(n>=20 && (int)num>=100 ){
+   if(n>=20 && (int)l>=100 ){
         ans = ans + "and " + hash.get(n-(n%10)) + hash.get(n%10);
    }
-  else if(n>0 && (int)num>=100 ) ans = ans +"and "+ hash.get(n);
-   else if(num<100){
-       if(num>=20)  ans = ans + hash.get(n-(n%10)) + hash.get(n%10);
+  else if(n>0 && (int)l>=100 ) ans = ans +"and "+ hash.get(n);
+   else if(l<100){
+       if(l>=20)  ans = ans + hash.get(n-(n%10)) + hash.get(n%10);
        else ans = ans + hash.get(n);
    }
  
