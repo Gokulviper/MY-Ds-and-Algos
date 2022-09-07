@@ -3,7 +3,7 @@ package OOP;
 abstract public class Abstraction {
 
     abstract  public void start();
-    abstract  public void df();
+    abstract  public  void df();
     abstract  public void dg();
     abstract  public void dgk();
     abstract  public void fg();
@@ -11,6 +11,18 @@ abstract public class Abstraction {
 }
 class blend extends Abstraction{
     public static void main(String[] args) {
+        emp e= new emp() {
+            @Override
+            public void salary() {
+
+            }
+
+            @Override
+            public void name() {
+                emp.super.name();
+            }
+        };
+        e.name();
 
     }
 

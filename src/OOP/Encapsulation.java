@@ -1,6 +1,6 @@
 package OOP;
 class get{
-    private  int id;
+    private static int id;
     private String name;
     private int number;
 
@@ -8,6 +8,11 @@ class get{
         this.id = id;
         this.name = name;
         this.number = number;
+    }
+
+    public  void main(String[] args) {
+        System.out.println(id);
+        System.out.println(this.name);
     }
 
     public int getId() {
@@ -36,13 +41,39 @@ class get{
 }
 public class Encapsulation {
     public static void main(String[] args) {
+        Abstraction a=new Abstraction() {
+            @Override
+            public void start() {
+
+            }
+
+            @Override
+            public void df() {
+
+            }
+
+            @Override
+            public void dg() {
+
+            }
+
+            @Override
+            public void dgk() {
+
+            }
+
+            @Override
+            public void fg() {
+
+            }
+        };
         get g=new get(34,"gokul",34);
    //     g.setNumber(777);
         System.out.println(g.getNumber());
         StringBuilder sb=new StringBuilder();
         System.gc();
-        Integer a=34;
-        int b=a;
+       // Integer a=34;
+      //  int b=a;
         int c=34;
       //  binarySearch();
     }
