@@ -11,18 +11,7 @@ abstract public class Abstraction {
 }
 class blend extends Abstraction{
     public static void main(String[] args) {
-        emp e= new emp() {
-            @Override
-            public void salary() {
 
-            }
-
-            @Override
-            public void name() {
-                emp.super.name();
-            }
-        };
-        e.name();
 
     }
 

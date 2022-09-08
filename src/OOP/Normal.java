@@ -14,6 +14,11 @@ package OOP;
 
           }
     }
+
+     public static void main(String[] args) {
+         innner n=new innner();
+
+     }
 }
 class real{
     public static void main(String[] args) {
