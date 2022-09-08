@@ -13,6 +13,14 @@ public class FinalExample extends clock {
 
      public static void main(String[] args) {
         final  int a=10;
+        try {
+            System.out.println(a/5);
+        }catch (Exception e){
+            System.out.println("error acquired");
+        }finally {
+            System.out.println("safed");
+        }
+         System.out.println("finsished");
 
 
     }
