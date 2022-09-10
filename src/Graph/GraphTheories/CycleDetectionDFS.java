@@ -56,6 +56,20 @@ class Solution {
 
         return false;
     }
+    public boolean checkForCyc1le(int u, int previous, boolean vis[], ArrayList <ArrayList<Integer>> adj) {
+        vis[u]=true;
+        for (int v:adj.get(u)){
+            if (!vis[v]){
+                if (checkForCyc1le(v,u,vis,adj)){
+                    return true;
+                }else if(v!=previous){
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
     public boolean checkForCycle(int u, int previous, boolean vis[], ArrayList <ArrayList<Integer>> adj) {
         //recursive
         vis[u] = true;
