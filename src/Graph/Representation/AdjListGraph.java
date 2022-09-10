@@ -56,7 +56,6 @@ public class AdjListGraph {
         boolean[] visited = new boolean[V];
         Stack<Integer> stack = new Stack<>();
         stack.push(s);
-
         while(!stack.isEmpty()) {
             int u = stack.pop();
             if(!visited[u]) {
@@ -68,7 +67,8 @@ public class AdjListGraph {
                         stack.push(v);
                     }
                 }
-            } }
+            }
+        }
     }
 
     public void dfs(){
@@ -80,12 +80,12 @@ public class AdjListGraph {
         }
     }
 
-    private void dfs(int v, boolean[] visited) {
-        visited[v] = true;
-        System.out.print(v + " ");
-        for(int w : adj.get(v)){
-            if(!visited[w]){
-                dfs(w, visited);
+    private void dfs(int u, boolean[] visited) {
+        visited[u] = true;
+        System.out.print(u + " ");
+        for(int v : adj.get(u)){
+            if(!visited[v]){
+                dfs(v, visited);
             }
         }
     }
