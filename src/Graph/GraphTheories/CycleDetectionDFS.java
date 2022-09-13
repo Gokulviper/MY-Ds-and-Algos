@@ -1,11 +1,7 @@
 package Graph.GraphTheories;
-
 import java.util.ArrayList;
-
 class CycleDetectionDFS {
     public static void main(String[] args) {
-
-
         int V = 5;
 
         ArrayList <ArrayList < Integer >> adj = new ArrayList < > ();
@@ -31,17 +27,10 @@ class CycleDetectionDFS {
         // adge 1--4
         adj.get(1).add(4);
         adj.get(4).add(1);
-
-
-
         //boolean ans = obj.isCycle(V, adj);
-
-
 
     }
 }
-
-
 class Solution {
     // 0-based indexing Graph
     public boolean isCycle(int V, ArrayList < ArrayList < Integer >> adj) {
