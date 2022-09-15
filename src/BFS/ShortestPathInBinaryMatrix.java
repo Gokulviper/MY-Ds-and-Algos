@@ -2,6 +2,7 @@ package BFS;
 
 import java.util.*;
 class pair{
+
     int row;
     int col;
     pair(int row,int col){

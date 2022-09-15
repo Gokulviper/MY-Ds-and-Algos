@@ -43,8 +43,8 @@ public class SrcToDisUsingBfs {
             Point src=qNode.p;
             if (src.row==row&&src.col==col)return qNode.dis;
             for (int k = 0; k <4 ; k++) {
-                int r=src.row+dir[i][0];
-                int c=src.col+dir[0][j];
+                int r=src.row+dir[1][0];
+                int c=src.col+dir[0][1];
                 if(r>=0&&c>=0&&r<mat.length&&c<mat[0].length&&!vis[r][c]){
                     vis[r][c]=true;
                     q.add(new QueueNode(new Point(r,c), qNode.dis+1));
