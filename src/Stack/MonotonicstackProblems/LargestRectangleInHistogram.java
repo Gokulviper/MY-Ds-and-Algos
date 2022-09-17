@@ -4,8 +4,8 @@ import java.util.Stack;
 
 class LargestRectangleInHistogram {
     public static void main(String[] args) {
-        int[]heights = {2,4};
-        System.out.println(largestRectangleAreaBrute(heights));
+        int[]heights = {2,1,5,6,2,3};
+        System.out.println(largestRectangleAreaBetter(heights));
     }
     public static int largestRectangleArea(int[] heights) {
         int i = 0;
@@ -51,6 +51,7 @@ class LargestRectangleInHistogram {
             while(!st.isEmpty() && heights[st.peek()] >= heights[i]) {
                 st.pop(); 
             }
+
             leftSmall[i]=st.isEmpty()?0:st.peek()+1;
             st.push(i);
         }
