@@ -3,6 +3,9 @@ package BFS;
 import java.util.*;
 
 class RottenOranges {
+    public static void main(String[] args) {
+        System.out.println(Integer.MAX_VALUE);
+    }
     public int orangesRotting(int[][] grid) {
         int n=grid.length;
         int m=grid[0].length;
