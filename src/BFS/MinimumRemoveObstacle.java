@@ -2,66 +2,59 @@ package BFS;
 
 import java.util.*;
 
-class Cell{
-    int x;
-    int y;
+class cell{
+    int row;
+    int col;
     int obsRemoved;
 
-    public Cell(int x, int y, int obsRemoved){
-        this.x= x;
-        this.y =y;
-        this.obsRemoved = obsRemoved;
+    public cell(int x, int y, int o){
+        row= x;
+        col =y;
+       obsRemoved = o;
     }
 }
 
 class MinimumRemoveObstacle {
-    
-    public int minimumObstacles(int[][] grid) {
-        
-        int m = grid.length;
-        int n = grid[0].length;
-        
-        int[][]minObsRemoved = new int[m][n];
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                minObsRemoved[i][j] = Integer.MAX_VALUE;
-            }
-        }
-        // CLEARLY SEE DEQUE IS USED
-        Deque<Cell> pendingCells  = new LinkedList<>();
-        pendingCells.add(new Cell(0,0,0));
-        minObsRemoved[0][0] = 0;
-        
-        int[][]dir = {{-1,0},{1,0},{0,-1},{0,1}};
-        
-        while(!pendingCells.isEmpty()){
-            Cell current = pendingCells.poll();
-            for(int i=0;i<dir.length;i++){
-                int newX= current.x + dir[i][0];
-                int newY = current.y + dir[i][1];
-                
-                if(newX >= 0 && newX < m && newY >=0 && newY <n){
-                    
-                    // IF THE NEW CELL IS A BLOCK THEN ADD IT IN LAST
-                    if(grid[newX][newY]==1){
-                        // IF I CAN REVISIT THE NEW CELL WITH LESSER OBS REMOVED THEN I CAN TAKE A STEP.
-                        if(current.obsRemoved+1 < minObsRemoved[newX][newY]){
-                            minObsRemoved[newX][newY] = current.obsRemoved+1;
-                            pendingCells.addLast(new Cell(newX,newY,current.obsRemoved+1));
-                        }
-                    }
-                    //IF THE NEW CELL IS A FREE CELL ADD IT IN FRONT
-                    else{
-                        if(current.obsRemoved < minObsRemoved[newX][newY]){
-                            // IF I CAN REVISIT THE NEW CELL WITH LESSER OBS REMOVED THEN I CAN TAKE A STEP.
-                            minObsRemoved[newX][newY] = current.obsRemoved;
-                            pendingCells.addFirst(new Cell(newX,newY,current.obsRemoved));
-                        }
-                    }
-                }
-            }
-        }
-        
-        return minObsRemoved[m-1][n-1];
+    public static void main(String[] args) {
+        int[][]mat={{0,1,1},{1,1,0},{1,1,0}};
+        System.out.println(minimumObstacles(mat));
     }
-}
+    
+ static    public int minimumObstacles(int[][] grid) {
+
+         int n=grid.length,m=grid[0].length;
+         int[][]minObsRemoved=new int[n][m];
+         for(int[] r:minObsRemoved)Arrays.fill(r,Integer.MAX_VALUE);
+         Deque<cell> balanceCells=new LinkedList();
+         balanceCells.add(new cell(0,0,0));
+         int[][]dir=new int[][]{{-1,0},{0,-1},{1,0},{0,1}};
+         minObsRemoved[0][0]=0;
+         while(!balanceCells.isEmpty()){
+             int size=balanceCells.size();
+             while(size-->0){
+                 cell currentCell=balanceCells.poll();
+                 int rowNumber=currentCell.row;
+                 int columnNumber=currentCell.col;
+                 for(int[]directions:dir){
+                     int currentRow=rowNumber+directions[0];
+                     int currentCol=columnNumber+directions[1];
+                     if(currentRow>=0&&currentCol>=0&&currentRow<n&&currentCol<m){
+                         if(grid[currentRow][currentCol]==1){
+                             if(currentCell.obsRemoved+1<minObsRemoved[currentRow][currentCol]){
+                                 minObsRemoved[currentRow][currentCol]=currentCell.obsRemoved+1;
+                                 balanceCells.addLast(new cell(currentRow,currentCol,currentCell.obsRemoved+1));
+                             }
+                         }else{
+                             if(currentCell.obsRemoved<minObsRemoved[currentRow][currentCol]){
+                                 minObsRemoved[currentRow][currentCol]=currentCell.obsRemoved;
+                                 balanceCells.addFirst(new cell(currentRow,currentCol,currentCell.obsRemoved));
+                             }
+
+                         }
+                     }
+                 }
+             }
+         }
+         return minObsRemoved[n-1][m-1];
+     }
+ }
