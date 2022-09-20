@@ -117,4 +117,15 @@ public class DisJoinedSetDs {
         }
    return parent[n];
     }
+void union(int u,int v){
+        int node1=findPar(u),node2=findPar(v);
+        if (node1==node2)return;
+        if (rank[node1]<rank[node2]){
+            rank[node1]=node2;
+        }else if(rank[node1]>rank[node2]){
+            rank[node2]=node1;
+        }else{
+            rank[node1]=rank[node1]++;
+        }
+}
 }
