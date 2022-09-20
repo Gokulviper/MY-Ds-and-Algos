@@ -80,6 +80,8 @@ class DisjointUnionSets {
  
 // Driver code
 public class DisJoinedSetDs {
+    static int[]parent=new int[56];
+    static int[]rank=new int[56];
     public static void main(String[] args)
     {
         // Let there be 5 persons with ids as
@@ -108,5 +110,11 @@ public class DisJoinedSetDs {
             System.out.println("Yes");
         else
             System.out.println("No");
+    }
+    int findPar(int n){
+        if(parent[n]!=n){
+          parent[n]=  findPar(parent[n]);
+        }
+   return parent[n];
     }
 }
