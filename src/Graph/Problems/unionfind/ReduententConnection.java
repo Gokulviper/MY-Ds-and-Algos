@@ -1,44 +1,47 @@
 package Graph.Problems.unionfind;
-class unionFind{
-    int[] parent;
-    int[] rank;
 
-    public unionFind(int size) {
-        parent = new int[size];
-        for (int i = 0; i < size; i++) parent[i] = i;
-        rank = new int[size];
-    }
 
-    public int find(int x) {
-        if (parent[x] != x) parent[x] = find(parent[x]);
-        return parent[x];
-    }
-
-    public boolean union(int x, int y) {
-        int xr = find(x), yr = find(y);
-        if (xr == yr) {
-            return false;
-        } else if (rank[xr] < rank[yr]) {
-            parent[xr] = yr;
-        } else if (rank[xr] > rank[yr]) {
-            parent[yr] = xr;
-        } else {
-            parent[yr] = xr;
-            rank[xr]++;
-        }
-        return true;
-    }
-}
-
-class ReduententConnection {
-    int MAX_EDGE_VAL = 1000;
+class   ReduententConnection {
     public int[] findRedundantConnection(int[][] edges) {
-        unionFind unionFind=new unionFind(MAX_EDGE_VAL+1);
-        for (int[]e:edges){
-            if (!unionFind.union(e[0],e[1])){
-                return e;
+        int n = edges.length;
+        int[] parent = new int[n+1];
+        int[] rank = new int[n+1];
+
+        for(int i=0; i<=n; i++){
+            parent[i] = i;
+
+        }
+
+        for(int[] edge : edges){
+            if(union(edge[0], edge[1], parent, rank)){
+                return edge;
+
             }
         }
-        return new int[]{-1,-1};
+        return new int[]{0,0};
     }
+
+    private int findPar(int node, int[] parent){
+        if(node == parent[node])
+            return node;
+
+        return parent[node] = findPar(parent[node], parent);
     }
+
+    private boolean union(int u, int v, int[] parent, int[] rank){
+        u = findPar(u, parent);
+        v = findPar(v, parent);
+
+        if(u == v)
+            return true;
+
+        if(rank[u] < rank[v]){
+            parent[u] = v;
+            rank[v]++;
+        } else {
+            parent[v] = u;
+            rank[u]++;
+        }
+        return false;
+    }
+}
