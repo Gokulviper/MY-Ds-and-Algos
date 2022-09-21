@@ -14,7 +14,7 @@ class DistanceKInBinaryTree {
         queue.offer(target);
         visited.put(target, true);
         int dis = 0;
-        while(!queue.isEmpty()) { /*Second BFS to go upto K level from target node and using our hashtable info*/
+        while(!queue.isEmpty()) { /*Second Graph.BFS to go upto K level from target node and using our hashtable info*/
             int size = queue.size();
             if(dis == k) break;
             dis++;

@@ -1,9 +1,9 @@
-package BFS;
+package Graph.BFS;
 
 import java.util.*;
 /*
 
-1. Use Queue and BFS to find answers .
+1. Use Queue and Graph.BFS to find answers .
 2. First add the given string in queue .
 3. each level we will remove 1 more char and will add all the possible string in queue
 4. Once we found a valid string , we will only process that level and no more , as we know , that will be the minimum deletion required .

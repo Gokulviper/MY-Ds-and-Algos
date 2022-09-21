@@ -113,7 +113,7 @@ class Solution {
 787. Cheapest Flights Within K Stops
 
 /*
-It's same as Dijkstra algorithm to calculate distance btween two nodes when we have weights. I use BFS approach.
+It's same as Dijkstra algorithm to calculate distance btween two nodes when we have weights. I use Graph.BFS approach.
 
 For Example:            4
                     (1) |

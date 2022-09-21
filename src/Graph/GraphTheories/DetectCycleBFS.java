@@ -40,7 +40,7 @@ class Node5 {
 }
 class FindCycle {
     static boolean checkForCycle(ArrayList<ArrayList<Integer>> adj, int s, boolean vis[]) {
-        Queue<Node5> q = new LinkedList<>(); //BFS
+        Queue<Node5> q = new LinkedList<>(); //Graph.BFS
         q.add(new Node5(s, -1));
         vis[s] = true;
 
