@@ -1,7 +1,14 @@
 package DynamicProgramming.Grid;
 
 class DungeaonGame {
-    
+    int recursion(int[][]d, int r, int c){
+        if(r==d.length-1&&c==d[0].length-1){
+            return d[r][c]>=0?1:-d[r][c]+1;
+        }
+        if(r==d.length||c==d[0].length)return Integer.MAX_VALUE;
+        int ans=Math.min(recursion(d,r+1,c), recursion(d,r,c+1))-d[r][c];
+        return ans<=0?1:ans;
+    }
     public int calculateMinimumHP(int[][] dungeon) {
     int r=dungeon.length,c=dungeon[0].length;
         int[][]dp=new int[r+1][c+1];
