@@ -9,8 +9,7 @@ public class SrcToDest {
         int j=1;
         int row=0;
         int col=4;
-        mat[i][j] = 1;
-        mat[row][col] = 2;
+      ;
         System.out.println(findUsingBactracking(mat, i, j, row, col));
         System.out.println(ans);
     }
